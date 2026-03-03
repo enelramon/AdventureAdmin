@@ -28,11 +28,50 @@ partial class ProductList
     /// </summary>
     private void InitializeComponent()
     {
-        this.components = new System.ComponentModel.Container();
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(800, 450);
-        this.Text = "ProductList";
+        productsDataGridView = new DataGridView();
+        nuevoButton = new Button();
+        ((System.ComponentModel.ISupportInitialize)productsDataGridView).BeginInit();
+        SuspendLayout();
+        // 
+        // productsDataGridView
+        // 
+        productsDataGridView.AllowUserToAddRows = false;
+        productsDataGridView.AllowUserToDeleteRows = false;
+        productsDataGridView.AllowUserToOrderColumns = true;
+        productsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        productsDataGridView.Location = new Point(12, 38);
+        productsDataGridView.Name = "productsDataGridView";
+        productsDataGridView.ReadOnly = true;
+        productsDataGridView.RowHeadersWidth = 51;
+        productsDataGridView.Size = new Size(776, 400);
+        productsDataGridView.TabIndex = 0;
+        // 
+        // nuevoButton
+        // 
+        nuevoButton.Location = new Point(12, 3);
+        nuevoButton.Name = "nuevoButton";
+        nuevoButton.Size = new Size(94, 29);
+        nuevoButton.TabIndex = 1;
+        nuevoButton.Text = "✅ Nuevo";
+        nuevoButton.UseVisualStyleBackColor = true;
+        nuevoButton.Click += nuevoButton_Click;
+        // 
+        // ProductList
+        // 
+        AutoScaleDimensions = new SizeF(8F, 20F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(800, 450);
+        Controls.Add(nuevoButton);
+        Controls.Add(productsDataGridView);
+        Name = "ProductList";
+        Text = "ProductList";
+        Load += ProductList_Load;
+        ((System.ComponentModel.ISupportInitialize)productsDataGridView).EndInit();
+        ResumeLayout(false);
     }
 
     #endregion
+
+    private DataGridView productsDataGridView;
+    private Button nuevoButton;
 }
