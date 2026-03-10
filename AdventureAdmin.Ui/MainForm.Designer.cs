@@ -31,6 +31,23 @@ partial class MainForm
         mainMenuStrip = new MenuStrip();
         opcionesToolStripMenuItem = new ToolStripMenuItem();
         productosToolStripMenuItem = new ToolStripMenuItem();
+        currencyToolStripMenuItem = new ToolStripMenuItem();
+        departmentToolStripMenuItem = new ToolStripMenuItem();
+        shiftToolStripMenuItem = new ToolStripMenuItem();
+        countryRegionToolStripMenuItem = new ToolStripMenuItem();
+        shipMethodToolStripMenuItem = new ToolStripMenuItem();
+        phoneNumberTypeToolStripMenuItem = new ToolStripMenuItem();
+        productDescriptionToolStripMenuItem = new ToolStripMenuItem();
+        addressTypeToolStripMenuItem = new ToolStripMenuItem();
+        businessEntityToolStripMenuItem = new ToolStripMenuItem();
+        locationToolStripMenuItem = new ToolStripMenuItem();
+        specialOfferToolStripMenuItem = new ToolStripMenuItem();
+        productCategoryToolStripMenuItem = new ToolStripMenuItem();
+        cultureToolStripMenuItem = new ToolStripMenuItem();
+        personToolStripMenuItem = new ToolStripMenuItem();
+        creditCardToolStripMenuItem = new ToolStripMenuItem();
+        contactTypeToolStripMenuItem = new ToolStripMenuItem();
+        scrapReasonToolStripMenuItem = new ToolStripMenuItem();
         mainMenuStrip.SuspendLayout();
         SuspendLayout();
         // 
@@ -46,7 +63,7 @@ partial class MainForm
         // 
         // opcionesToolStripMenuItem
         // 
-        opcionesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { productosToolStripMenuItem });
+        opcionesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { productosToolStripMenuItem, currencyToolStripMenuItem, departmentToolStripMenuItem, shiftToolStripMenuItem, countryRegionToolStripMenuItem, shipMethodToolStripMenuItem, phoneNumberTypeToolStripMenuItem, productDescriptionToolStripMenuItem, addressTypeToolStripMenuItem, businessEntityToolStripMenuItem, locationToolStripMenuItem, specialOfferToolStripMenuItem, productCategoryToolStripMenuItem, cultureToolStripMenuItem, personToolStripMenuItem, creditCardToolStripMenuItem, contactTypeToolStripMenuItem, scrapReasonToolStripMenuItem });
         opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
         opcionesToolStripMenuItem.Size = new Size(85, 24);
         opcionesToolStripMenuItem.Text = "Opciones";
@@ -57,6 +74,125 @@ partial class MainForm
         productosToolStripMenuItem.Size = new Size(224, 26);
         productosToolStripMenuItem.Text = "Productos";
         productosToolStripMenuItem.Click += productosToolStripMenuItem_Click;
+        // 
+        // currencyToolStripMenuItem
+        // 
+        currencyToolStripMenuItem.Name = "currencyToolStripMenuItem";
+        currencyToolStripMenuItem.Size = new Size(224, 26);
+        currencyToolStripMenuItem.Text = "Currency";
+        currencyToolStripMenuItem.Click += currencyToolStripMenuItem_Click;
+        // 
+        // departmentToolStripMenuItem
+        // 
+        departmentToolStripMenuItem.Name = "departmentToolStripMenuItem";
+        departmentToolStripMenuItem.Size = new Size(224, 26);
+        departmentToolStripMenuItem.Text = "Department";
+        departmentToolStripMenuItem.Click += departmentToolStripMenuItem_Click;
+        // 
+        // shiftToolStripMenuItem
+        // 
+        shiftToolStripMenuItem.Name = "shiftToolStripMenuItem";
+        shiftToolStripMenuItem.Size = new Size(224, 26);
+        shiftToolStripMenuItem.Text = "Shift";
+        shiftToolStripMenuItem.Click += shiftToolStripMenuItem_Click;
+        // 
+        // countryRegionToolStripMenuItem
+        // 
+        countryRegionToolStripMenuItem.Name = "countryRegionToolStripMenuItem";
+        countryRegionToolStripMenuItem.Size = new Size(224, 26);
+        countryRegionToolStripMenuItem.Text = "CountryRegion";
+        countryRegionToolStripMenuItem.Click += countryRegionToolStripMenuItem_Click;
+        // 
+        // shipMethodToolStripMenuItem
+        // 
+        shipMethodToolStripMenuItem.Name = "shipMethodToolStripMenuItem";
+        shipMethodToolStripMenuItem.Size = new Size(224, 26);
+        shipMethodToolStripMenuItem.Text = "ShipMethod";
+        shipMethodToolStripMenuItem.Click += shipMethodToolStripMenuItem_Click;
+        // 
+        // phoneNumberTypeToolStripMenuItem
+        // 
+        phoneNumberTypeToolStripMenuItem.Name = "phoneNumberTypeToolStripMenuItem";
+        phoneNumberTypeToolStripMenuItem.Size = new Size(224, 26);
+        phoneNumberTypeToolStripMenuItem.Text = "PhoneNumberType";
+        phoneNumberTypeToolStripMenuItem.Click += phoneNumberTypeToolStripMenuItem_Click;
+        // 
+        // productDescriptionToolStripMenuItem
+        // 
+        productDescriptionToolStripMenuItem.Name = "productDescriptionToolStripMenuItem";
+        productDescriptionToolStripMenuItem.Size = new Size(224, 26);
+        productDescriptionToolStripMenuItem.Text = "ProductDescription";
+        productDescriptionToolStripMenuItem.Click += productDescriptionToolStripMenuItem_Click;
+        // 
+        // addressTypeToolStripMenuItem
+        // 
+        addressTypeToolStripMenuItem.Name = "addressTypeToolStripMenuItem";
+        addressTypeToolStripMenuItem.Size = new Size(224, 26);
+        addressTypeToolStripMenuItem.Text = "AddressType";
+        addressTypeToolStripMenuItem.Click += addressTypeToolStripMenuItem_Click;
+        // 
+        // businessEntityToolStripMenuItem
+        // 
+        businessEntityToolStripMenuItem.Name = "businessEntityToolStripMenuItem";
+        businessEntityToolStripMenuItem.Size = new Size(224, 26);
+        businessEntityToolStripMenuItem.Text = "BusinessEntity";
+        businessEntityToolStripMenuItem.Click += businessEntityToolStripMenuItem_Click;
+        // 
+        // locationToolStripMenuItem
+        // 
+        locationToolStripMenuItem.Name = "locationToolStripMenuItem";
+        locationToolStripMenuItem.Size = new Size(224, 26);
+        locationToolStripMenuItem.Text = "Location";
+        locationToolStripMenuItem.Click += locationToolStripMenuItem_Click;
+        // 
+        // specialOfferToolStripMenuItem
+        // 
+        specialOfferToolStripMenuItem.Name = "specialOfferToolStripMenuItem";
+        specialOfferToolStripMenuItem.Size = new Size(224, 26);
+        specialOfferToolStripMenuItem.Text = "SpecialOffer";
+        specialOfferToolStripMenuItem.Click += specialOfferToolStripMenuItem_Click;
+        // 
+        // productCategoryToolStripMenuItem
+        // 
+        productCategoryToolStripMenuItem.Name = "productCategoryToolStripMenuItem";
+        productCategoryToolStripMenuItem.Size = new Size(224, 26);
+        productCategoryToolStripMenuItem.Text = "ProductCategory";
+        productCategoryToolStripMenuItem.Click += productCategoryToolStripMenuItem_Click;
+        // 
+        // cultureToolStripMenuItem
+        // 
+        cultureToolStripMenuItem.Name = "cultureToolStripMenuItem";
+        cultureToolStripMenuItem.Size = new Size(224, 26);
+        cultureToolStripMenuItem.Text = "Culture";
+        cultureToolStripMenuItem.Click += cultureToolStripMenuItem_Click;
+        // 
+        // personToolStripMenuItem
+        // 
+        personToolStripMenuItem.Name = "personToolStripMenuItem";
+        personToolStripMenuItem.Size = new Size(224, 26);
+        personToolStripMenuItem.Text = "Person";
+        personToolStripMenuItem.Click += personToolStripMenuItem_Click;
+        // 
+        // creditCardToolStripMenuItem
+        // 
+        creditCardToolStripMenuItem.Name = "creditCardToolStripMenuItem";
+        creditCardToolStripMenuItem.Size = new Size(224, 26);
+        creditCardToolStripMenuItem.Text = "CreditCard";
+        creditCardToolStripMenuItem.Click += creditCardToolStripMenuItem_Click;
+        // 
+        // contactTypeToolStripMenuItem
+        // 
+        contactTypeToolStripMenuItem.Name = "contactTypeToolStripMenuItem";
+        contactTypeToolStripMenuItem.Size = new Size(224, 26);
+        contactTypeToolStripMenuItem.Text = "ContactType";
+        contactTypeToolStripMenuItem.Click += contactTypeToolStripMenuItem_Click;
+        // 
+        // scrapReasonToolStripMenuItem
+        // 
+        scrapReasonToolStripMenuItem.Name = "scrapReasonToolStripMenuItem";
+        scrapReasonToolStripMenuItem.Size = new Size(224, 26);
+        scrapReasonToolStripMenuItem.Text = "ScrapReason";
+        scrapReasonToolStripMenuItem.Click += scrapReasonToolStripMenuItem_Click;
         // 
         // MainForm
         // 
@@ -78,4 +214,21 @@ partial class MainForm
     private MenuStrip mainMenuStrip;
     private ToolStripMenuItem opcionesToolStripMenuItem;
     private ToolStripMenuItem productosToolStripMenuItem;
+    private ToolStripMenuItem currencyToolStripMenuItem;
+    private ToolStripMenuItem departmentToolStripMenuItem;
+    private ToolStripMenuItem shiftToolStripMenuItem;
+    private ToolStripMenuItem countryRegionToolStripMenuItem;
+    private ToolStripMenuItem shipMethodToolStripMenuItem;
+    private ToolStripMenuItem phoneNumberTypeToolStripMenuItem;
+    private ToolStripMenuItem productDescriptionToolStripMenuItem;
+    private ToolStripMenuItem addressTypeToolStripMenuItem;
+    private ToolStripMenuItem businessEntityToolStripMenuItem;
+    private ToolStripMenuItem locationToolStripMenuItem;
+    private ToolStripMenuItem specialOfferToolStripMenuItem;
+    private ToolStripMenuItem productCategoryToolStripMenuItem;
+    private ToolStripMenuItem cultureToolStripMenuItem;
+    private ToolStripMenuItem personToolStripMenuItem;
+    private ToolStripMenuItem creditCardToolStripMenuItem;
+    private ToolStripMenuItem contactTypeToolStripMenuItem;
+    private ToolStripMenuItem scrapReasonToolStripMenuItem;
 }
