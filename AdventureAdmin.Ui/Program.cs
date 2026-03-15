@@ -1,6 +1,7 @@
 using System.Configuration;
 using AdventureAdmin.Data.Context;
 using AdventureAdmin.Ui.Product;
+using AdventureAdmin.Ui.ShipMethod;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -36,5 +37,7 @@ static class Program
         services.AddTransient<MainForm>();
         services.AddTransient<ProductList>();
         services.AddTransient<ProductForm>();
+        services.AddTransient<ShipMethodList>();
+        services.AddTransient<ShipMethodForm>();
     }
 }

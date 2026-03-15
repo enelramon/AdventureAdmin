@@ -1,4 +1,5 @@
 using AdventureAdmin.Ui.Product;
+using AdventureAdmin.Ui.ShipMethod;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureAdmin;
@@ -38,7 +39,8 @@ public partial class MainForm : Form
 
     private void shipMethodToolStripMenuItem_Click(object sender, EventArgs e)
     {
-
+        var shipMethodList = Program.ServiceProvider.GetRequiredService<ShipMethodList>();
+        shipMethodList.Show();
     }
 
     private void phoneNumberTypeToolStripMenuItem_Click(object sender, EventArgs e)
