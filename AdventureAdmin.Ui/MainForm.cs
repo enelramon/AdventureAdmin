@@ -1,3 +1,4 @@
+using AdventureAdmin.Ui.Department;
 using AdventureAdmin.Ui.Product;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -23,7 +24,8 @@ public partial class MainForm : Form
 
     private void departmentToolStripMenuItem_Click(object sender, EventArgs e)
     {
-
+        var form = Program.ServiceProvider.GetRequiredService<DepartmentList>();
+        form.Show();
     }
 
     private void shiftToolStripMenuItem_Click(object sender, EventArgs e)
@@ -97,6 +99,11 @@ public partial class MainForm : Form
     }
 
     private void scrapReasonToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void MainForm_Load(object sender, EventArgs e)
     {
 
     }

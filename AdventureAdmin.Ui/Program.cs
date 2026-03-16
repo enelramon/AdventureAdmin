@@ -1,8 +1,10 @@
 using System.Configuration;
 using AdventureAdmin.Data.Context;
 using AdventureAdmin.Ui.Product;
+using AdventureAdmin.Ui.Department;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using AdventureAdmin.Ui;
 
 namespace AdventureAdmin;
 
@@ -37,5 +39,7 @@ static class Program
         services.AddTransient<MainForm>();
         services.AddTransient<ProductList>();
         services.AddTransient<ProductForm>();
+        services.AddTransient<DepartmentList>();
+        services.AddTransient<DepartmentForm>();
     }
 }
