@@ -20,7 +20,7 @@ namespace AdventureAdmin.Ui.CreditCard
         {
             RefrescarDatos();
         }
-
+        //nuevo remoto
         private void RefrescarDatos()
         {
             try
