@@ -37,7 +37,7 @@ namespace AdventureAdmin.Ui.Location
                 var location = new AdventureAdmin.Data.Models.Location
                 {
                     Name = txtName.Text.Trim(),
-                    CostRate = decimal.Parse(txtCost.Text),
+                    CostRate = nudCostRate.Value,
                     Availability = nudAvailability.Value,
                     ModifiedDate = DateTime.Now
                 };

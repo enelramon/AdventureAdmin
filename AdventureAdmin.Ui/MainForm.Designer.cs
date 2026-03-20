@@ -161,6 +161,7 @@ partial class MainForm
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(700, 338);
         Controls.Add(mainMenuStrip);
+        IsMdiContainer = true;
         MainMenuStrip = mainMenuStrip;
         Margin = new Padding(3, 2, 3, 2);
         Name = "MainForm";

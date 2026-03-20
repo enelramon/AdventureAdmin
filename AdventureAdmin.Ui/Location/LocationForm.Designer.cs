@@ -36,9 +36,10 @@
             lblCostRate = new Label();
             lblAvailability = new Label();
             nudAvailability = new NumericUpDown();
-            txtCost = new TextBox();
+            nudCostRate = new NumericUpDown();
             panelButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudAvailability).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudCostRate).BeginInit();
             SuspendLayout();
             // 
             // panelButtons
@@ -111,19 +112,21 @@
             nudAvailability.Size = new Size(150, 27);
             nudAvailability.TabIndex = 8;
             // 
-            // txtCost
+            // nudCostRate
             // 
-            txtCost.Location = new Point(152, 72);
-            txtCost.Name = "txtCost";
-            txtCost.Size = new Size(148, 27);
-            txtCost.TabIndex = 9;
+            nudCostRate.DecimalPlaces = 2;
+            nudCostRate.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            nudCostRate.Location = new Point(152, 72);
+            nudCostRate.Name = "nudCostRate";
+            nudCostRate.Size = new Size(148, 27);
+            nudCostRate.TabIndex = 9;
             // 
             // LocationForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(450, 250);
-            Controls.Add(txtCost);
+            Controls.Add(nudCostRate);
             Controls.Add(nudAvailability);
             Controls.Add(lblAvailability);
             Controls.Add(lblCostRate);
@@ -134,6 +137,7 @@
             Text = "Localización";
             panelButtons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)nudAvailability).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudCostRate).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -148,7 +152,6 @@
         private Label lblCostRate;
         private Label lblAvailability;
         private NumericUpDown nudAvailability;
-        private TextBox txtCost;
+        private NumericUpDown nudCostRate;
     }
 }
-

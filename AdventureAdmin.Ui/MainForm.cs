@@ -1,4 +1,5 @@
 using AdventureAdmin.Ui.Department;
+using AdventureAdmin.Ui.CreditCard;
 using AdventureAdmin.Ui.Location;
 using AdventureAdmin.Ui.Product;
 using Microsoft.Extensions.DependencyInjection;
@@ -93,7 +94,11 @@ public partial class MainForm : Form
 
     private void creditCardToolStripMenuItem_Click(object sender, EventArgs e)
     {
+        var form = Program.ServiceProvider.GetRequiredService<CreditCardList>();
 
+        form.MdiParent = this;
+
+        form.Show();
     }
 
     private void contactTypeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,3 +116,4 @@ public partial class MainForm : Form
 
     }
 }
+// cree la rama creditcard
