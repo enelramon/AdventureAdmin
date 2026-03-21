@@ -54,7 +54,7 @@ namespace AdventureAdmin.Ui.CreditCard
 
         private void CreditCardList_Load_1(object sender, EventArgs e)
         {
-
+            RefrescarDatos();
         }
     }
 }

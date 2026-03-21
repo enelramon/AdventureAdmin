@@ -1,9 +1,12 @@
 using AdventureAdmin.Data.Context;
 using AdventureAdmin.Ui.CreditCard;
+using AdventureAdmin.Ui.Location;
 using AdventureAdmin.Ui.Product;
+using AdventureAdmin.Ui.Department;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
+using AdventureAdmin.Ui;
 
 namespace AdventureAdmin;
 
@@ -33,12 +36,22 @@ static class Program
             .ConnectionStrings["AdventureWorks"].ConnectionString;
 
         services.AddDbContext<AdventureWorksContext>(options =>
-            options.UseSqlServer(connectionString));
+            options.UseSqlServer(connectionString, sqlServerOptionsAction: sqlOptions =>
+            {
+                sqlOptions.EnableRetryOnFailure();
+            }));
 
         services.AddTransient<MainForm>();
         services.AddTransient<ProductList>();
         services.AddTransient<ProductForm>();
         services.AddTransient<CreditCardList>();
         services.AddTransient<CreditCardForm>();
+        services.AddTransient<LocationList>();
+        services.AddTransient<LocationForm>();
+        services.AddTransient<DepartmentList>();
+        services.AddTransient<DepartmentForm>();
+        services.AddTransient<ProductDescriptionList>();
+        services.AddTransient<ProductDescriptionForm>();
     }
 }
+

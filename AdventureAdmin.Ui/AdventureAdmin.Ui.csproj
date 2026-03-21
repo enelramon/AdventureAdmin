@@ -16,14 +16,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.3" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.5" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AdventureAdmin.Data\AdventureAdmin.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Person\" />
   </ItemGroup>
 
 </Project>

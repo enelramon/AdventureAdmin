@@ -1,4 +1,7 @@
 using AdventureAdmin.Ui.CreditCard;
+using AdventureAdmin.Ui.Department;
+using AdventureAdmin.Ui.CreditCard;
+using AdventureAdmin.Ui.Location;
 using AdventureAdmin.Ui.Product;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,7 +27,8 @@ public partial class MainForm : Form
 
     private void departmentToolStripMenuItem_Click(object sender, EventArgs e)
     {
-
+        var form = Program.ServiceProvider.GetRequiredService<DepartmentList>();
+        form.Show();
     }
 
     private void shiftToolStripMenuItem_Click(object sender, EventArgs e)
@@ -49,7 +53,8 @@ public partial class MainForm : Form
 
     private void productDescriptionToolStripMenuItem_Click(object sender, EventArgs e)
     {
-
+        var productDescriptionList = Program.ServiceProvider.GetRequiredService<ProductDescriptionList>();
+        productDescriptionList.Show();
     }
 
     private void addressTypeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -64,7 +69,8 @@ public partial class MainForm : Form
 
     private void locationToolStripMenuItem_Click(object sender, EventArgs e)
     {
-
+        var locationList = Program.ServiceProvider.GetRequiredService<LocationList>();
+        locationList.Show();
     }
 
     private void specialOfferToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,7 +90,8 @@ public partial class MainForm : Form
 
     private void personToolStripMenuItem_Click(object sender, EventArgs e)
     {
-
+        var personForm = Program.ServiceProvider.GetRequiredService<AdventureAdmin.Ui.Person.PersonForm>();
+        personForm.Show();
     }
 
     private void creditCardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -105,4 +112,10 @@ public partial class MainForm : Form
     {
 
     }
+
+    private void MainForm_Load(object sender, EventArgs e)
+    {
+
+    }
 }
+// cree la rama creditcard

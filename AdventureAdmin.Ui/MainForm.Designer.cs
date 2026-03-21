@@ -50,162 +50,123 @@ partial class MainForm
         scrapReasonToolStripMenuItem = new ToolStripMenuItem();
         mainMenuStrip.SuspendLayout();
         SuspendLayout();
-        // 
-        // mainMenuStrip
-        // 
+        
         mainMenuStrip.ImageScalingSize = new Size(20, 20);
         mainMenuStrip.Items.AddRange(new ToolStripItem[] { opcionesToolStripMenuItem });
         mainMenuStrip.Location = new Point(0, 0);
         mainMenuStrip.Name = "mainMenuStrip";
-        mainMenuStrip.Padding = new Padding(8, 2, 0, 2);
-        mainMenuStrip.Size = new Size(1000, 33);
+        mainMenuStrip.Padding = new Padding(5, 2, 0, 2);
+        mainMenuStrip.Size = new Size(700, 24);
         mainMenuStrip.TabIndex = 0;
         mainMenuStrip.Text = "menuStrip1";
-        // 
-        // opcionesToolStripMenuItem
-        // 
+        
         opcionesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { productosToolStripMenuItem, currencyToolStripMenuItem, departmentToolStripMenuItem, shiftToolStripMenuItem, countryRegionToolStripMenuItem, shipMethodToolStripMenuItem, phoneNumberTypeToolStripMenuItem, productDescriptionToolStripMenuItem, addressTypeToolStripMenuItem, businessEntityToolStripMenuItem, locationToolStripMenuItem, specialOfferToolStripMenuItem, productCategoryToolStripMenuItem, cultureToolStripMenuItem, personToolStripMenuItem, creditCardToolStripMenuItem, contactTypeToolStripMenuItem, scrapReasonToolStripMenuItem });
         opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
-        opcionesToolStripMenuItem.Size = new Size(103, 29);
+        opcionesToolStripMenuItem.Size = new Size(69, 20);
         opcionesToolStripMenuItem.Text = "Opciones";
-        // 
-        // productosToolStripMenuItem
-        // 
+        
         productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-        productosToolStripMenuItem.Size = new Size(266, 34);
+        productosToolStripMenuItem.Size = new Size(177, 22);
         productosToolStripMenuItem.Text = "Productos";
         productosToolStripMenuItem.Click += productosToolStripMenuItem_Click;
-        // 
-        // currencyToolStripMenuItem
-        // 
+        
         currencyToolStripMenuItem.Name = "currencyToolStripMenuItem";
-        currencyToolStripMenuItem.Size = new Size(266, 34);
+        currencyToolStripMenuItem.Size = new Size(177, 22);
         currencyToolStripMenuItem.Text = "Currency";
         currencyToolStripMenuItem.Click += currencyToolStripMenuItem_Click;
-        // 
-        // departmentToolStripMenuItem
-        // 
+        
         departmentToolStripMenuItem.Name = "departmentToolStripMenuItem";
-        departmentToolStripMenuItem.Size = new Size(266, 34);
+        departmentToolStripMenuItem.Size = new Size(177, 22);
         departmentToolStripMenuItem.Text = "Department";
         departmentToolStripMenuItem.Click += departmentToolStripMenuItem_Click;
-        // 
-        // shiftToolStripMenuItem
-        // 
+        
         shiftToolStripMenuItem.Name = "shiftToolStripMenuItem";
-        shiftToolStripMenuItem.Size = new Size(266, 34);
+        shiftToolStripMenuItem.Size = new Size(177, 22);
         shiftToolStripMenuItem.Text = "Shift";
         shiftToolStripMenuItem.Click += shiftToolStripMenuItem_Click;
-        // 
-        // countryRegionToolStripMenuItem
-        // 
+         
         countryRegionToolStripMenuItem.Name = "countryRegionToolStripMenuItem";
-        countryRegionToolStripMenuItem.Size = new Size(266, 34);
+        countryRegionToolStripMenuItem.Size = new Size(177, 22);
         countryRegionToolStripMenuItem.Text = "CountryRegion";
         countryRegionToolStripMenuItem.Click += countryRegionToolStripMenuItem_Click;
-        // 
-        // shipMethodToolStripMenuItem
-        // 
+        
         shipMethodToolStripMenuItem.Name = "shipMethodToolStripMenuItem";
-        shipMethodToolStripMenuItem.Size = new Size(266, 34);
+        shipMethodToolStripMenuItem.Size = new Size(177, 22);
         shipMethodToolStripMenuItem.Text = "ShipMethod";
         shipMethodToolStripMenuItem.Click += shipMethodToolStripMenuItem_Click;
-        // 
-        // phoneNumberTypeToolStripMenuItem
-        // 
+        
         phoneNumberTypeToolStripMenuItem.Name = "phoneNumberTypeToolStripMenuItem";
-        phoneNumberTypeToolStripMenuItem.Size = new Size(266, 34);
+        phoneNumberTypeToolStripMenuItem.Size = new Size(177, 22);
         phoneNumberTypeToolStripMenuItem.Text = "PhoneNumberType";
         phoneNumberTypeToolStripMenuItem.Click += phoneNumberTypeToolStripMenuItem_Click;
-        // 
-        // productDescriptionToolStripMenuItem
-        // 
+        
         productDescriptionToolStripMenuItem.Name = "productDescriptionToolStripMenuItem";
-        productDescriptionToolStripMenuItem.Size = new Size(266, 34);
+        productDescriptionToolStripMenuItem.Size = new Size(177, 22);
         productDescriptionToolStripMenuItem.Text = "ProductDescription";
         productDescriptionToolStripMenuItem.Click += productDescriptionToolStripMenuItem_Click;
-        // 
-        // addressTypeToolStripMenuItem
-        // 
+        
         addressTypeToolStripMenuItem.Name = "addressTypeToolStripMenuItem";
-        addressTypeToolStripMenuItem.Size = new Size(266, 34);
+        addressTypeToolStripMenuItem.Size = new Size(177, 22);
         addressTypeToolStripMenuItem.Text = "AddressType";
         addressTypeToolStripMenuItem.Click += addressTypeToolStripMenuItem_Click;
-        // 
-        // businessEntityToolStripMenuItem
-        // 
+         
         businessEntityToolStripMenuItem.Name = "businessEntityToolStripMenuItem";
-        businessEntityToolStripMenuItem.Size = new Size(266, 34);
+        businessEntityToolStripMenuItem.Size = new Size(177, 22);
         businessEntityToolStripMenuItem.Text = "BusinessEntity";
         businessEntityToolStripMenuItem.Click += businessEntityToolStripMenuItem_Click;
-        // 
-        // locationToolStripMenuItem
-        // 
+        
         locationToolStripMenuItem.Name = "locationToolStripMenuItem";
-        locationToolStripMenuItem.Size = new Size(266, 34);
+        locationToolStripMenuItem.Size = new Size(177, 22);
         locationToolStripMenuItem.Text = "Location";
         locationToolStripMenuItem.Click += locationToolStripMenuItem_Click;
-        // 
-        // specialOfferToolStripMenuItem
-        // 
+        
         specialOfferToolStripMenuItem.Name = "specialOfferToolStripMenuItem";
-        specialOfferToolStripMenuItem.Size = new Size(266, 34);
+        specialOfferToolStripMenuItem.Size = new Size(177, 22);
         specialOfferToolStripMenuItem.Text = "SpecialOffer";
         specialOfferToolStripMenuItem.Click += specialOfferToolStripMenuItem_Click;
-        // 
-        // productCategoryToolStripMenuItem
-        // 
+        
         productCategoryToolStripMenuItem.Name = "productCategoryToolStripMenuItem";
-        productCategoryToolStripMenuItem.Size = new Size(266, 34);
+        productCategoryToolStripMenuItem.Size = new Size(177, 22);
         productCategoryToolStripMenuItem.Text = "ProductCategory";
         productCategoryToolStripMenuItem.Click += productCategoryToolStripMenuItem_Click;
-        // 
-        // cultureToolStripMenuItem
-        // 
+         
         cultureToolStripMenuItem.Name = "cultureToolStripMenuItem";
-        cultureToolStripMenuItem.Size = new Size(266, 34);
+        cultureToolStripMenuItem.Size = new Size(177, 22);
         cultureToolStripMenuItem.Text = "Culture";
         cultureToolStripMenuItem.Click += cultureToolStripMenuItem_Click;
-        // 
-        // personToolStripMenuItem
-        // 
+         
         personToolStripMenuItem.Name = "personToolStripMenuItem";
-        personToolStripMenuItem.Size = new Size(266, 34);
+        personToolStripMenuItem.Size = new Size(177, 22);
         personToolStripMenuItem.Text = "Person";
         personToolStripMenuItem.Click += personToolStripMenuItem_Click;
-        // 
-        // creditCardToolStripMenuItem
-        // 
+        
         creditCardToolStripMenuItem.Name = "creditCardToolStripMenuItem";
-        creditCardToolStripMenuItem.Size = new Size(266, 34);
+        creditCardToolStripMenuItem.Size = new Size(177, 22);
         creditCardToolStripMenuItem.Text = "CreditCard";
         creditCardToolStripMenuItem.Click += creditCardToolStripMenuItem_Click;
-        // 
-        // contactTypeToolStripMenuItem
-        // 
+        
         contactTypeToolStripMenuItem.Name = "contactTypeToolStripMenuItem";
-        contactTypeToolStripMenuItem.Size = new Size(266, 34);
+        contactTypeToolStripMenuItem.Size = new Size(177, 22);
         contactTypeToolStripMenuItem.Text = "ContactType";
         contactTypeToolStripMenuItem.Click += contactTypeToolStripMenuItem_Click;
-        // 
-        // scrapReasonToolStripMenuItem
-        // 
+         
         scrapReasonToolStripMenuItem.Name = "scrapReasonToolStripMenuItem";
-        scrapReasonToolStripMenuItem.Size = new Size(266, 34);
+        scrapReasonToolStripMenuItem.Size = new Size(177, 22);
         scrapReasonToolStripMenuItem.Text = "ScrapReason";
         scrapReasonToolStripMenuItem.Click += scrapReasonToolStripMenuItem_Click;
         // 
         // MainForm
         // 
-        AutoScaleDimensions = new SizeF(10F, 25F);
+        AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(1000, 562);
+        ClientSize = new Size(700, 338);
         Controls.Add(mainMenuStrip);
         IsMdiContainer = true;
         MainMenuStrip = mainMenuStrip;
-        Margin = new Padding(4, 4, 4, 4);
+        Margin = new Padding(3, 2, 3, 2);
         Name = "MainForm";
         Text = "Main Form";
+        Load += MainForm_Load;
         mainMenuStrip.ResumeLayout(false);
         mainMenuStrip.PerformLayout();
         ResumeLayout(false);
@@ -226,7 +187,7 @@ partial class MainForm
     private ToolStripMenuItem productDescriptionToolStripMenuItem;
     private ToolStripMenuItem addressTypeToolStripMenuItem;
     private ToolStripMenuItem businessEntityToolStripMenuItem;
-    private ToolStripMenuItem locationToolStripMenuItem;
+    private ToolStripMenuItem locationToolStripMenuItem; 
     private ToolStripMenuItem specialOfferToolStripMenuItem;
     private ToolStripMenuItem productCategoryToolStripMenuItem;
     private ToolStripMenuItem cultureToolStripMenuItem;
