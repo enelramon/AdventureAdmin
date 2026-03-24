@@ -29,44 +29,53 @@
         private void InitializeComponent()
         {
             dgvCards = new DataGridView();
-            btnNuevo = new Button();
+            refrescarButton = new Button();
+            nuevoButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCards).BeginInit();
             SuspendLayout();
             // 
             // dgvCards
             // 
+            dgvCards.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvCards.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCards.Location = new Point(13, 47);
-            dgvCards.Margin = new Padding(4, 5, 4, 5);
+            dgvCards.Location = new Point(13, 48);
+            dgvCards.Margin = new Padding(3, 4, 3, 4);
             dgvCards.Name = "dgvCards";
             dgvCards.RowHeadersWidth = 62;
-            dgvCards.Size = new Size(708, 300);
+            dgvCards.Size = new Size(608, 365);
             dgvCards.TabIndex = 0;
-            dgvCards.CellContentClick += dgvCards_CellContentClick;
             // 
-            // btnNuevo
+            // refrescarButton
             // 
-            btnNuevo.BackColor = SystemColors.ActiveCaption;
-            btnNuevo.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNuevo.Location = new Point(753, 47);
-            btnNuevo.Name = "btnNuevo";
-            btnNuevo.Size = new Size(133, 52);
-            btnNuevo.TabIndex = 1;
-            btnNuevo.Text = "Nuevo";
-            btnNuevo.UseVisualStyleBackColor = false;
-            btnNuevo.Click += btnNuevo_Click;
+            refrescarButton.Location = new Point(113, 12);
+            refrescarButton.Name = "refrescarButton";
+            refrescarButton.Size = new Size(94, 29);
+            refrescarButton.TabIndex = 4;
+            refrescarButton.Text = "🔄 Refrescar";
+            refrescarButton.UseVisualStyleBackColor = true;
+            // 
+            // nuevoButton
+            // 
+            nuevoButton.Location = new Point(13, 12);
+            nuevoButton.Name = "nuevoButton";
+            nuevoButton.Size = new Size(94, 29);
+            nuevoButton.TabIndex = 3;
+            nuevoButton.Text = "✅ Nuevo";
+            nuevoButton.UseVisualStyleBackColor = true;
+            nuevoButton.Click += this.nuevoButton_Click;
             // 
             // CreditCardList
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1143, 750);
-            Controls.Add(btnNuevo);
+            ClientSize = new Size(633, 426);
+            Controls.Add(refrescarButton);
+            Controls.Add(nuevoButton);
             Controls.Add(dgvCards);
-            Margin = new Padding(4, 5, 4, 5);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "CreditCardList";
             Text = "CreditCardList";
-            Load += CreditCardList_Load_1;
+            Load += CreditCardList_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCards).EndInit();
             ResumeLayout(false);
         }
@@ -74,6 +83,7 @@
         #endregion
 
         private DataGridView dgvCards;
-        private Button btnNuevo;
+        private Button refrescarButton;
+        private Button nuevoButton;
     }
 }

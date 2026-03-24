@@ -1,7 +1,5 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using AdventureAdmin.Data.Context;
+﻿using AdventureAdmin.Data.Context;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdventureAdmin.Ui.CreditCard
@@ -16,16 +14,16 @@ namespace AdventureAdmin.Ui.CreditCard
             _context = context;
         }
 
-        private void CreditCardList_Load(object sender, EventArgs e)
+        private  void CreditCardList_Load(object sender, EventArgs e)
         {
             RefrescarDatos();
         }
 
-        private void RefrescarDatos()
+        private async Task RefrescarDatos()
         {
             try
             {
-                var tarjetas = _context.CreditCards.ToList();
+                var tarjetas = await _context.CreditCards.ToListAsync();
                 dgvCards.DataSource = tarjetas;
 
                 if (dgvCards.Columns["SalesOrderHeaders"] != null) dgvCards.Columns["SalesOrderHeaders"].Visible = false;
@@ -37,24 +35,19 @@ namespace AdventureAdmin.Ui.CreditCard
             }
         }
 
-        private void btnNuevo_Click(object sender, EventArgs e)
+        private async void nuevoButton_Click(object sender, EventArgs e)
         {
             var form = Program.ServiceProvider.GetRequiredService<CreditCardForm>();
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                RefrescarDatos();
+               await RefrescarDatos();
             }
         }
 
-        private void dgvCards_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void refrescarButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void CreditCardList_Load_1(object sender, EventArgs e)
-        {
-            RefrescarDatos();
+            await  RefrescarDatos();
         }
     }
 }
