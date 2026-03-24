@@ -27,9 +27,6 @@ partial class ProductForm
         components = new System.ComponentModel.Container();
         errorProvider = new ErrorProvider(components);
         layout = new TableLayoutPanel();
-        lblName = new Label();
-        lblProductNumber = new Label();
-        txtProductNumber = new TextBox();
         lblColor = new Label();
         txtColor = new TextBox();
         lblStandardCost = new Label();
@@ -54,7 +51,10 @@ partial class ProductForm
         chkDiscontinued = new CheckBox();
         dtpDiscontinued = new DateTimePicker();
         dtpSellStart = new DateTimePicker();
+        txtProductNumber = new TextBox();
         txtName = new TextBox();
+        lblName = new Label();
+        lblProductNumber = new Label();
         btnSave = new Button();
         btnCancel = new Button();
         panelButtons = new Panel();
@@ -117,29 +117,6 @@ partial class ProductForm
         layout.Size = new Size(619, 424);
         layout.TabIndex = 0;
         // 
-        // lblName
-        // 
-        lblName.Location = new Point(3, 35);
-        lblName.Name = "lblName";
-        lblName.Size = new Size(100, 23);
-        lblName.TabIndex = 0;
-        lblName.Text = "Nombre";
-        // 
-        // lblProductNumber
-        // 
-        lblProductNumber.Location = new Point(3, 0);
-        lblProductNumber.Name = "lblProductNumber";
-        lblProductNumber.Size = new Size(100, 23);
-        lblProductNumber.TabIndex = 2;
-        lblProductNumber.Text = "Número";
-        // 
-        // txtProductNumber
-        // 
-        txtProductNumber.Location = new Point(153, 3);
-        txtProductNumber.Name = "txtProductNumber";
-        txtProductNumber.Size = new Size(200, 27);
-        txtProductNumber.TabIndex = 3;
-        // 
         // lblColor
         // 
         lblColor.Location = new Point(3, 70);
@@ -152,7 +129,7 @@ partial class ProductForm
         // 
         txtColor.Location = new Point(153, 73);
         txtColor.Name = "txtColor";
-        txtColor.Size = new Size(190, 27);
+        txtColor.Size = new Size(190, 31);
         txtColor.TabIndex = 5;
         // 
         // lblStandardCost
@@ -167,7 +144,7 @@ partial class ProductForm
         // 
         numStandardCost.Location = new Point(153, 108);
         numStandardCost.Name = "numStandardCost";
-        numStandardCost.Size = new Size(120, 27);
+        numStandardCost.Size = new Size(120, 31);
         numStandardCost.TabIndex = 7;
         // 
         // lblListPrice
@@ -182,7 +159,7 @@ partial class ProductForm
         // 
         numListPrice.Location = new Point(153, 143);
         numListPrice.Name = "numListPrice";
-        numListPrice.Size = new Size(120, 27);
+        numListPrice.Size = new Size(120, 31);
         numListPrice.TabIndex = 9;
         // 
         // lblSize
@@ -197,7 +174,7 @@ partial class ProductForm
         // 
         txtSize.Location = new Point(153, 178);
         txtSize.Name = "txtSize";
-        txtSize.Size = new Size(100, 27);
+        txtSize.Size = new Size(100, 31);
         txtSize.TabIndex = 11;
         // 
         // lblWeight
@@ -212,7 +189,7 @@ partial class ProductForm
         // 
         txtWeight.Location = new Point(153, 213);
         txtWeight.Name = "txtWeight";
-        txtWeight.Size = new Size(100, 27);
+        txtWeight.Size = new Size(100, 31);
         txtWeight.TabIndex = 13;
         // 
         // lblCategory
@@ -227,7 +204,7 @@ partial class ProductForm
         // 
         cmbCategory.Location = new Point(153, 248);
         cmbCategory.Name = "cmbCategory";
-        cmbCategory.Size = new Size(444, 28);
+        cmbCategory.Size = new Size(444, 33);
         cmbCategory.TabIndex = 15;
         // 
         // lblModel
@@ -242,7 +219,7 @@ partial class ProductForm
         // 
         cmbModel.Location = new Point(153, 283);
         cmbModel.Name = "cmbModel";
-        cmbModel.Size = new Size(444, 28);
+        cmbModel.Size = new Size(444, 33);
         cmbModel.TabIndex = 17;
         // 
         // lblSellStart
@@ -282,7 +259,7 @@ partial class ProductForm
         // 
         dtpSellEnd.Location = new Point(41, 3);
         dtpSellEnd.Name = "dtpSellEnd";
-        dtpSellEnd.Size = new Size(200, 27);
+        dtpSellEnd.Size = new Size(200, 31);
         dtpSellEnd.TabIndex = 1;
         // 
         // lblDiscontinued
@@ -314,22 +291,45 @@ partial class ProductForm
         // 
         dtpDiscontinued.Location = new Point(41, 3);
         dtpDiscontinued.Name = "dtpDiscontinued";
-        dtpDiscontinued.Size = new Size(200, 27);
+        dtpDiscontinued.Size = new Size(200, 31);
         dtpDiscontinued.TabIndex = 1;
         // 
         // dtpSellStart
         // 
         dtpSellStart.Location = new Point(153, 318);
         dtpSellStart.Name = "dtpSellStart";
-        dtpSellStart.Size = new Size(200, 27);
+        dtpSellStart.Size = new Size(200, 31);
         dtpSellStart.TabIndex = 19;
+        // 
+        // txtProductNumber
+        // 
+        txtProductNumber.Location = new Point(153, 3);
+        txtProductNumber.Name = "txtProductNumber";
+        txtProductNumber.Size = new Size(200, 31);
+        txtProductNumber.TabIndex = 3;
         // 
         // txtName
         // 
         txtName.Location = new Point(153, 38);
         txtName.Name = "txtName";
-        txtName.Size = new Size(444, 27);
+        txtName.Size = new Size(444, 31);
         txtName.TabIndex = 1;
+        // 
+        // lblName
+        // 
+        lblName.Location = new Point(3, 35);
+        lblName.Name = "lblName";
+        lblName.Size = new Size(100, 23);
+        lblName.TabIndex = 0;
+        lblName.Text = "Nombre";
+        // 
+        // lblProductNumber
+        // 
+        lblProductNumber.Location = new Point(3, 0);
+        lblProductNumber.Name = "lblProductNumber";
+        lblProductNumber.Size = new Size(100, 23);
+        lblProductNumber.TabIndex = 2;
+        lblProductNumber.Text = "Número";
         // 
         // btnSave
         // 

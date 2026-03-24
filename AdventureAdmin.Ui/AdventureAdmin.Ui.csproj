@@ -22,8 +22,4 @@
     <ProjectReference Include="..\AdventureAdmin.Data\AdventureAdmin.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Person\" />
-  </ItemGroup>
-
 </Project>
