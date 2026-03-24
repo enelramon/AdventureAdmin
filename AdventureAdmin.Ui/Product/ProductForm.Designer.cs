@@ -129,7 +129,7 @@ partial class ProductForm
         // 
         txtColor.Location = new Point(153, 73);
         txtColor.Name = "txtColor";
-        txtColor.Size = new Size(190, 27);
+        txtColor.Size = new Size(190, 31);
         txtColor.TabIndex = 5;
         // 
         // lblStandardCost
@@ -144,7 +144,7 @@ partial class ProductForm
         // 
         numStandardCost.Location = new Point(153, 108);
         numStandardCost.Name = "numStandardCost";
-        numStandardCost.Size = new Size(120, 27);
+        numStandardCost.Size = new Size(120, 31);
         numStandardCost.TabIndex = 7;
         // 
         // lblListPrice
@@ -159,7 +159,7 @@ partial class ProductForm
         // 
         numListPrice.Location = new Point(153, 143);
         numListPrice.Name = "numListPrice";
-        numListPrice.Size = new Size(120, 27);
+        numListPrice.Size = new Size(120, 31);
         numListPrice.TabIndex = 9;
         // 
         // lblSize
@@ -174,7 +174,7 @@ partial class ProductForm
         // 
         txtSize.Location = new Point(153, 178);
         txtSize.Name = "txtSize";
-        txtSize.Size = new Size(100, 27);
+        txtSize.Size = new Size(100, 31);
         txtSize.TabIndex = 11;
         // 
         // lblWeight
@@ -189,7 +189,7 @@ partial class ProductForm
         // 
         txtWeight.Location = new Point(153, 213);
         txtWeight.Name = "txtWeight";
-        txtWeight.Size = new Size(100, 27);
+        txtWeight.Size = new Size(100, 31);
         txtWeight.TabIndex = 13;
         // 
         // lblCategory
@@ -204,7 +204,7 @@ partial class ProductForm
         // 
         cmbCategory.Location = new Point(153, 248);
         cmbCategory.Name = "cmbCategory";
-        cmbCategory.Size = new Size(444, 28);
+        cmbCategory.Size = new Size(444, 33);
         cmbCategory.TabIndex = 15;
         // 
         // lblModel
@@ -219,7 +219,7 @@ partial class ProductForm
         // 
         cmbModel.Location = new Point(153, 283);
         cmbModel.Name = "cmbModel";
-        cmbModel.Size = new Size(444, 28);
+        cmbModel.Size = new Size(444, 33);
         cmbModel.TabIndex = 17;
         // 
         // lblSellStart
@@ -259,7 +259,7 @@ partial class ProductForm
         // 
         dtpSellEnd.Location = new Point(41, 3);
         dtpSellEnd.Name = "dtpSellEnd";
-        dtpSellEnd.Size = new Size(200, 27);
+        dtpSellEnd.Size = new Size(200, 31);
         dtpSellEnd.TabIndex = 1;
         // 
         // lblDiscontinued
@@ -291,14 +291,14 @@ partial class ProductForm
         // 
         dtpDiscontinued.Location = new Point(41, 3);
         dtpDiscontinued.Name = "dtpDiscontinued";
-        dtpDiscontinued.Size = new Size(200, 27);
+        dtpDiscontinued.Size = new Size(200, 31);
         dtpDiscontinued.TabIndex = 1;
         // 
         // dtpSellStart
         // 
         dtpSellStart.Location = new Point(153, 318);
         dtpSellStart.Name = "dtpSellStart";
-        dtpSellStart.Size = new Size(200, 27);
+        dtpSellStart.Size = new Size(200, 31);
         dtpSellStart.TabIndex = 19;
         // 
         // txtProductNumber
@@ -312,7 +312,7 @@ partial class ProductForm
         // 
         txtName.Location = new Point(153, 38);
         txtName.Name = "txtName";
-        txtName.Size = new Size(444, 27);
+        txtName.Size = new Size(444, 31);
         txtName.TabIndex = 1;
         // 
         // lblName
