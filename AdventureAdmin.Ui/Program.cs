@@ -1,10 +1,15 @@
 using AdventureAdmin.Data.Context;
+using AdventureAdmin.Ui;
+using AdventureAdmin.Ui.CreditCard;
+using AdventureAdmin.Ui.Department;
 using AdventureAdmin.Ui.Location;
 using AdventureAdmin.Ui.ContactType;
 using AdventureAdmin.Ui.Product;
+using AdventureAdmin.Ui.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
+using Aplicada1.Core;
 
 namespace AdventureAdmin;
 
@@ -42,10 +47,19 @@ static class Program
         services.AddTransient<MainForm>();
         services.AddTransient<ProductList>();
         services.AddTransient<ProductForm>();
+        services.AddTransient<CreditCardList>();
+        services.AddTransient<CreditCardForm>();
         services.AddTransient<LocationList>();
         services.AddTransient<LocationForm>();
+        services.AddTransient<DepartmentList>();
+        services.AddTransient<DepartmentForm>();
+        services.AddTransient<ProductDescriptionList>();
+        services.AddTransient<ProductDescriptionForm>();
 
         services.AddTransient<ContactTypeList>();
         services.AddTransient<ContactTypeForm>();
+        //Services 
+        services.AddTransient<CreditCardService>();
     }
 }
+
