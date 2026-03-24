@@ -31,8 +31,10 @@ public class CurrecyService (
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(Currency entidad)
+    public async Task<bool> Guardar(Data.Models.Currency nuevaCurrency)
     {
-        throw new NotImplementedException();
+        await context.Currencies.AddAsync(nuevaCurrency);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 }
