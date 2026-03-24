@@ -1,3 +1,4 @@
+using AdventureAdmin.Ui.Location;
 using AdventureAdmin.Data.Models;
 using AdventureAdmin.Ui.ContactType;
 using AdventureAdmin.Ui.Product;
@@ -65,7 +66,8 @@ public partial class MainForm : Form
 
     private void locationToolStripMenuItem_Click(object sender, EventArgs e)
     {
-
+        var locationList = Program.ServiceProvider.GetRequiredService<LocationList>();
+        locationList.Show();
     }
 
     private void specialOfferToolStripMenuItem_Click(object sender, EventArgs e)
