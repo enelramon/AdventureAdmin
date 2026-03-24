@@ -1,4 +1,5 @@
 ﻿using AdventureAdmin.Data.Context;
+using AdventureAdmin.Ui.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -6,15 +7,15 @@ namespace AdventureAdmin.Ui.CreditCard
 {
     public partial class CreditCardList : Form
     {
-        private readonly AdventureWorksContext _context;
+        private readonly CreditCardService _creditCardService;
 
-        public CreditCardList(AdventureWorksContext context)
+        public CreditCardList(CreditCardService creditCardService)
         {
             InitializeComponent();
-            _context = context;
+            _creditCardService = creditCardService;
         }
 
-        private  void CreditCardList_Load(object sender, EventArgs e)
+        private void CreditCardList_Load(object sender, EventArgs e)
         {
             RefrescarDatos();
         }
@@ -23,7 +24,7 @@ namespace AdventureAdmin.Ui.CreditCard
         {
             try
             {
-                var tarjetas = await _context.CreditCards.ToListAsync();
+                var tarjetas = await _creditCardService.GetList(c => true);
                 dgvCards.DataSource = tarjetas;
 
                 if (dgvCards.Columns["SalesOrderHeaders"] != null) dgvCards.Columns["SalesOrderHeaders"].Visible = false;
@@ -41,13 +42,14 @@ namespace AdventureAdmin.Ui.CreditCard
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-               await RefrescarDatos();
+                await RefrescarDatos();
             }
         }
 
         private async void refrescarButton_Click(object sender, EventArgs e)
         {
-            await  RefrescarDatos();
+            await RefrescarDatos();
+
         }
     }
 }

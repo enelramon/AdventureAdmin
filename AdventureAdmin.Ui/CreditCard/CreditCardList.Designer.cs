@@ -53,6 +53,7 @@
             refrescarButton.TabIndex = 4;
             refrescarButton.Text = "🔄 Refrescar";
             refrescarButton.UseVisualStyleBackColor = true;
+            refrescarButton.Click += refrescarButton_Click;
             // 
             // nuevoButton
             // 
@@ -62,7 +63,7 @@
             nuevoButton.TabIndex = 3;
             nuevoButton.Text = "✅ Nuevo";
             nuevoButton.UseVisualStyleBackColor = true;
-            nuevoButton.Click += this.nuevoButton_Click;
+            nuevoButton.Click += nuevoButton_Click;
             // 
             // CreditCardList
             // 

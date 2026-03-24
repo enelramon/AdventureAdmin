@@ -2,17 +2,18 @@
 using System.Windows.Forms;
 using AdventureAdmin.Data.Context;
 using AdventureAdmin.Data.Models;
+using AdventureAdmin.Ui.Services;
 
 namespace AdventureAdmin.Ui.CreditCard
 {
     public partial class CreditCardForm : Form
     {
-        private readonly AdventureWorksContext _context;
+        private readonly CreditCardService _creditCardService;
 
-        public CreditCardForm(AdventureWorksContext context)
+        public CreditCardForm(CreditCardService creditCardService)
         {
             InitializeComponent();
-            _context = context;
+            _creditCardService = creditCardService;
 
 
             numMonth.Minimum = 1;
@@ -21,7 +22,7 @@ namespace AdventureAdmin.Ui.CreditCard
             numYear.Maximum = 2099;
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private async void btnGuardar_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
 
@@ -49,11 +50,17 @@ namespace AdventureAdmin.Ui.CreditCard
                     ModifiedDate = DateTime.Now
                 };
 
-                _context.CreditCards.Add(nuevaTarjeta);
-                _context.SaveChanges();
+                var paso = await _creditCardService.Guardar(nuevaTarjeta);
 
-                MessageBox.Show("Tarjeta guardada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                if (!paso)
+                {
+                    MessageBox.Show("Error al guardar la tarjeta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                } else
+                {
+                    MessageBox.Show("Tarjeta guardada correctamente", "Éxito", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -63,9 +70,6 @@ namespace AdventureAdmin.Ui.CreditCard
             }
         }
 
-        private void CreditCardForm_Load(object sender, EventArgs e)
-        {
 
-        }
     }
 }
