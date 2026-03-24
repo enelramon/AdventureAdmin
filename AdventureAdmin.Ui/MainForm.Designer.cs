@@ -154,10 +154,8 @@ partial class MainForm
         scrapReasonToolStripMenuItem.Size = new Size(177, 22);
         scrapReasonToolStripMenuItem.Text = "ScrapReason";
         scrapReasonToolStripMenuItem.Click += scrapReasonToolStripMenuItem_Click;
-        // 
-        // MainForm
-        // 
-        AutoScaleDimensions = new SizeF(7F, 15F);
+        
+        AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(700, 338);
         Controls.Add(mainMenuStrip);
