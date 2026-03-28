@@ -3,6 +3,7 @@ using AdventureAdmin.Ui;
 using AdventureAdmin.Ui.CreditCard;
 using AdventureAdmin.Ui.Department;
 using AdventureAdmin.Ui.Location;
+using AdventureAdmin.Ui.Person;
 using AdventureAdmin.Ui.Product;
 using AdventureAdmin.Ui.Services;
 using Microsoft.EntityFrameworkCore;
@@ -54,6 +55,8 @@ static class Program
         services.AddTransient<DepartmentForm>();
         services.AddTransient<ProductDescriptionList>();
         services.AddTransient<ProductDescriptionForm>();
+        services.AddTransient<PersonList>();
+        services.AddTransient<PersonForm>();
 
         //Services 
         services.AddTransient<CreditCardService>();
