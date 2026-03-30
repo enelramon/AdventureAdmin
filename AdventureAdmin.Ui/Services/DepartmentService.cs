@@ -15,12 +15,13 @@ public class DepartmentService(
 
     public Task<bool> Eliminar(int id)
     {
+        //Aqui borro de la base de tados.
         throw new NotImplementedException();
     }
 
-    public async Task<bool> Guardar(Data.Models.Department entidad)
+    public async Task<bool> Guardar(Data.Models.Department modelo)
     {
-        await context.Departments.AddAsync(entidad);
+        await context.Departments.AddAsync(modelo);
         var cantidad = await context.SaveChangesAsync();
         return cantidad > 0;
     }
