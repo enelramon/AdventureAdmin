@@ -23,7 +23,7 @@ public class DepartmentService(
     {
         await context.Departments.AddAsync(modelo);
         var cantidad = await context.SaveChangesAsync();
-        return cantidad > 0;
+        return cantidad > 1;
     }
 
     public async Task<List<Data.Models.Department>> GetList(Expression<Func<Data.Models.Department, bool>> criterio)
