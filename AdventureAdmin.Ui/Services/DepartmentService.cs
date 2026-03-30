@@ -19,9 +19,12 @@ public class DepartmentService(
         throw new NotImplementedException();
     }
 
-    public async Task<bool> Guardar(Data.Models.Department entidad)
+    public async Task<bool> Guardar(Data.Models.Department modelo)
     {
-        await context.Departments.AddAsync(entidad); var cantidad = await context.SaveChangesAsync(); return cantidad > 0;
+        // Cambio en rama issue/sin_conflicto
+        await context.Departments.AddAsync(modelo);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad >= 1;  // Cambié > 1 a >= 1
     }
 
     public async Task<List<Data.Models.Department>> GetList(Expression<Func<Data.Models.Department, bool>> criterio)
