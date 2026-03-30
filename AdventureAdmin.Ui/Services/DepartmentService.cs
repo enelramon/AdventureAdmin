@@ -15,20 +15,17 @@ public class DepartmentService(
 
     public Task<bool> Eliminar(int id)
     {
+        // aqui borro de la base de datos
         throw new NotImplementedException();
     }
 
     public async Task<bool> Guardar(Data.Models.Department entidad)
     {
-        await context.Departments.AddAsync(entidad);
-        var cantidad = await context.SaveChangesAsync();
-        return cantidad > 0;
+        await context.Departments.AddAsync(entidad); var cantidad = await context.SaveChangesAsync(); return cantidad > 0;
     }
 
     public async Task<List<Data.Models.Department>> GetList(Expression<Func<Data.Models.Department, bool>> criterio)
     {
-        return await context.Departments
-        .Where(criterio)
-        .ToListAsync();
+        return await context.Departments.Where(criterio).ToListAsync();
     }
 }
