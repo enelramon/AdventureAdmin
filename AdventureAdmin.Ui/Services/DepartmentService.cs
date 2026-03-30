@@ -21,10 +21,9 @@ public class DepartmentService(
 
     public async Task<bool> Guardar(Data.Models.Department modelo)
     {
-        // Cambio en rama feature/conflicto
         await context.Departments.AddAsync(modelo);
-        var cantidad = await context.SaveChangesAsync();
-        return cantidad > 0;  // Cambié > 1 a > 0   
+        var resultado = await context.SaveChangesAsync();
+        return resultado > 0;
     }
 
     public async Task<List<Data.Models.Department>> GetList(Expression<Func<Data.Models.Department, bool>> criterio)
