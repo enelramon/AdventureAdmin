@@ -50,46 +50,24 @@ static class Program
                 sqlOptions.EnableRetryOnFailure();
             }));
 
-        services.AddTransient<MainForm>();
-        services.AddTransient<ProductList>();
-        services.AddTransient<ProductForm>();
-        services.AddTransient<CreditCardList>();
-        services.AddTransient<CreditCardForm>();
-        services.AddTransient<LocationList>();
-        services.AddTransient<LocationForm>();
-        services.AddTransient<ContactTypeList>();
-        services.AddTransient<ContactTypeForm>();
-        services.AddTransient<DepartmentList>();
-        services.AddTransient<DepartmentForm>();
-        services.AddTransient<ProductDescriptionList>();
-        services.AddTransient<ProductDescriptionForm>();
-        services.AddTransient<PersonList>();
-        services.AddTransient<PersonForm>();
-        services.AddTransient<ProductCategoryList>();
-        services.AddTransient<ProductCategoryForm>();
-        services.AddTransient<CultureForm>();
-        services.AddTransient<CultureList>();
-      
         //Services 
         services.AddTransient<CreditCardService>();
         services.AddTransient<PersonService>();
         services.AddTransient<DepartmentService>();
-        //services.AddTransient<CreditCardService>();
-        //services.AddTransient<ProductCategoryService>();
-        //services.AddTransient<CurrencyService>();
-        //services.AddTransient<ShiftService>();
-        //services.AddTransient<CountryRegionService>();
-        //services.AddTransient<ShipMethodService>();
-        //services.AddTransient<PhoneNumberTypeService>();
-        //services.AddTransient<ProductDescriptionService>();
-        //services.AddTransient<AddressTypeService>();
-        //services.AddTransient<BusinessEntityService>();
-        //services.AddTransient<LocationService>();
-        //services.AddTransient<SpecialOfferService>();
-        //services.AddTransient<CultureService>();
-        //services.AddTransient<PersonService>();
-        //services.AddTransient<ContactTypeService>();
-        //services.AddTransient<ScrapReasonService>();
+        services.AddTransient<DepartmentService>();
+        services.AddTransient<ProductCategoryService>();
+        services.AddTransient<ShiftService>();
+        services.AddTransient<CountryRegionService>();
+        services.AddTransient<ShipMethodService>();
+        services.AddTransient<PhoneNumberTypeService>();
+        services.AddTransient<AddressTypeService>();
+        services.AddTransient<BusinessEntityService>();
+        services.AddTransient<LocationService>();
+        services.AddTransient<SpecialOfferService>();
+        services.AddTransient<CultureService>();
+        services.AddTransient<PersonService>();
+        services.AddTransient<ContactTypeService>();
+        services.AddTransient<ScrapReasonService>();
     }
 }
 

@@ -1,4 +1,4 @@
-﻿using AdventureAdmin.Data.Context;
+using AdventureAdmin.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -6,25 +6,20 @@ namespace AdventureAdmin.Ui.Services;
 
 public class DepartmentService(
     AdventureWorksContext context
-    ) : Aplicada1.Core.IService<Data.Models.Department, int>
+    ) : Aplicada1.Core.IService<Data.Models.Department, short>
 {
-    public async Task<Data.Models.Department?> Buscar(int id)
+    public async Task<Data.Models.Department?> Buscar(short id)
     {
-        return await context.Departments
-           .FirstOrDefaultAsync(d => d.DepartmentId == id);
+        return await context.Departments.FindAsync(id);
     }
 
-    public async Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(short id)
     {
-        var department = await context.Departments
-            .FirstOrDefaultAsync(d => d.DepartmentId == id);
-
-        if (department == null)
-            return false;
-
+        var department = await context.Departments.FindAsync(id);
+        if (department == null) return false;
+        
         context.Departments.Remove(department);
         var cantidad = await context.SaveChangesAsync();
-
         return cantidad > 0;
     }
 

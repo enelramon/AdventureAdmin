@@ -1,34 +1,33 @@
-﻿using AdventureAdmin.Data.Context;
-using AdventureAdmin.Data.Models;
-using Aplicada1.Core;
+using AdventureAdmin.Data.Context;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq.Expressions;
 
 namespace AdventureAdmin.Ui.Services;
 
 public class PersonService(
-    AdventureWorksContext context)
-  : IService<Data.Models.Person, int>
+    AdventureWorksContext context
+) : Aplicada1.Core.IService<Data.Models.Person, int>
 {
     public async Task<Data.Models.Person?> Buscar(int id)
     {
-        return await context.People
-            
-            .FirstOrDefaultAsync(p => p.BusinessEntityId == id);
-
+        return await context.People.FindAsync(id);
     }
 
     public async Task<bool> Eliminar(int id)
     {
-        var person = await context.People
-            .FirstOrDefaultAsync(p => p.BusinessEntityId == id);
-
-        if (person == null)
-            return false;
-
+        var person = await context.People.FindAsync(id);
+        if (person == null) return false;
+        
         context.People.Remove(person);
         var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
+    }
 
+    public async Task<bool> Guardar(Data.Models.Person entidad)
+    {
+        await context.People.AddAsync(entidad);
+        var cantidad = await context.SaveChangesAsync();
         return cantidad > 0;
     }
 
@@ -46,19 +45,9 @@ public class PersonService(
         return await context.SaveChangesAsync() > 0;
     }
 
-    public async Task<bool> Guardar(Data.Models.Person entidad)
+    public async Task<int> CrearBusinessEntity()
     {
-
-        await context.People.AddAsync(entidad);
-        var cantidad = await context.SaveChangesAsync();
-        return cantidad > 0;
-
-    }
-
-
-public async Task<int> CrearBusinessEntity()
-    {
-        var entity = new BusinessEntity
+        var entity = new Data.Models.BusinessEntity
         {
             Rowguid = Guid.NewGuid(),
             ModifiedDate = DateTime.Now
@@ -70,4 +59,3 @@ public async Task<int> CrearBusinessEntity()
         return entity.BusinessEntityId;
     }
 }
-

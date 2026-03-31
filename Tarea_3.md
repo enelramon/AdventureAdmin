@@ -33,23 +33,23 @@ Tambien se modifican estos archivos existentes:
 
 | #  | Nombre                           | Entidad              | MenuItem en MainForm                  |
 |----|----------------------------------|----------------------|---------------------------------------|
-| 1  | Cristopher Paulino Burgos        | `Currency`           | `currencyToolStripMenuItem`           |
-| 2  | Gustavo Junior Bonifacio Peña    | `Department`         | `departmentToolStripMenuItem`         |
-| 3  | Emmanuel Emilio Comery Valdez    | `Shift`              | `shiftToolStripMenuItem`              |
-| 4  | Jason Daniel Disla Tejada        | `CountryRegion`      | `countryRegionToolStripMenuItem`      |
-| 5  | Jose Julian Martinez Polanco     | `ShipMethod`         | `shipMethodToolStripMenuItem`         |
-| 6  | Joseph Leandro Goris Sosa        | `PhoneNumberType`    | `phoneNumberTypeToolStripMenuItem`    |
-| 7  | Juana Jael Gomez Bruno           | `ProductDescription` | `productDescriptionToolStripMenuItem` |
-| 8  | Mariela Garcia Tejada            | `AddressType`        | `addressTypeToolStripMenuItem`        |
-| 9  | Randy Joel Acosta Tejada         | `BusinessEntity`     | `businessEntityToolStripMenuItem`     |
-| 10 | Rode Esther Amparo Dishmey       | `Location`           | `locationToolStripMenuItem`           |
-| 11 | Winiffer Angelica Hernandez Garcia | `SpecialOffer`     | `specialOfferToolStripMenuItem`       |
-| 12 | Yefrailyn Fernandez Nuñez        | `ProductCategory`    | `productCategoryToolStripMenuItem`    |
-| 13 | Diana Carolina Hidalgo           | `Culture`            | `cultureToolStripMenuItem`            |
-| 14 | Elier Onil Nuñez Peña            | `Person`             | `personToolStripMenuItem`             |
-| 15 | Julio Cesar Ortiz Galvez         | `CreditCard`         | `creditCardToolStripMenuItem`         |
-| 16 | Leander Alfonso Valdez Reyes     | `ContactType`        | `contactTypeToolStripMenuItem`        |
-| 17 | Marcos Miguel Gomez Camilo       | `ScrapReason`        | `scrapReasonToolStripMenuItem`        |
+| 1  | Cristopher Paulino Burgos        | `\\urrency`           | `currencyToolStripMenuItem`           |
+| 2  | Gustavo Junior Bonifacio Peña    | `\\Department`         | `departmentToolStripMenuItem`         |
+| 3  | Emmanuel Emilio Comery Valdez    | `\\Shift`              | `shiftToolStripMenuItem`              |
+| 4  | Jason Daniel Disla Tejada        | `\\CountryRegion`      | `countryRegionToolStripMenuItem`      |
+| 5  | Jose Julian Martinez Polanco     | `\\ShipMethod`         | `shipMethodToolStripMenuItem`         |
+| 6  | Joseph Leandro Goris Sosa        | `\\PhoneNumberType`    | `phoneNumberTypeToolStripMenuItem`    |
+| 7  | Juana Jael Gomez Bruno           | `\\ProductDescription` | `productDescriptionToolStripMenuItem` |
+| 8  | Mariela Garcia Tejada            | `\\AddressType`        | `addressTypeToolStripMenuItem`        |
+| 9  | Randy Joel Acosta Tejada         | `\\BusinessEntity`     | `businessEntityToolStripMenuItem`     |
+| 10 | Rode Esther Amparo Dishmey       | `\\Location`           | `locationToolStripMenuItem`           |
+| 11 | Winiffer Angelica Hernandez Garcia | `\\SpecialOffer`     | `specialOfferToolStripMenuItem`       |
+| 12 | Yefrailyn Fernandez Nuñez        | `\\ProductCategory`    | `productCategoryToolStripMenuItem`    |
+| 13 | Diana Carolina Hidalgo           | `\\Culture`            | `cultureToolStripMenuItem`            |
+| 14 | Elier Onil Nuñez Peña            | `\\Person`             | `personToolStripMenuItem`             |
+| 15 | Julio Cesar Ortiz Galvez         | `\\CreditCard`         | `creditCardToolStripMenuItem`         |
+| 16 | Leander Alfonso Valdez Reyes     | `\\ContactType`        | `contactTypeToolStripMenuItem`        |
+| 17 | Marcos Miguel Gomez Camilo       | `\\ScrapReason`        | `scrapReasonToolStripMenuItem`        |
 
 ---
 

@@ -1,36 +1,40 @@
-﻿using AdventureAdmin.Data.Context;
-using Aplicada1.Core;
+using AdventureAdmin.Data.Context;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
-namespace AdventureAdmin.Ui.Services
+namespace AdventureAdmin.Ui.Services;
+
+public class ScrapReasonService(
+    AdventureWorksContext context
+) : Aplicada1.Core.IService<Data.Models.ScrapReason, short>
 {
-    public class ScrapReasonService(AdventureWorksContext context) : Aplicada1.Core.IService<Data.Models.ScrapReason, int>
+    public async Task<Data.Models.ScrapReason?> Buscar(short id)
     {
-        Task<Data.Models.ScrapReason?> IService<Data.Models.ScrapReason, int>.Buscar(int id)
-        {
-            throw new NotImplementedException();
-        }
+        return await context.ScrapReasons.FindAsync(id);
+    }
 
-        Task<bool> IService<Data.Models.ScrapReason, int>.Eliminar(int id)
-        {
-            throw new NotImplementedException();
-        }
+    public async Task<bool> Eliminar(short id)
+    {
+        var razon = await context.ScrapReasons.FindAsync(id);
+        if (razon == null) return false;
+        
+        context.ScrapReasons.Remove(razon);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
+    }
 
-        public async Task<List<Data.Models.ScrapReason>>GetList(Expression<Func<Data.Models.ScrapReason, bool>> criterio)
-        {
-            return await context.ScrapReasons.Where(criterio).ToListAsync();
+    public async Task<bool> Guardar(Data.Models.ScrapReason entity)
+    {
+        await context.ScrapReasons.AddAsync(entity);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
+    }
 
-        }
-
-        async Task<bool> IService<Data.Models.ScrapReason, int>.Guardar(Data.Models.ScrapReason entidad)
-        {
-            await context.ScrapReasons.AddAsync(entidad);
-            var resultado = await context.SaveChangesAsync();
-            return resultado > 0;
-        }
+    public async Task<List<Data.Models.ScrapReason>> GetList(Expression<Func<Data.Models.ScrapReason, bool>> criterio)
+    {
+        return await context.ScrapReasons
+            .AsNoTracking()
+            .Where(criterio)
+            .ToListAsync();
     }
 }
