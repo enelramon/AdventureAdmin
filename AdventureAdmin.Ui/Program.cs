@@ -57,6 +57,20 @@ static class Program
 
         //Services 
         services.AddTransient<CreditCardService>();
+        services.AddTransient<DepartmentService>();
+        services.AddTransient<ProductCategoryService>();
+        services.AddTransient<ShiftService>();
+        services.AddTransient<CountryRegionService>();
+        services.AddTransient<ShipMethodService>();
+        services.AddTransient<PhoneNumberTypeService>();
+        services.AddTransient<AddressTypeService>();
+        services.AddTransient<BusinessEntityService>();
+        services.AddTransient<LocationService>();
+        services.AddTransient<SpecialOfferService>();
+        services.AddTransient<CultureService>();
+        services.AddTransient<PersonService>();
+        services.AddTransient<ContactTypeService>();
+        services.AddTransient<ScrapReasonService>();
     }
 }
 
