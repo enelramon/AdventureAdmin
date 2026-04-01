@@ -5,11 +5,11 @@ using System.Linq.Expressions;
 
 namespace AdventureAdmin.Ui.Services;
 
-internal class ContactTypeServices (
+internal class PhoneNumberTypeService(
     AdventureWorksContext context
-    ) : Aplicada1.Core.IService<Data.Models.ContactType, int>
+    ) : Aplicada1.Core.IService<Data.Models.PhoneNumberType, int>
 {
-    public Task<ContactType?> Buscar(int id)
+    public Task<PhoneNumberType?> Buscar(int id)
     {
         throw new NotImplementedException();
     }
@@ -19,14 +19,14 @@ internal class ContactTypeServices (
         throw new NotImplementedException();
     }
 
-    public async Task<List<ContactType>> GetList(Expression<Func<ContactType, bool>> criterio)
+    public async Task<List<PhoneNumberType>> GetList(Expression<Func<PhoneNumberType, bool>> criterio)
     {
-        return await context.ContactTypes
+        return await context.PhoneNumberTypes
             .Where(criterio)
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(ContactType entidad)
+    public Task<bool> Guardar(PhoneNumberType entidad)
     {
         throw new NotImplementedException();
     }

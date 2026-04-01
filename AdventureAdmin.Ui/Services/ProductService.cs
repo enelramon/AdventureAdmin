@@ -1,14 +1,17 @@
 ﻿using AdventureAdmin.Data.Context;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Text;
 
 namespace AdventureAdmin.Ui.Services;
 
-public class LocationServices(
+public class ProductService (
     AdventureWorksContext context
-    ) : Aplicada1.Core.IService<Data.Models.Location, int>
+    ) : Aplicada1.Core.IService<Data.Models.Product, int>
 {
-    public Task<Data.Models.Location?> Buscar(int id)
+    public Task<Data.Models.Product?> Buscar(int id)
     {
         throw new NotImplementedException();
     }
@@ -18,14 +21,14 @@ public class LocationServices(
         throw new NotImplementedException();
     }
 
-    public async Task<List<Data.Models.Location>> GetList(Expression<Func<Data.Models.Location, bool>> criterio)
+    public async Task<List<Data.Models.Product>> GetList(Expression<Func<Data.Models.Product, bool>> criterio)
     {
-        return await context.Locations
+        return await context.Products
             .Where(criterio)
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(Data.Models.Location entidad)
+    public Task<bool> Guardar(Data.Models.Product entidad)
     {
         throw new NotImplementedException();
     }

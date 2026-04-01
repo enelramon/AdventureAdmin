@@ -4,11 +4,11 @@ using System.Linq.Expressions;
 
 namespace AdventureAdmin.Ui.Services;
 
-public class DepartmetServices(
-     AdventureWorksContext context
-    ): Aplicada1.Core.IService<Data.Models.Department, int>
+public class PersonService(
+    AdventureWorksContext context
+    ) : Aplicada1.Core.IService<Data.Models.Person, int>
 {
-    public Task<Data.Models.Department?> Buscar(int id)
+    public Task<Data.Models.Person?> Buscar(int id)
     {
         throw new NotImplementedException();
     }
@@ -18,14 +18,14 @@ public class DepartmetServices(
         throw new NotImplementedException();
     }
 
-    public async Task<List<Data.Models.Department>> GetList(Expression<Func<Data.Models.Department, bool>> criterio)
+    public async Task<List<Data.Models.Person>> GetList(Expression<Func<Data.Models.Person, bool>> criterio)
     {
-        return await context.Departments
+        return await context.People
             .Where(criterio)
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(Data.Models.Department entidad)
+    public Task<bool> Guardar(Data.Models.Person entidad)
     {
         throw new NotImplementedException();
     }

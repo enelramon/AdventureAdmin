@@ -1,15 +1,14 @@
 ﻿using AdventureAdmin.Data.Context;
-using AdventureAdmin.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace AdventureAdmin.Ui.Services;
 
-internal class ProductCategoryServices(
-    AdventureWorksContext context
-    ) : Aplicada1.Core.IService<Data.Models.ProductCategory, int>
+public class DepartmetService(
+     AdventureWorksContext context
+    ): Aplicada1.Core.IService<Data.Models.Department, int>
 {
-    public Task<ProductCategory?> Buscar(int id)
+    public Task<Data.Models.Department?> Buscar(int id)
     {
         throw new NotImplementedException();
     }
@@ -19,14 +18,14 @@ internal class ProductCategoryServices(
         throw new NotImplementedException();
     }
 
-    public async Task<List<ProductCategory>> GetList(Expression<Func<ProductCategory, bool>> criterio)
+    public async Task<List<Data.Models.Department>> GetList(Expression<Func<Data.Models.Department, bool>> criterio)
     {
-        return await context.ProductCategories
+        return await context.Departments
             .Where(criterio)
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(ProductCategory entidad)
+    public Task<bool> Guardar(Data.Models.Department entidad)
     {
         throw new NotImplementedException();
     }

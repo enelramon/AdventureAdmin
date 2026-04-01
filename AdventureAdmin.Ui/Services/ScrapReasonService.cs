@@ -1,15 +1,14 @@
 ﻿using AdventureAdmin.Data.Context;
-using AdventureAdmin.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace AdventureAdmin.Ui.Services;
 
-internal class ShipMethodServices(
+public class ScrapReasonService (
     AdventureWorksContext context
-    ) : Aplicada1.Core.IService<Data.Models.ShipMethod, int>
+    ) : Aplicada1.Core.IService<Data.Models.ScrapReason, int>
 {
-    public Task<ShipMethod?> Buscar(int id)
+    public Task<Data.Models.ScrapReason?> Buscar(int id)
     {
         throw new NotImplementedException();
     }
@@ -19,14 +18,14 @@ internal class ShipMethodServices(
         throw new NotImplementedException();
     }
 
-    public async Task<List<ShipMethod>> GetList(Expression<Func<ShipMethod, bool>> criterio)
+    public async Task<List<Data.Models.ScrapReason>> GetList(Expression<Func<Data.Models.ScrapReason, bool>> criterio)
     {
-        return await context.ShipMethods
+        return await context.ScrapReasons
             .Where(criterio)
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(ShipMethod entidad)
+    public Task<bool> Guardar(Data.Models.ScrapReason entidad)
     {
         throw new NotImplementedException();
     }

@@ -1,17 +1,15 @@
 ﻿using AdventureAdmin.Data.Context;
+using AdventureAdmin.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace AdventureAdmin.Ui.Services;
 
-public class ProductServices (
+internal class CountryRegionService (
     AdventureWorksContext context
-    ) : Aplicada1.Core.IService<Data.Models.Product, int>
+    ) : Aplicada1.Core.IService<Data.Models.CountryRegion, int>
 {
-    public Task<Data.Models.Product?> Buscar(int id)
+    public Task<CountryRegion?> Buscar(int id)
     {
         throw new NotImplementedException();
     }
@@ -21,14 +19,14 @@ public class ProductServices (
         throw new NotImplementedException();
     }
 
-    public async Task<List<Data.Models.Product>> GetList(Expression<Func<Data.Models.Product, bool>> criterio)
+    public async Task<List<CountryRegion>> GetList(Expression<Func<CountryRegion, bool>> criterio)
     {
-        return await context.Products
+        return await context.CountryRegions
             .Where(criterio)
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(Data.Models.Product entidad)
+    public Task<bool> Guardar(CountryRegion entidad)
     {
         throw new NotImplementedException();
     }

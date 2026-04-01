@@ -1,14 +1,15 @@
 ﻿using AdventureAdmin.Data.Context;
+using AdventureAdmin.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace AdventureAdmin.Ui.Services;
 
-public class PersonServices(
+internal class ShipMethodService(
     AdventureWorksContext context
-    ) : Aplicada1.Core.IService<Data.Models.Person, int>
+    ) : Aplicada1.Core.IService<Data.Models.ShipMethod, int>
 {
-    public Task<Data.Models.Person?> Buscar(int id)
+    public Task<ShipMethod?> Buscar(int id)
     {
         throw new NotImplementedException();
     }
@@ -18,14 +19,14 @@ public class PersonServices(
         throw new NotImplementedException();
     }
 
-    public async Task<List<Data.Models.Person>> GetList(Expression<Func<Data.Models.Person, bool>> criterio)
+    public async Task<List<ShipMethod>> GetList(Expression<Func<ShipMethod, bool>> criterio)
     {
-        return await context.People
+        return await context.ShipMethods
             .Where(criterio)
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(Data.Models.Person entidad)
+    public Task<bool> Guardar(ShipMethod entidad)
     {
         throw new NotImplementedException();
     }

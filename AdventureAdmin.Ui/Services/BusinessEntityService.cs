@@ -1,14 +1,15 @@
 ﻿using AdventureAdmin.Data.Context;
+using AdventureAdmin.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace AdventureAdmin.Ui.Services;
 
-public class ScrapReasonServices (
+internal class BusinessEntityService(
     AdventureWorksContext context
-    ) : Aplicada1.Core.IService<Data.Models.ScrapReason, int>
+    ) : Aplicada1.Core.IService<Data.Models.BusinessEntity, int>
 {
-    public Task<Data.Models.ScrapReason?> Buscar(int id)
+    public Task<BusinessEntity?> Buscar(int id)
     {
         throw new NotImplementedException();
     }
@@ -18,14 +19,14 @@ public class ScrapReasonServices (
         throw new NotImplementedException();
     }
 
-    public async Task<List<Data.Models.ScrapReason>> GetList(Expression<Func<Data.Models.ScrapReason, bool>> criterio)
+    public async Task<List<BusinessEntity>> GetList(Expression<Func<BusinessEntity, bool>> criterio)
     {
-        return await context.ScrapReasons
+        return await context.BusinessEntities
             .Where(criterio)
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(Data.Models.ScrapReason entidad)
+    public Task<bool> Guardar(BusinessEntity entidad)
     {
         throw new NotImplementedException();
     }

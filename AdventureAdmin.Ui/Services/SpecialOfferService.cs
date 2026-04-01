@@ -5,11 +5,11 @@ using System.Linq.Expressions;
 
 namespace AdventureAdmin.Ui.Services;
 
-internal class CountryRegionServices (
+internal class SpecialOfferService(
     AdventureWorksContext context
-    ) : Aplicada1.Core.IService<Data.Models.CountryRegion, int>
+    ) : Aplicada1.Core.IService<Data.Models.SpecialOffer, int>
 {
-    public Task<CountryRegion?> Buscar(int id)
+    public Task<SpecialOffer?> Buscar(int id)
     {
         throw new NotImplementedException();
     }
@@ -19,14 +19,14 @@ internal class CountryRegionServices (
         throw new NotImplementedException();
     }
 
-    public async Task<List<CountryRegion>> GetList(Expression<Func<CountryRegion, bool>> criterio)
+    public async Task<List<SpecialOffer>> GetList(Expression<Func<SpecialOffer, bool>> criterio)
     {
-        return await context.CountryRegions
+        return await context.SpecialOffers
             .Where(criterio)
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(CountryRegion entidad)
+    public Task<bool> Guardar(SpecialOffer entidad)
     {
         throw new NotImplementedException();
     }

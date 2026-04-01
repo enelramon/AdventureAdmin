@@ -5,11 +5,11 @@ using System.Linq.Expressions;
 
 namespace AdventureAdmin.Ui.Services;
 
-internal class BusinessEntityServices(
+internal class ShiftService(
     AdventureWorksContext context
-    ) : Aplicada1.Core.IService<Data.Models.BusinessEntity, int>
+    ) : Aplicada1.Core.IService<Data.Models.Shift, int>
 {
-    public Task<BusinessEntity?> Buscar(int id)
+    public Task<Shift?> Buscar(int id)
     {
         throw new NotImplementedException();
     }
@@ -19,14 +19,14 @@ internal class BusinessEntityServices(
         throw new NotImplementedException();
     }
 
-    public async Task<List<BusinessEntity>> GetList(Expression<Func<BusinessEntity, bool>> criterio)
+    public async Task<List<Shift>> GetList(Expression<Func<Shift, bool>> criterio)
     {
-        return await context.BusinessEntities
+        return await context.Shifts
             .Where(criterio)
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(BusinessEntity entidad)
+    public Task<bool> Guardar(Shift entidad)
     {
         throw new NotImplementedException();
     }

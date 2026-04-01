@@ -1,15 +1,14 @@
 ﻿using AdventureAdmin.Data.Context;
-using AdventureAdmin.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace AdventureAdmin.Ui.Services;
 
-internal class SpecialOfferServices(
+public class CustomerService(
     AdventureWorksContext context
-    ) : Aplicada1.Core.IService<Data.Models.SpecialOffer, int>
+    ) : Aplicada1.Core.IService<Data.Models.Customer, int>
 {
-    public Task<SpecialOffer?> Buscar(int id)
+    public Task<Data.Models.Customer?> Buscar(int id)
     {
         throw new NotImplementedException();
     }
@@ -19,14 +18,14 @@ internal class SpecialOfferServices(
         throw new NotImplementedException();
     }
 
-    public async Task<List<SpecialOffer>> GetList(Expression<Func<SpecialOffer, bool>> criterio)
+    public async Task<List<Data.Models.Customer>> GetList(Expression<Func<Data.Models.Customer, bool>> criterio)
     {
-        return await context.SpecialOffers
+        return await context.Customers
             .Where(criterio)
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(SpecialOffer entidad)
+    public Task<bool> Guardar(Data.Models.Customer entidad)
     {
         throw new NotImplementedException();
     }

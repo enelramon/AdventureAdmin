@@ -5,11 +5,11 @@ using System.Linq.Expressions;
 
 namespace AdventureAdmin.Ui.Services;
 
-public class ProductDescriptionServices (
+internal class ProductCategoryService(
     AdventureWorksContext context
-    ) : Aplicada1.Core.IService<Data.Models.ProductDescription, int>
+    ) : Aplicada1.Core.IService<Data.Models.ProductCategory, int>
 {
-    public Task<ProductDescription?> Buscar(int id)
+    public Task<ProductCategory?> Buscar(int id)
     {
         throw new NotImplementedException();
     }
@@ -19,14 +19,14 @@ public class ProductDescriptionServices (
         throw new NotImplementedException();
     }
 
-    public async Task<List<ProductDescription>> GetList(Expression<Func<ProductDescription, bool>> criterio)
+    public async Task<List<ProductCategory>> GetList(Expression<Func<ProductCategory, bool>> criterio)
     {
-        return await context.ProductDescriptions
+        return await context.ProductCategories
             .Where(criterio)
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(ProductDescription entidad)
+    public Task<bool> Guardar(ProductCategory entidad)
     {
         throw new NotImplementedException();
     }
