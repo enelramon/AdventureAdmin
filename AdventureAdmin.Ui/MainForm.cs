@@ -4,6 +4,7 @@ using AdventureAdmin.Ui.Location;
 using AdventureAdmin.Ui.Product;
 using AdventureAdmin.Ui.ProductCategory;
 using Microsoft.Extensions.DependencyInjection;
+using AdventureAdmin.Ui.Culture;
 
 namespace AdventureAdmin;
 
@@ -87,7 +88,8 @@ public partial class MainForm : Form
 
     private void cultureToolStripMenuItem_Click(object sender, EventArgs e)
     {
-
+        var Culture = Program.ServiceProvider.GetRequiredService<CultureList>();
+        Culture.Show();
     }
 
     private void personToolStripMenuItem_Click(object sender, EventArgs e)

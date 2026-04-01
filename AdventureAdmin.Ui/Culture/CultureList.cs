@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,12 @@ namespace AdventureAdmin.Ui.Culture
         public CultureList()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var Culture = Program.ServiceProvider.GetRequiredService<CultureForm>();
+            Culture.ShowDialog();
         }
     }
 }

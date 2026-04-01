@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using Aplicada1.Core;
+using AdventureAdmin.Ui.Culture;
 
 
 namespace AdventureAdmin;
@@ -63,25 +64,27 @@ static class Program
         services.AddTransient<PersonForm>();
         services.AddTransient<ProductCategoryList>();
         services.AddTransient<ProductCategoryForm>();
+        services.AddTransient<CultureForm>();
+        services.AddTransient<CultureList>();
       
         //Services 
-        services.AddTransient<CreditCardService>();
-        services.AddTransient<ProductCategoryService>();
-        services.AddTransient<DepartmentService>();
-        services.AddTransient<CurrencyService>();
-        services.AddTransient<ShiftService>();
-        services.AddTransient<CountryRegionService>();
-        services.AddTransient<ShipMethodService>();
-        services.AddTransient<PhoneNumberTypeService>();
-        services.AddTransient<ProductDescriptionService>();
-        services.AddTransient<AddressTypeService>();
-        services.AddTransient<BusinessEntityService>();
-        services.AddTransient<LocationService>();
-        services.AddTransient<SpecialOfferService>();
-        services.AddTransient<CultureService>();
-        services.AddTransient<PersonService>();
-        services.AddTransient<ContactTypeService>();
-        services.AddTransient<ScrapReasonService>();
+        //services.AddTransient<CreditCardService>();
+        //services.AddTransient<ProductCategoryService>();
+        //services.AddTransient<DepartmentService>();
+        //services.AddTransient<CurrencyService>();
+        //services.AddTransient<ShiftService>();
+        //services.AddTransient<CountryRegionService>();
+        //services.AddTransient<ShipMethodService>();
+        //services.AddTransient<PhoneNumberTypeService>();
+        //services.AddTransient<ProductDescriptionService>();
+        //services.AddTransient<AddressTypeService>();
+        //services.AddTransient<BusinessEntityService>();
+        //services.AddTransient<LocationService>();
+        //services.AddTransient<SpecialOfferService>();
+        //services.AddTransient<CultureService>();
+        //services.AddTransient<PersonService>();
+        //services.AddTransient<ContactTypeService>();
+        //services.AddTransient<ScrapReasonService>();
     }
 }
 
