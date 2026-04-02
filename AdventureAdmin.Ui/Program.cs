@@ -1,9 +1,18 @@
 using AdventureAdmin.Data.Context;
+
+using AdventureAdmin.Ui;
+using AdventureAdmin.Ui.CreditCard;
+using AdventureAdmin.Ui.Department;
+using AdventureAdmin.Ui.Location;
 using AdventureAdmin.Ui.Person;
 using AdventureAdmin.Ui.Product;
+using AdventureAdmin.Ui.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
+
+using Aplicada1.Core;
+
 
 namespace AdventureAdmin;
 
@@ -28,16 +37,37 @@ static class Program
 
     private static void ConfigureServices(ServiceCollection services)
     {
+
         var connectionString = ConfigurationManager
             .ConnectionStrings["AdventureWorks"].ConnectionString;
 
         services.AddDbContext<AdventureWorksContext>(options =>
-            options.UseSqlServer(connectionString));
+            options.UseSqlServer(connectionString, sqlServerOptionsAction: sqlOptions =>
+            {
+                sqlOptions.EnableRetryOnFailure();
+            }));
 
         services.AddTransient<MainForm>();
         services.AddTransient<ProductList>();
         services.AddTransient<ProductForm>();
+
         services.AddTransient<PersonList>();
         services.AddTransient<PersonForm>();
+
+        services.AddTransient<CreditCardList>();
+        services.AddTransient<CreditCardForm>();
+        services.AddTransient<LocationList>();
+        services.AddTransient<LocationForm>();
+        services.AddTransient<DepartmentList>();
+        services.AddTransient<DepartmentForm>();
+        services.AddTransient<ProductDescriptionList>();
+        services.AddTransient<ProductDescriptionForm>();
+        services.AddTransient<PersonList>();
+        services.AddTransient<PersonForm>();
+
+        //Services 
+        services.AddTransient<CreditCardService>();
+
     }
 }
+
