@@ -89,8 +89,3 @@ static class Program
         //services.AddTransient<ScrapReasonService>();
     }
 }
-
-
-
-
-
