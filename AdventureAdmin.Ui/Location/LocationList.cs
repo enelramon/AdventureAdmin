@@ -24,9 +24,9 @@ namespace AdventureAdmin.Ui.Location
             InitializeComponent();
             _context = context;
         }
-        private void LocationList_Load(object sender, EventArgs e)
+        private async  void LocationList_Load(object sender, EventArgs e)
         {
-            LoadDataAsync();
+             await LoadDataAsync();
         }
         private async Task LoadDataAsync()
         {
@@ -41,11 +41,11 @@ namespace AdventureAdmin.Ui.Location
             }
         }
 
-        private void nuevoButton_Click(object sender, EventArgs e)
+        private  async void nuevoButton_Click(object sender, EventArgs e)
         {
             var locationForm = Program.ServiceProvider.GetRequiredService<LocationForm>();
             locationForm.ShowDialog();
-            LoadDataAsync();
+            await LoadDataAsync();
         }
         
         }
