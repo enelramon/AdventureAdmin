@@ -8,14 +8,24 @@ public class PersonService(
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.Person, int>
 {
-    public Task<Data.Models.Person?> Buscar(int id)
+    public async Task<Data.Models.Person?> Buscar(int id)
     {
-        throw new NotImplementedException();
+       return await context.People
+            .FirstOrDefaultAsync(p => p.BusinessEntityId == id);
     }
 
-    public Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(int id)
     {
-        throw new NotImplementedException();
+        var person = await context.People
+            .FirstOrDefaultAsync(p => p.BusinessEntityId == id);
+       
+        if (person is null)
+            return false;
+
+        context.People.Remove(person);
+        var cantidad = await context.SaveChangesAsync();
+        
+        return cantidad > 0;
     }
 
     public async Task<List<Data.Models.Person>> GetList(Expression<Func<Data.Models.Person, bool>> criterio)
@@ -25,8 +35,10 @@ public class PersonService(
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(Data.Models.Person entidad)
+    public async Task<bool> Guardar(Data.Models.Person entidad)
     {
-        throw new NotImplementedException();
+        await context.People.AddAsync(entidad);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 }

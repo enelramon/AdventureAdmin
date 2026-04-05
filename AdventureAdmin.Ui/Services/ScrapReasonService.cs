@@ -8,14 +8,24 @@ public class ScrapReasonService (
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.ScrapReason, int>
 {
-    public Task<Data.Models.ScrapReason?> Buscar(int id)
+    public async Task<Data.Models.ScrapReason?> Buscar(int id)
     {
-        throw new NotImplementedException();
+       return await context.ScrapReasons
+            .FirstOrDefaultAsync(sr => sr.ScrapReasonId == id);
     }
 
-    public Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(int id)
     {
-        throw new NotImplementedException();
+       var scrapReason = await context.ScrapReasons
+            .FirstOrDefaultAsync(sr => sr.ScrapReasonId == id);
+        
+        if (scrapReason == null)
+            return false;
+
+        context.ScrapReasons.Remove(scrapReason);
+        var cantidad = await context.SaveChangesAsync();
+        
+        return cantidad > 0;
     }
 
     public async Task<List<Data.Models.ScrapReason>> GetList(Expression<Func<Data.Models.ScrapReason, bool>> criterio)
@@ -25,8 +35,10 @@ public class ScrapReasonService (
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(Data.Models.ScrapReason entidad)
+    public async Task<bool> Guardar(Data.Models.ScrapReason entidad)
     {
-        throw new NotImplementedException();
+        await context.ScrapReasons.AddAsync(entidad);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 }

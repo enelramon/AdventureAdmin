@@ -9,14 +9,23 @@ internal class ShipMethodService(
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.ShipMethod, int>
 {
-    public Task<ShipMethod?> Buscar(int id)
+    public async Task<ShipMethod?> Buscar(int id)
     {
-        throw new NotImplementedException();
+        return await context.ShipMethods
+            .FirstOrDefaultAsync(sm => sm.ShipMethodId == id);
     }
 
-    public Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(int id)
     {
-        throw new NotImplementedException();
+        var shipMethod = await context.ShipMethods
+            .FirstOrDefaultAsync(sm => sm.ShipMethodId == id);
+
+        if (shipMethod == null)
+            return false;
+
+        context.ShipMethods.Remove(shipMethod);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 
     public async Task<List<ShipMethod>> GetList(Expression<Func<ShipMethod, bool>> criterio)
@@ -26,8 +35,10 @@ internal class ShipMethodService(
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(ShipMethod entidad)
+    public async Task<bool> Guardar(ShipMethod entidad)
     {
-        throw new NotImplementedException();
+        await context.ShipMethods.AddAsync(entidad);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 }

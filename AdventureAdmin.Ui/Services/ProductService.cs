@@ -1,24 +1,30 @@
 ﻿using AdventureAdmin.Data.Context;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
-
 namespace AdventureAdmin.Ui.Services;
 
 public class ProductService (
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.Product, int>
 {
-    public Task<Data.Models.Product?> Buscar(int id)
+    public async Task<Data.Models.Product?> Buscar(int id)
     {
-        throw new NotImplementedException();
+       return await context.Products
+            .FirstOrDefaultAsync(p => p.ProductId == id);
     }
 
-    public Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(int id)
     {
-        throw new NotImplementedException();
+        var product = await context.Products
+            .FirstOrDefaultAsync(p => p.ProductId == id);
+
+        if (product == null)
+            return false;
+
+        context.Products.Remove(product);
+        var cantidad = await context.SaveChangesAsync();
+
+        return cantidad > 0;
     }
 
     public async Task<List<Data.Models.Product>> GetList(Expression<Func<Data.Models.Product, bool>> criterio)
@@ -28,8 +34,10 @@ public class ProductService (
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(Data.Models.Product entidad)
+    public async Task<bool> Guardar(Data.Models.Product entidad)
     {
-        throw new NotImplementedException();
+        await context.Products.AddAsync(entidad);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 }

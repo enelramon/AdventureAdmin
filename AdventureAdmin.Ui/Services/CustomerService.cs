@@ -2,20 +2,33 @@
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
+
 namespace AdventureAdmin.Ui.Services;
 
 public class CustomerService(
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.Customer, int>
 {
-    public Task<Data.Models.Customer?> Buscar(int id)
+    public async Task<Data.Models.Customer?> Buscar(int id)
     {
-        throw new NotImplementedException();
+       return await context.Customers
+            .FirstOrDefaultAsync(c => c.CustomerId == id);
     }
 
-    public Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(int id)
     {
-        throw new NotImplementedException();
+        var customer = context.Customers
+            .FirstOrDefaultAsync(c => c.CustomerId == id);
+
+        if (customer is null)
+            return false;
+
+
+        context.Customers.Remove(customer.Result);
+        var cantidad = context.SaveChangesAsync();
+        return cantidad.Result > 0;
+
+
     }
 
     public async Task<List<Data.Models.Customer>> GetList(Expression<Func<Data.Models.Customer, bool>> criterio)
@@ -25,8 +38,10 @@ public class CustomerService(
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(Data.Models.Customer entidad)
+    public async Task<bool> Guardar(Data.Models.Customer entidad)
     {
-        throw new NotImplementedException();
+        await context.Customers.AddAsync(entidad);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 }

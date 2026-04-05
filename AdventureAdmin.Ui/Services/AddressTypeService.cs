@@ -9,14 +9,26 @@ internal class AddressTypeServices(
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.AddressType, int>
 {
-    public Task<AddressType?> Buscar(int id)
+    public async Task<AddressType?> Buscar(int id)
     {
-        throw new NotImplementedException();
+        return await context.AddressTypes
+            .FirstOrDefaultAsync(a => a.AddressTypeId == id);
     }
 
-    public Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(int id)
     {
-        throw new NotImplementedException();
+       var addressType = await context.AddressTypes
+            .FirstOrDefaultAsync(a => a.AddressTypeId == id);
+
+
+        if (addressType is null)
+            return false;
+
+
+        context.AddressTypes.Remove(addressType);
+        var cantidad = await context.SaveChangesAsync();
+
+        return cantidad > 0;
     }
 
     public async Task<List<AddressType>> GetList(Expression<Func<AddressType, bool>> criterio)
@@ -26,8 +38,10 @@ internal class AddressTypeServices(
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(AddressType entidad)
+    public async Task<bool> Guardar(AddressType entidad)
     {
-        throw new NotImplementedException();
+        await context.AddressTypes.AddAsync(entidad);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 }

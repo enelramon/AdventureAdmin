@@ -9,14 +9,24 @@ internal class CountryRegionService (
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.CountryRegion, int>
 {
-    public Task<CountryRegion?> Buscar(int id)
+    public async Task<CountryRegion?> Buscar(int id)
     {
-        throw new NotImplementedException();
+        return await context.CountryRegions
+            .FirstOrDefaultAsync(c => c.CountryRegionId == id);
     }
 
-    public Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(int id)
     {
-        throw new NotImplementedException();
+        var countryRegion = await context.CountryRegions
+            .FirstOrDefaultAsync(c => c.CountryRegionId == id);
+
+        if (countryRegion == null)
+            return false;
+
+        context.CountryRegions.Remove(countryRegion);
+        var cantidad = await context.SaveChangesAsync();
+
+        return cantidad > 0;
     }
 
     public async Task<List<CountryRegion>> GetList(Expression<Func<CountryRegion, bool>> criterio)
@@ -26,8 +36,10 @@ internal class CountryRegionService (
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(CountryRegion entidad)
+    public async Task<bool> Guardar(CountryRegion entidad)
     {
-        throw new NotImplementedException();
+        await context.CountryRegions.AddAsync(entidad);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 }

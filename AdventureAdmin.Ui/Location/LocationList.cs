@@ -1,15 +1,6 @@
 ﻿using AdventureAdmin.Data.Context;
-using System.Threading.Tasks;
-using AdventureAdmin.Data.Models;
-using AdventureAdmin.Ui.Product;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 
 
 
@@ -47,6 +38,10 @@ namespace AdventureAdmin.Ui.Location
             locationForm.ShowDialog();
             LoadDataAsync();
         }
-        
+
+        private void modificarButton_Click(object sender, EventArgs e)
+        {
+           
         }
     }
+}

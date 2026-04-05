@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using AdventureAdmin.Data.Context;
 using AdventureAdmin.Data.Models;
+using AdventureAdmin.Ui.Services;
+
 
 namespace AdventureAdmin.Ui.Location
 {
@@ -14,7 +16,7 @@ namespace AdventureAdmin.Ui.Location
     {
         private readonly AdventureWorksContext _context;
         private readonly ErrorProvider _errorProvider;
-
+       
         public LocationForm(AdventureWorksContext context)
         {
             InitializeComponent();

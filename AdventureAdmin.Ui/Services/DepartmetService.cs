@@ -8,14 +8,24 @@ public class DepartmetService(
      AdventureWorksContext context
     ): Aplicada1.Core.IService<Data.Models.Department, int>
 {
-    public Task<Data.Models.Department?> Buscar(int id)
+    public async Task<Data.Models.Department?> Buscar(int id)
     {
-        throw new NotImplementedException();
+        return await context.Departments
+            .FirstOrDefaultAsync(x => x.DepartmentId == id);
     }
 
-    public Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(int id)
     {
-        throw new NotImplementedException();
+        var department = await context.Departments
+            .FirstOrDefaultAsync(x => x.DepartmentId == id);
+
+        if (department == null)
+            return false;
+
+        context.Departments.Remove(department);
+        var cantidad = await context.SaveChangesAsync();
+        
+        return cantidad > 0;
     }
 
     public async Task<List<Data.Models.Department>> GetList(Expression<Func<Data.Models.Department, bool>> criterio)
@@ -25,8 +35,10 @@ public class DepartmetService(
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(Data.Models.Department entidad)
+    public async Task<bool> Guardar(Data.Models.Department entidad)
     {
-        throw new NotImplementedException();
+        await context.Departments.AddAsync(entidad);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 }

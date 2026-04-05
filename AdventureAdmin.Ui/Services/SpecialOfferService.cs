@@ -9,14 +9,24 @@ internal class SpecialOfferService(
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.SpecialOffer, int>
 {
-    public Task<SpecialOffer?> Buscar(int id)
+    public async Task<SpecialOffer?> Buscar(int id)
     {
-        throw new NotImplementedException();
+        return await context.SpecialOffers
+            .FirstOrDefaultAsync(so => so.SpecialOfferId == id);
     }
 
-    public Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(int id)
     {
-        throw new NotImplementedException();
+        var specialOffer = await context.SpecialOffers
+            .FirstOrDefaultAsync(so => so.SpecialOfferId == id);
+
+        if (specialOffer == null)
+            return false;
+
+        context.SpecialOffers.Remove(specialOffer);
+        var cantidad = await context.SaveChangesAsync();
+
+        return cantidad > 0;
     }
 
     public async Task<List<SpecialOffer>> GetList(Expression<Func<SpecialOffer, bool>> criterio)
@@ -26,8 +36,10 @@ internal class SpecialOfferService(
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(SpecialOffer entidad)
+    public async Task<bool> Guardar(SpecialOffer entidad)
     {
-        throw new NotImplementedException();
+        await context.SpecialOffers.AddAsync(entidad);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 }

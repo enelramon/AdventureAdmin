@@ -9,14 +9,24 @@ public class ProductDescriptionService (
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.ProductDescription, int>
 {
-    public Task<ProductDescription?> Buscar(int id)
+    public async Task<ProductDescription?> Buscar(int id)
     {
-        throw new NotImplementedException();
+       return await context.ProductDescriptions
+            .FirstOrDefaultAsync(pd => pd.ProductDescriptionId == id);
     }
 
-    public Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(int id)
     {
-        throw new NotImplementedException();
+        var productDescription = await context.ProductDescriptions
+            .FirstOrDefaultAsync(pd => pd.ProductDescriptionId == id);
+
+        if (productDescription == null)
+            return false;
+
+        context.ProductDescriptions.Remove(productDescription);
+        var cantidad = await context.SaveChangesAsync();
+        
+        return cantidad > 0;
     }
 
     public async Task<List<ProductDescription>> GetList(Expression<Func<ProductDescription, bool>> criterio)
@@ -26,8 +36,10 @@ public class ProductDescriptionService (
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(ProductDescription entidad)
+    public async Task<bool> Guardar(ProductDescription entidad)
     {
-        throw new NotImplementedException();
+       await context.ProductDescriptions.AddAsync(entidad);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 }

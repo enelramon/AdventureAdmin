@@ -9,14 +9,24 @@ internal class CurrencyServices(
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.Currency, int>
 {
-    public Task<Currency?> Buscar(int id)
+    public async Task<Currency?> Buscar(int id)
     {
-        throw new NotImplementedException();
+        return await context.Currencies
+            .FirstOrDefaultAsync(c => c.CurrencyId == id);
     }
 
-    public Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(int id)
     {
-        throw new NotImplementedException();
+        var currency = await context.Currencies
+            .FirstOrDefaultAsync(c => c.CurrencyId == id);
+
+        if (currency == null)
+            return false;
+
+        context.Currencies.Remove(currency);
+        var cantidad = await context.SaveChangesAsync();
+
+        return cantidad > 0;
     }
 
     public async Task<List<Currency>> GetList(Expression<Func<Currency, bool>> criterio)
@@ -26,8 +36,10 @@ internal class CurrencyServices(
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(Currency entidad)
+    public async Task<bool> Guardar(Currency entidad)
     {
-        throw new NotImplementedException();
+        await context.Currencies.AddAsync(entidad);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 }

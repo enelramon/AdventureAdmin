@@ -9,14 +9,24 @@ internal class PhoneNumberTypeService(
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.PhoneNumberType, int>
 {
-    public Task<PhoneNumberType?> Buscar(int id)
+    public async Task<PhoneNumberType?> Buscar(int id)
     {
-        throw new NotImplementedException();
+        return await context.PhoneNumberTypes
+            .FirstOrDefaultAsync(p => p.PhoneNumberTypeId == id);
     }
 
-    public Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(int id)
     {
-        throw new NotImplementedException();
+        var phoneNumberType = await context.PhoneNumberTypes
+            .FirstOrDefaultAsync(p => p.PhoneNumberTypeId == id);
+
+        if (phoneNumberType == null)
+            return false;
+
+        context.PhoneNumberTypes.Remove(phoneNumberType);
+        var cantidad = await context.SaveChangesAsync();
+
+        return cantidad > 0;
     }
 
     public async Task<List<PhoneNumberType>> GetList(Expression<Func<PhoneNumberType, bool>> criterio)
@@ -26,8 +36,10 @@ internal class PhoneNumberTypeService(
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(PhoneNumberType entidad)
+    public async Task<bool> Guardar(PhoneNumberType entidad)
     {
-        throw new NotImplementedException();
+       await context.PhoneNumberTypes.AddAsync(entidad);
+         var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 }

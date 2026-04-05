@@ -40,4 +40,5 @@ public partial class CountryRegion
 
     [InverseProperty("CountryRegionCodeNavigation")]
     public virtual ICollection<StateProvince> StateProvinces { get; set; } = new List<StateProvince>();
+    public int CountryRegionId { get; set; }
 }

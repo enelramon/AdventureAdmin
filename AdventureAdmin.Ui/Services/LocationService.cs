@@ -8,7 +8,7 @@ public class LocationService(
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.Location, int>
 {
-    public async  Task<Data.Models.Location?> Buscar(int id)
+    public async Task<Data.Models.Location?> Buscar(int id)
     {
         return await context.Locations
             .FirstOrDefaultAsync(l => l.LocationId == id);
@@ -31,6 +31,7 @@ public class LocationService(
     public async Task<List<Data.Models.Location>> GetList(Expression<Func<Data.Models.Location, bool>> criterio)
     {
         return await context.Locations
+            .AsNoTracking()
             .Where(criterio)
             .ToListAsync();
     }
@@ -40,5 +41,10 @@ public class LocationService(
         await context.Locations.AddAsync(entidad);
         var cantidad = await context.SaveChangesAsync();
         return cantidad > 0;
+    }
+    public async Task<bool> Modificar(Data.Models.Location entidad)
+    {
+        context.Entry(entidad).State = EntityState.Modified;
+        return await context.SaveChangesAsync() > 0;
     }
 }

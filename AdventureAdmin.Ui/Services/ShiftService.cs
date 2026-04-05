@@ -9,14 +9,23 @@ internal class ShiftService(
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.Shift, int>
 {
-    public Task<Shift?> Buscar(int id)
+    public async Task<Shift?> Buscar(int id)
     {
-        throw new NotImplementedException();
+        return await context.Shifts
+            .FirstOrDefaultAsync(s => s.ShiftId == id);
     }
 
-    public Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(int id)
     {
-        throw new NotImplementedException();
+        var shift = await context.Shifts
+            .FirstOrDefaultAsync(s => s.ShiftId == id);
+
+        if (shift == null)
+            return false;
+
+        context.Shifts.Remove(shift);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 
     public async Task<List<Shift>> GetList(Expression<Func<Shift, bool>> criterio)
@@ -26,8 +35,10 @@ internal class ShiftService(
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(Shift entidad)
+    public async Task<bool> Guardar(Shift entidad)
     {
-        throw new NotImplementedException();
+        await context.Shifts.AddAsync(entidad);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 }

@@ -40,4 +40,5 @@ public partial class Currency
 
     [InverseProperty("ToCurrencyCodeNavigation")]
     public virtual ICollection<CurrencyRate> CurrencyRateToCurrencyCodeNavigations { get; set; } = new List<CurrencyRate>();
+    public int CurrencyId { get; set; }
 }

@@ -9,14 +9,25 @@ internal class ContactTypeService (
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.ContactType, int>
 {
-    public Task<ContactType?> Buscar(int id)
+    public async Task<ContactType?> Buscar(int id)
     {
-        throw new NotImplementedException();
+        return await context.ContactTypes
+            .FirstOrDefaultAsync(c => c.ContactTypeId == id);
     }
 
-    public Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(int id)
     {
-        throw new NotImplementedException();
+        var contactType = await context.ContactTypes
+            .FirstOrDefaultAsync(c => c.ContactTypeId == id);
+
+
+        if (contactType is null)
+            return false;
+
+        context.ContactTypes.Remove(contactType);
+        var cantidad = await context.SaveChangesAsync();
+
+        return cantidad > 0;
     }
 
     public async Task<List<ContactType>> GetList(Expression<Func<ContactType, bool>> criterio)
@@ -26,8 +37,10 @@ internal class ContactTypeService (
             .ToListAsync();
     }
 
-    public Task<bool> Guardar(ContactType entidad)
+    public async Task<bool> Guardar(ContactType entidad)
     {
-        throw new NotImplementedException();
+        await context.ContactTypes.AddAsync(entidad);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 }
