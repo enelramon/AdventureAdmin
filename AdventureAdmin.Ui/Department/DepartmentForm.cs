@@ -1,40 +1,55 @@
-﻿using System;
+﻿using AdventureAdmin.Data.Context;
+using AdventureAdmin.Data.Models;
+using AdventureAdmin.Ui.Services;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AdventureAdmin.Data.Context;
-using AdventureAdmin.Data.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace AdventureAdmin.Ui
 {
     public partial class DepartmentForm : Form
     {
-        private readonly AdventureWorksContext _context;
+        private readonly DepartmentService _service;
+        private readonly Data.Models.Department? _entidad;
 
-        public DepartmentForm(AdventureWorksContext context)
+        // Constructor para crear nuevo
+        public DepartmentForm(DepartmentService service) : this(service, null)
+        {
+        }
+
+        // Constructor para editar
+        public DepartmentForm(DepartmentService service, Data.Models.Department? entidad)
         {
             InitializeComponent();
-            _context = context;
+            _service = service;
+            _entidad = entidad;
+
+            if (_entidad != null)
+                CargarDatos(_entidad);
         }
 
         private void DepartmentForm_Load(object sender, EventArgs e)
         {
+            btnGuardar.Text = _entidad == null ? "Crear" : "Actualizar";
+        }
 
+        private void CargarDatos(Data.Models.Department entidad)
+        {
+            txtName.Text = entidad.Name;
+            txtGroupName.Text = entidad.GroupName;
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void txtGroupName_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-
         }
 
         private async void btnGuardar_Click(object sender, EventArgs e)
@@ -45,18 +60,14 @@ namespace AdventureAdmin.Ui
             {
                 btnGuardar.Enabled = false;
 
-                var department = new AdventureAdmin.Data.Models.Department
-                {
-                    Name = txtName.Text.Trim(),
-                    GroupName = txtGroupName.Text.Trim(),
-                    ModifiedDate = DateTime.Now
-                };
+                if (_entidad == null)
+                    await Insertar();
+                else
+                    await Actualizar();
 
-                _context.Departments.Add(department);
-                await _context.SaveChangesAsync();
-
-                MessageBox.Show("Departamento creado correctamente.", "Éxito",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(
+                    _entidad == null ? "Departamento creado correctamente." : "Departamento actualizado correctamente.",
+                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -70,8 +81,38 @@ namespace AdventureAdmin.Ui
             {
                 btnGuardar.Enabled = true;
             }
-
         }
+
+        private async Task Insertar()
+        {
+            var department = new Data.Models.Department
+            {
+                Name = txtName.Text.Trim(),
+                GroupName = txtGroupName.Text.Trim(),
+                ModifiedDate = DateTime.Now
+            };
+
+            await _service.Guardar(department);
+        }
+
+        private async Task Actualizar()
+        {
+            var department = await _service.Buscar(_entidad!.DepartmentId);
+
+            if (department == null)
+            {
+                MessageBox.Show("El registro no existe.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            department.Name = txtName.Text.Trim();
+            department.GroupName = txtGroupName.Text.Trim();
+            department.ModifiedDate = DateTime.Now;
+
+            await _service.Actualizar(department);
+        }
+
         private bool ValidateForm()
         {
             errorProvider1.Clear();
@@ -94,8 +135,13 @@ namespace AdventureAdmin.Ui
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel; // alerta de que se canceló la operación
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

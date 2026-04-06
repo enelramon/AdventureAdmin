@@ -8,14 +8,24 @@ public class DepartmentService(
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.Department, int>
 {
-    public Task<Data.Models.Department?> Buscar(int id)
+    public async Task<Data.Models.Department?> Buscar(int id)
     {
-        throw new NotImplementedException();
+        return await context.Departments
+           .FirstOrDefaultAsync(d => d.DepartmentId == id);
     }
 
-    public Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(int id)
     {
-        throw new NotImplementedException();
+        var department = await context.Departments
+            .FirstOrDefaultAsync(d => d.DepartmentId == id);
+
+        if (department == null)
+            return false;
+
+        context.Departments.Remove(department);
+        var cantidad = await context.SaveChangesAsync();
+
+        return cantidad > 0;
     }
 
     public async Task<bool> Guardar(Data.Models.Department entidad)
@@ -28,7 +38,14 @@ public class DepartmentService(
     public async Task<List<Data.Models.Department>> GetList(Expression<Func<Data.Models.Department, bool>> criterio)
     {
         return await context.Departments
-        .Where(criterio)
-        .ToListAsync();
+            .AsNoTracking()
+            .Where(criterio)
+            .ToListAsync();
+    }
+
+    public async Task<bool> Actualizar(Data.Models.Department entidad)
+    {
+        context.Entry(entidad).State = EntityState.Modified;
+        return await context.SaveChangesAsync() > 0;
     }
 }
