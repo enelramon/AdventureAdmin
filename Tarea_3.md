@@ -1,12 +1,10 @@
 # Tarea: Implementar funcionalidad Windows Forms — AdventureAdmin
 
+
 ## Pasos faltantes
-
-- Hacer Fork 
-- Clonar el fork
-- Hacer el branch `git checkout -b issue/13_location`
-- Opcional  hacer el merge `git fetch; git merge origin/master`
-
+-Hacer fork
+-Clonar el fork
+-Hacer el branch git branch -b issue/16_culture
 ## Objetivo
 
 Implementar la pantalla de lista y el formulario de creacion para una entidad asignada,
