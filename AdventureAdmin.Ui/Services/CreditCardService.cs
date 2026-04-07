@@ -26,17 +26,17 @@ public class CreditCardService(
 
     public async Task<bool> Guardar(Data.Models.CreditCard tarjeta)
     {
+        await context.CreditCards.AddAsync(tarjeta);
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
+    }
+
+    public async Task<bool> Actualizar(Data.Models.CreditCard tarjeta)
+    {
         var existe = await context.CreditCards.FindAsync(tarjeta.CreditCardId);
-        
-        if (existe != null)
-        {
-            context.Entry(existe).CurrentValues.SetValues(tarjeta);
-        }
-        else
-        {
-            await context.CreditCards.AddAsync(tarjeta);
-        }
-        
+        if (existe == null) return false;
+
+        context.Entry(existe).CurrentValues.SetValues(tarjeta);
         var cantidad = await context.SaveChangesAsync();
         return cantidad > 0;
     }

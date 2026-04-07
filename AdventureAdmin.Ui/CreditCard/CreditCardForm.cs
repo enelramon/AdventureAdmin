@@ -17,7 +17,7 @@ namespace AdventureAdmin.Ui.CreditCard
 
             numMonth.Minimum = 1;
             numMonth.Maximum = 12;
-            numYear.Minimum = 2024;
+            numYear.Minimum = 2025;
             numYear.Maximum = 2099;
         }
 
@@ -64,7 +64,15 @@ namespace AdventureAdmin.Ui.CreditCard
                 tarjeta.ExpYear = (short)numYear.Value;
                 tarjeta.ModifiedDate = DateTime.Now;
 
-                var paso = await _creditCardService.Guardar(tarjeta);
+                bool paso;
+            if (_tarjeta != null)
+            {
+                paso = await _creditCardService.Actualizar(tarjeta);
+            }
+            else
+            {
+                paso = await _creditCardService.Guardar(tarjeta);
+            }
 
                 if (!paso)
                 {
