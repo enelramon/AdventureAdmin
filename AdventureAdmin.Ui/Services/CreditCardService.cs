@@ -1,37 +1,51 @@
-﻿using AdventureAdmin.Data.Context;
+using AdventureAdmin.Data.Context;
 using Aplicada1.Core;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace AdventureAdmin.Ui.Services;
 
-
 public class CreditCardService(
     AdventureWorksContext context
     ) : IService<Data.Models.CreditCard, int>
 {
-    public async Task<bool> Guardar(Data.Models.CreditCard nuevaTarjeta)
+    public async Task<Data.Models.CreditCard?> Buscar(int id)
     {
-        await context.CreditCards.AddAsync(nuevaTarjeta);
+        return await context.CreditCards.FindAsync(id);
+    }
+
+    public async Task<bool> Eliminar(int id)
+    {
+        var tarjeta = await context.CreditCards.FindAsync(id);
+        if (tarjeta == null) return false;
+        
+        context.CreditCards.Remove(tarjeta);
         var cantidad = await context.SaveChangesAsync();
         return cantidad > 0;
     }
 
-    public Task<Data.Models.CreditCard?> Buscar(int id)
+    public async Task<bool> Guardar(Data.Models.CreditCard tarjeta)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> Eliminar(int id)
-    {
-        throw new NotImplementedException();
+        var existe = await context.CreditCards.FindAsync(tarjeta.CreditCardId);
+        
+        if (existe != null)
+        {
+            context.Entry(existe).CurrentValues.SetValues(tarjeta);
+        }
+        else
+        {
+            await context.CreditCards.AddAsync(tarjeta);
+        }
+        
+        var cantidad = await context.SaveChangesAsync();
+        return cantidad > 0;
     }
 
     public async Task<List<Data.Models.CreditCard>> GetList(Expression<Func<Data.Models.CreditCard, bool>> criterio)
     {
         return await context.CreditCards
+            .AsNoTracking()
             .Where(criterio)
             .ToListAsync();
     }
 }
-

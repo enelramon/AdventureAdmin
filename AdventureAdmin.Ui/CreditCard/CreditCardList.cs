@@ -1,7 +1,6 @@
-﻿using AdventureAdmin.Data.Context;
 using AdventureAdmin.Ui.Services;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using CreditCardModel = AdventureAdmin.Data.Models.CreditCard;
 
 namespace AdventureAdmin.Ui.CreditCard
 {
@@ -15,9 +14,9 @@ namespace AdventureAdmin.Ui.CreditCard
             _creditCardService = creditCardService;
         }
 
-        private void CreditCardList_Load(object sender, EventArgs e)
+        private async void CreditCardList_Load(object sender, EventArgs e)
         {
-            RefrescarDatos();
+            await RefrescarDatos();
         }
 
         private async Task RefrescarDatos()
@@ -49,7 +48,35 @@ namespace AdventureAdmin.Ui.CreditCard
         private async void refrescarButton_Click(object sender, EventArgs e)
         {
             await RefrescarDatos();
+        }
 
+        private void dgvCards_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private async void modificarButton_Click(object sender, EventArgs e)
+        {
+            if (dgvCards.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione una tarjeta para modificar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var tarjeta = dgvCards.CurrentRow.DataBoundItem as CreditCardModel;
+            
+            if (tarjeta == null)
+            {
+                MessageBox.Show("No se pudo obtener la tarjeta seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var form = new CreditCardForm(_creditCardService, tarjeta);
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                await RefrescarDatos();
+            }
         }
     }
 }

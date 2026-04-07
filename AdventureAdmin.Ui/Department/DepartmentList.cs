@@ -85,7 +85,7 @@ namespace AdventureAdmin.Ui.Department
 
         }
 
-        private async Task EliminarAsync(int id)
+        private async Task EliminarAsync(short id)
         {
             try
             {

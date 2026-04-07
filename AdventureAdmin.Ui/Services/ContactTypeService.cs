@@ -1,18 +1,15 @@
 using AdventureAdmin.Data.Context;
-using AdventureAdmin.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
+using ContactTypeModel = AdventureAdmin.Data.Models.ContactType;
 
 namespace AdventureAdmin.Ui.Services;
 
-public class ContactTypeService (
+public class ContactTypeService(
     AdventureWorksContext context
-) : Aplicada1.Core.IService<ContactType, int>
+) : Aplicada1.Core.IService<ContactTypeModel, int>
 {
-    public async Task<ContactType?> Buscar(int id)
+    public async Task<ContactTypeModel?> Buscar(int id)
     {
         return await context.ContactTypes.FindAsync(id);
     }
@@ -27,16 +24,27 @@ public class ContactTypeService (
         return cantidad > 0;
     }
 
-    public async Task<List<ContactType>> GetList(Expression<Func<ContactType, bool>> criterio)
+    public async Task<List<ContactTypeModel>> GetList(Expression<Func<ContactTypeModel, bool>> criterio)
     {
         return await context.ContactTypes
+            .AsNoTracking()
             .Where(criterio)
             .ToListAsync();
     }
 
-    public async Task<bool> Guardar(Data.Models.ContactType entity)
+    public async Task<bool> Guardar(ContactTypeModel entity)
     {
-        await context.ContactTypes.AddAsync(entity);
+        var existe = await context.ContactTypes.FindAsync(entity.ContactTypeId);
+        
+        if (existe != null)
+        {
+            context.Entry(existe).CurrentValues.SetValues(entity);
+        }
+        else
+        {
+            await context.ContactTypes.AddAsync(entity);
+        }
+        
         var cantidad = await context.SaveChangesAsync();
         return cantidad > 0;
     }

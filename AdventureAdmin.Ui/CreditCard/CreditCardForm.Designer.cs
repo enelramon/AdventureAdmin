@@ -152,6 +152,7 @@
             Margin = new Padding(4, 5, 4, 5);
             Name = "CreditCardForm";
             Text = "Crear Tarjeta de Credito";
+            Load += CreditCardForm_Load;
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ((System.ComponentModel.ISupportInitialize)numMonth).EndInit();
             ((System.ComponentModel.ISupportInitialize)numYear).EndInit();

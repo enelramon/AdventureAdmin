@@ -50,10 +50,16 @@ static class Program
                 sqlOptions.EnableRetryOnFailure();
             }));
 
+        //Forms
+        services.AddTransient<MainForm>();
+        services.AddTransient<CreditCardList>();
+        services.AddTransient<CreditCardForm>();
+        services.AddTransient<DepartmentList>();
+        services.AddTransient<DepartmentForm>();
+
         //Services 
         services.AddTransient<CreditCardService>();
         services.AddTransient<PersonService>();
-        services.AddTransient<DepartmentService>();
         services.AddTransient<DepartmentService>();
         services.AddTransient<ProductCategoryService>();
         services.AddTransient<ShiftService>();
@@ -65,7 +71,6 @@ static class Program
         services.AddTransient<LocationService>();
         services.AddTransient<SpecialOfferService>();
         services.AddTransient<CultureService>();
-        services.AddTransient<PersonService>();
         services.AddTransient<ContactTypeService>();
         services.AddTransient<ScrapReasonService>();
     }
