@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using AdventureAdmin.Data.Context;
-using AdventureAdmin.Data.Models;
-using AdventureAdmin.Ui.Services;
+﻿using AdventureAdmin.Data.Context;
 
 
 namespace AdventureAdmin.Ui.Location
