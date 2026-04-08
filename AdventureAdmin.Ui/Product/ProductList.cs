@@ -35,4 +35,9 @@ public partial class ProductList : Form
         var productForm = Program.ServiceProvider.GetRequiredService<ProductForm>();
         productForm.ShowDialog();
     }
+
+    private void productsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+
+    }
 }

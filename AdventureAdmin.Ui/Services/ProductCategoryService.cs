@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace AdventureAdmin.Ui.Services;
 
-internal class ProductCategoryService(
+public class ProductCategoryService(
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.ProductCategory, int>
 {
