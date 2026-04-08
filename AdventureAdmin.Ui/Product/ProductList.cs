@@ -13,9 +13,9 @@ public partial class ProductList : Form
         _context = context;
     }
 
-    private void ProductList_Load(object sender, EventArgs e)
+    private async void ProductList_Load(object sender, EventArgs e)
     {
-        LoadDataAsync();
+        await LoadDataAsync();
     }
     private async Task LoadDataAsync()
     {

@@ -31,8 +31,9 @@ public class LocationService(
     public async Task<List<Data.Models.Location>> GetList(Expression<Func<Data.Models.Location, bool>> criterio)
     {
         return await context.Locations
-            .AsNoTracking()
+          
             .Where(criterio)
+            .AsNoTracking()
             .ToListAsync();
     }
 

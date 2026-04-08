@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 
-
-
 namespace AdventureAdmin.Ui.Location
 {
     public partial class LocationList : Form
@@ -15,9 +13,9 @@ namespace AdventureAdmin.Ui.Location
             InitializeComponent();
             _context = context;
         }
-        private void LocationList_Load(object sender, EventArgs e)
+        private async void LocationList_Load(object sender, EventArgs e)
         {
-            LoadDataAsync();
+            await LoadDataAsync();
         }
         private async Task LoadDataAsync()
         {
@@ -32,16 +30,32 @@ namespace AdventureAdmin.Ui.Location
             }
         }
 
-        private void nuevoButton_Click(object sender, EventArgs e)
+        private async void nuevoButton_Click(object sender, EventArgs e)
         {
             var locationForm = Program.ServiceProvider.GetRequiredService<LocationForm>();
             locationForm.ShowDialog();
-            LoadDataAsync();
+            await LoadDataAsync();
         }
 
-        private void modificarButton_Click(object sender, EventArgs e)
+        private async void modificarButton_Click(object sender, EventArgs e)
         {
-           
+            var entidad = dataGridViewLocation.CurrentRow?.DataBoundItem as AdventureAdmin.Data.Models.Location;
+
+            if (entidad == null)
+            {
+                MessageBox.Show("Por favor seleccione un registro para modificar.");
+                return;
+            }
+
+            var form = ActivatorUtilities.
+                CreateInstance<LocationForm>(
+                Program.ServiceProvider, entidad);
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                await LoadDataAsync();
+            }
+
         }
     }
 }

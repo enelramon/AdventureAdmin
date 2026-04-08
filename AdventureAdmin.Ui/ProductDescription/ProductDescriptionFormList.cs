@@ -14,9 +14,9 @@ public partial class ProductDescriptionList : Form
         _context = context;
     }
 
-    private void ProductDescriptionList_Load(object sender, EventArgs e)
+    private async void ProductDescriptionList_Load(object sender, EventArgs e)
     {
-        LoadDataAsync();
+        await LoadDataAsync();
     }
 
     private async Task LoadDataAsync()
@@ -32,17 +32,17 @@ public partial class ProductDescriptionList : Form
         }
     }
 
-    private void nuevoButton_Click(object sender, EventArgs e)
+    private async void nuevoButton_Click(object sender, EventArgs e)
     {
         var productDescriptionForm = Program.ServiceProvider.GetRequiredService<ProductDescriptionForm>();
         productDescriptionForm.ShowDialog();
 
         // Recargar datos después de cerrar el formulario de nuevo
-        LoadDataAsync();
+        await LoadDataAsync();
     }
 
-    private void refrescarButton_Click(object sender, EventArgs e)
+    private async void refrescarButton_Click(object sender, EventArgs e)
     {
-        LoadDataAsync();
+        await LoadDataAsync();
     }
 }

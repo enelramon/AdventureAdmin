@@ -57,6 +57,7 @@ static class Program
 
         //Services 
         services.AddTransient<CreditCardService>();
+        services.AddTransient<LocationService>();
     }
 }
 

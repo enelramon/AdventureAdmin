@@ -15,9 +15,9 @@ namespace AdventureAdmin.Ui.CreditCard
             _creditCardService = creditCardService;
         }
 
-        private void CreditCardList_Load(object sender, EventArgs e)
+        private async void CreditCardList_Load(object sender, EventArgs e)
         {
-            RefrescarDatos();
+            await RefrescarDatos();
         }
 
         private async Task RefrescarDatos()
@@ -27,8 +27,8 @@ namespace AdventureAdmin.Ui.CreditCard
                 var tarjetas = await _creditCardService.GetList(c => true);
                 dgvCards.DataSource = tarjetas;
 
-                if (dgvCards.Columns["SalesOrderHeaders"] != null) dgvCards.Columns["SalesOrderHeaders"].Visible = false;
-                if (dgvCards.Columns["PersonCreditCards"] != null) dgvCards.Columns["PersonCreditCards"].Visible = false;
+                if (dgvCards.Columns["SalesOrderHeaders"] is { } col1) col1.Visible = false;
+                if (dgvCards.Columns["PersonCreditCards"] is { } col2) col2.Visible = false;
             }
             catch (Exception ex)
             {
