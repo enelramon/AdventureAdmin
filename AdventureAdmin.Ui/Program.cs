@@ -3,17 +3,24 @@ using AdventureAdmin.Ui;
 using AdventureAdmin.Ui.CreditCard;
 using AdventureAdmin.Ui.Department;
 using AdventureAdmin.Ui.Location;
+using AdventureAdmin.Ui.ContactType;
+using AdventureAdmin.Ui.Person;
 using AdventureAdmin.Ui.Product;
+using AdventureAdmin.Ui.ProductCategory;
 using AdventureAdmin.Ui.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using Aplicada1.Core;
+using AdventureAdmin.Ui.Culture;
+
 
 namespace AdventureAdmin;
 
 static class Program
 {
+
+// Para probar el commit
     public static ServiceProvider ServiceProvider { get; private set; }
     /// <summary>
     ///  The main entry point for the application.
@@ -50,11 +57,19 @@ static class Program
         services.AddTransient<CreditCardForm>();
         services.AddTransient<LocationList>();
         services.AddTransient<LocationForm>();
+        services.AddTransient<ContactTypeList>();
+        services.AddTransient<ContactTypeForm>();
         services.AddTransient<DepartmentList>();
         services.AddTransient<DepartmentForm>();
         services.AddTransient<ProductDescriptionList>();
         services.AddTransient<ProductDescriptionForm>();
-
+        services.AddTransient<PersonList>();
+        services.AddTransient<PersonForm>();
+        services.AddTransient<ProductCategoryList>();
+        services.AddTransient<ProductCategoryForm>();
+        services.AddTransient<CultureForm>();
+        services.AddTransient<CultureList>();
+      
         //Services 
         services.AddTransient<CreditCardService>();
         services.AddTransient<LocationService>();

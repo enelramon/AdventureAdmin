@@ -39,18 +39,21 @@ partial class ProductList
         productsDataGridView.AllowUserToDeleteRows = false;
         productsDataGridView.AllowUserToOrderColumns = true;
         productsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        productsDataGridView.Location = new Point(12, 38);
+        productsDataGridView.Location = new Point(10, 28);
+        productsDataGridView.Margin = new Padding(3, 2, 3, 2);
         productsDataGridView.Name = "productsDataGridView";
         productsDataGridView.ReadOnly = true;
         productsDataGridView.RowHeadersWidth = 51;
-        productsDataGridView.Size = new Size(776, 400);
+        productsDataGridView.Size = new Size(679, 300);
         productsDataGridView.TabIndex = 0;
+        productsDataGridView.CellContentClick += productsDataGridView_CellContentClick;
         // 
         // nuevoButton
         // 
-        nuevoButton.Location = new Point(12, 3);
+        nuevoButton.Location = new Point(10, 2);
+        nuevoButton.Margin = new Padding(3, 2, 3, 2);
         nuevoButton.Name = "nuevoButton";
-        nuevoButton.Size = new Size(94, 29);
+        nuevoButton.Size = new Size(82, 22);
         nuevoButton.TabIndex = 1;
         nuevoButton.Text = "✅ Nuevo";
         nuevoButton.UseVisualStyleBackColor = true;
@@ -58,11 +61,12 @@ partial class ProductList
         // 
         // ProductList
         // 
-        AutoScaleDimensions = new SizeF(8F, 20F);
+        AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(800, 450);
+        ClientSize = new Size(700, 338);
         Controls.Add(nuevoButton);
         Controls.Add(productsDataGridView);
+        Margin = new Padding(3, 2, 3, 2);
         Name = "ProductList";
         Text = "ProductList";
         Load += ProductList_Load;
