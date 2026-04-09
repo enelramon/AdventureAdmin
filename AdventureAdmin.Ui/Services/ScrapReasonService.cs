@@ -1,44 +1,36 @@
 ﻿using AdventureAdmin.Data.Context;
+using Aplicada1.Core;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Text;
 
-namespace AdventureAdmin.Ui.Services;
-
-public class ScrapReasonService (
-    AdventureWorksContext context
-    ) : Aplicada1.Core.IService<Data.Models.ScrapReason, int>
+namespace AdventureAdmin.Ui.Services
 {
-    public async Task<Data.Models.ScrapReason?> Buscar(int id)
+    public class ScrapReasonService(AdventureWorksContext context) : Aplicada1.Core.IService<Data.Models.ScrapReason, int>
     {
-       return await context.ScrapReasons
-            .FirstOrDefaultAsync(sr => sr.ScrapReasonId == id);
-    }
+        Task<Data.Models.ScrapReason?> IService<Data.Models.ScrapReason, int>.Buscar(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-    public async Task<bool> Eliminar(int id)
-    {
-       var scrapReason = await context.ScrapReasons
-            .FirstOrDefaultAsync(sr => sr.ScrapReasonId == id);
-        
-        if (scrapReason == null)
-            return false;
+        Task<bool> IService<Data.Models.ScrapReason, int>.Eliminar(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-        context.ScrapReasons.Remove(scrapReason);
-        var cantidad = await context.SaveChangesAsync();
-        
-        return cantidad > 0;
-    }
+        public async Task<List<Data.Models.ScrapReason>>GetList(Expression<Func<Data.Models.ScrapReason, bool>> criterio)
+        {
+            return await context.ScrapReasons.Where(criterio).ToListAsync();
 
-    public async Task<List<Data.Models.ScrapReason>> GetList(Expression<Func<Data.Models.ScrapReason, bool>> criterio)
-    {
-        return await context.ScrapReasons
-            .Where(criterio)
-            .ToListAsync();
-    }
+        }
 
-    public async Task<bool> Guardar(Data.Models.ScrapReason entidad)
-    {
-        await context.ScrapReasons.AddAsync(entidad);
-        var cantidad = await context.SaveChangesAsync();
-        return cantidad > 0;
+        async Task<bool> IService<Data.Models.ScrapReason, int>.Guardar(Data.Models.ScrapReason entidad)
+        {
+            await context.ScrapReasons.AddAsync(entidad);
+            var resultado = await context.SaveChangesAsync();
+            return resultado > 0;
+        }
     }
 }
