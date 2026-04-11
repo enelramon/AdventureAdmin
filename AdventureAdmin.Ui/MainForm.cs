@@ -4,6 +4,7 @@ using AdventureAdmin.Ui.Location;
 using AdventureAdmin.Data.Models;
 using AdventureAdmin.Ui.ContactType;
 using AdventureAdmin.Ui.Product;
+using AdventureAdmin.Ui.ShipMethod;
 using AdventureAdmin.Ui.ProductCategory;
 using Microsoft.Extensions.DependencyInjection;
 using AdventureAdmin.Ui.Culture;
@@ -46,7 +47,8 @@ public partial class MainForm : Form
 
     private void shipMethodToolStripMenuItem_Click(object sender, EventArgs e)
     {
-
+        var shipMethodList = Program.ServiceProvider.GetRequiredService<ShipMethodList>();
+        shipMethodList.Show();
     }
 
     private void phoneNumberTypeToolStripMenuItem_Click(object sender, EventArgs e)
