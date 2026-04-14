@@ -6,6 +6,7 @@ using AdventureAdmin.Ui.Location;
 using AdventureAdmin.Ui.ContactType;
 using AdventureAdmin.Ui.Person;
 using AdventureAdmin.Ui.Product;
+using AdventureAdmin.Ui.ShipMethod;
 using AdventureAdmin.Ui.ProductCategory;
 using AdventureAdmin.Ui.Services;
 using Microsoft.EntityFrameworkCore;
@@ -54,6 +55,8 @@ static class Program
         services.AddTransient<MainForm>();
         services.AddTransient<ProductList>();
         services.AddTransient<ProductForm>();
+        services.AddTransient<ShipMethodList>();
+        services.AddTransient<ShipMethodForm>();
         services.AddTransient<CreditCardList>();
         services.AddTransient<CreditCardForm>();
         services.AddTransient<LocationList>();
@@ -75,8 +78,10 @@ static class Program
       
         //Services 
         services.AddTransient<CreditCardService>();
+        services.AddTransient<ShipMethodService>();
         services.AddTransient<PersonService>();
         services.AddTransient<DepartmentService>();
+        services.AddTransient<LocationService>();
         //services.AddTransient<CreditCardService>();
         //services.AddTransient<ProductCategoryService>();
         //services.AddTransient<CurrencyService>();
@@ -87,7 +92,6 @@ static class Program
         //services.AddTransient<ProductDescriptionService>();
         //services.AddTransient<AddressTypeService>();
         //services.AddTransient<BusinessEntityService>();
-        //services.AddTransient<LocationService>();
         //services.AddTransient<SpecialOfferService>();
         //services.AddTransient<CultureService>();
         //services.AddTransient<PersonService>();
@@ -95,4 +99,3 @@ static class Program
         services.AddTransient<ScrapReasonService>();
     }
 }
-

@@ -16,8 +16,7 @@ public class DepartmentService(
 
     public async Task<bool> Eliminar(int id)
     {
-        var department = await context.Departments
-            .FirstOrDefaultAsync(d => d.DepartmentId == id);
+        var department = await context.Departments.FindAsync((short)id);
 
         if (department == null)
             return false;
@@ -30,12 +29,13 @@ public class DepartmentService(
 
     public async Task<bool> Guardar(Data.Models.Department entidad)
     {
-        await context.Departments.AddAsync(entidad);
-        var cantidad = await context.SaveChangesAsync();
-        return cantidad > 0;
+        if (entidad.DepartmentId == 0)
+            return await Insertar(entidad);
+        else
+            return await Actualizar(entidad);
     }
 
-    public async Task<List<Data.Models.Department>> GetList(Expression<Func<Data.Models.Department, bool>> criterio)
+        public async Task<List<Data.Models.Department>> GetList(Expression<Func<Data.Models.Department, bool>> criterio)
     {
         return await context.Departments
             .AsNoTracking()
@@ -45,7 +45,21 @@ public class DepartmentService(
 
     public async Task<bool> Actualizar(Data.Models.Department entidad)
     {
+        entidad.ModifiedDate = DateTime.Now;
+        var local = context.Departments.Local.FirstOrDefault(entry => entry.DepartmentId == entidad.DepartmentId);
+
+        if (local != null)
+        {
+            context.Entry(local).State = EntityState.Detached;
+        }
         context.Entry(entidad).State = EntityState.Modified;
+        return await context.SaveChangesAsync() > 0;
+    }
+
+    public async Task<bool> Insertar(Data.Models.Department entidad)
+    {
+        entidad.ModifiedDate = DateTime.Now;
+       await context.Departments.AddAsync(entidad);
         return await context.SaveChangesAsync() > 0;
     }
 }

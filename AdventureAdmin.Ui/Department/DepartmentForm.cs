@@ -1,24 +1,16 @@
-﻿using AdventureAdmin.Data.Context;
-using AdventureAdmin.Data.Models;
-using AdventureAdmin.Ui.Services;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using AdventureAdmin.Ui.Services;
 
 namespace AdventureAdmin.Ui
 {
     public partial class DepartmentForm : Form
     {
         private readonly DepartmentService _service;
-        private readonly Data.Models.Department? _entidad;
+        private Data.Models.Department? _entidad;
 
-        // Constructor para crear nuevo
         public DepartmentForm(DepartmentService service) : this(service, null)
         {
         }
 
-        // Constructor para editar
         public DepartmentForm(DepartmentService service, Data.Models.Department? entidad)
         {
             InitializeComponent();
@@ -54,23 +46,48 @@ namespace AdventureAdmin.Ui
 
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (_entidad == null)
+            {
+                _entidad = new Data.Models.Department();
+            }
+            else
+            {
+                bool huboCambios = _entidad.Name != txtName.Text || _entidad.GroupName != txtGroupName.Text;
+
+                if (!huboCambios)
+                {
+                    this.Close();
+                    return;
+                }
+            }
+
+            _entidad.Name = txtName.Text;
+            _entidad.GroupName = txtGroupName.Text;
+
             if (!ValidateForm()) return;
 
             try
             {
                 btnGuardar.Enabled = false;
 
-                if (_entidad == null)
-                    await Insertar();
+                bool seGuardo = await _service.Guardar(_entidad);
+
+                if (seGuardo)
+                {
+                    string mensaje = (_entidad.DepartmentId == 0)
+                        ? "Departamento creado correctamente."
+                        : "Departamento actualizado correctamente.";
+
+                    MessageBox.Show(mensaje, "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
                 else
-                    await Actualizar();
-
-                MessageBox.Show(
-                    _entidad == null ? "Departamento creado correctamente." : "Departamento actualizado correctamente.",
-                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                {
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -81,36 +98,6 @@ namespace AdventureAdmin.Ui
             {
                 btnGuardar.Enabled = true;
             }
-        }
-
-        private async Task Insertar()
-        {
-            var department = new Data.Models.Department
-            {
-                Name = txtName.Text.Trim(),
-                GroupName = txtGroupName.Text.Trim(),
-                ModifiedDate = DateTime.Now
-            };
-
-            await _service.Guardar(department);
-        }
-
-        private async Task Actualizar()
-        {
-            var department = await _service.Buscar(_entidad!.DepartmentId);
-
-            if (department == null)
-            {
-                MessageBox.Show("El registro no existe.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            department.Name = txtName.Text.Trim();
-            department.GroupName = txtGroupName.Text.Trim();
-            department.ModifiedDate = DateTime.Now;
-
-            await _service.Actualizar(department);
         }
 
         private bool ValidateForm()
@@ -141,7 +128,6 @@ namespace AdventureAdmin.Ui
 
         private void label3_Click(object sender, EventArgs e)
         {
-
         }
     }
 }
