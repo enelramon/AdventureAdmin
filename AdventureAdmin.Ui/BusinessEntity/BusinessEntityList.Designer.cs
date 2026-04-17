@@ -64,6 +64,7 @@
             Controls.Add(Guardar);
             Name = "BusinessEntityList";
             Text = "BusinessEntityList";
+            Load += BusinessEntityList_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }

@@ -20,41 +20,41 @@ namespace AdventureAdmin.Ui.Business_Entity
             _context = context;
         }
 
-        private async void BusinessEntityList_Load(object sender, EventArgs e)
+        // 1. Al cargar la lista, usamos el descarte "_" para que cargue de inmediato
+        private void BusinessEntityList_Load(object sender, EventArgs e)
         {
-
-            await LoadDataAsync();
+            _ = LoadDataAsync();
         }
 
+        // 2. Método de carga igual al de tu amigo
         private async Task LoadDataAsync()
         {
             try
             {
-               
-                var lista = await _context.BusinessEntities
-                    .AsNoTracking() 
-                                    .ToListAsync();
+                // Limpiamos el rastreo para que traiga lo nuevo que acabas de guardar
+                _context.ChangeTracker.Clear();
 
-                // PASO 3: Asignamos al Grid
+                var lista = await _context.BusinessEntities.AsNoTracking().ToListAsync();
+
                 dataGridView1.DataSource = lista;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error de carga: {ex.Message}");
+                MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private async void btnNuevo_Click(object sender, EventArgs e)
+        private void btnNuevo_Click(object sender, EventArgs e)
         {
             try
             {
-               
                 var form = Program.ServiceProvider.GetRequiredService<BusinessEntityForm>();
 
+                // Si el usuario guardó con éxito (OK), recargamos la tabla
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    await Task.Delay(100);
-                    await LoadDataAsync();
+                    _ = LoadDataAsync();
                 }
             }
             catch (Exception ex)
@@ -65,7 +65,7 @@ namespace AdventureAdmin.Ui.Business_Entity
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-
+            // Evento vacío
         }
     }
 }

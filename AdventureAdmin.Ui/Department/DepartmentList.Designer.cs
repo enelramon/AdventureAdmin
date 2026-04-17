@@ -36,10 +36,13 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(2, 68);
+            dataGridView1.Location = new Point(3, 113);
+            dataGridView1.Margin = new Padding(4, 5, 4, 5);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(797, 384);
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(1139, 640);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // button1
             // 
@@ -47,9 +50,10 @@
             button1.BackColor = Color.Lime;
             button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(11, 16);
+            button1.Location = new Point(16, 27);
+            button1.Margin = new Padding(4, 5, 4, 5);
             button1.Name = "button1";
-            button1.Size = new Size(106, 30);
+            button1.Size = new Size(151, 50);
             button1.TabIndex = 1;
             button1.Text = "Nuevo";
             button1.UseVisualStyleBackColor = false;
@@ -57,11 +61,12 @@
             // 
             // DepartmentList
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1143, 750);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "DepartmentList";
             Text = "Departamentos";
             Load += DepartmentList_Load;

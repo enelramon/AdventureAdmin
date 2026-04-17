@@ -29,23 +29,23 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guardar = new Button();
+            btnGuardar = new Button();
             errorProvider1 = new ErrorProvider(components);
             label2 = new Label();
             txtGuid = new TextBox();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
-            // Guardar
+            // btnGuardar
             // 
-            Guardar.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Guardar.Location = new Point(242, 255);
-            Guardar.Name = "Guardar";
-            Guardar.Size = new Size(112, 34);
-            Guardar.TabIndex = 8;
-            Guardar.Text = "Guardar";
-            Guardar.UseVisualStyleBackColor = true;
-            Guardar.Click += Guardar_Click;
+            btnGuardar.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGuardar.Location = new Point(242, 255);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(112, 34);
+            btnGuardar.TabIndex = 8;
+            btnGuardar.Text = "Guardar";
+            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // errorProvider1
             // 
@@ -74,11 +74,12 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(Guardar);
+            Controls.Add(btnGuardar);
             Controls.Add(txtGuid);
             Controls.Add(label2);
             Name = "BusinessEntityForm";
             Text = "BusinessEntityForm  ";
+            Load += BusinessEntityForm_Load;
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -86,7 +87,7 @@
 
         #endregion
         private TextBox textBox3;
-        private Button Guardar;
+        private Button btnGuardar;
         private ErrorProvider errorProvider1;
         private TextBox txtGuid;
         private Label label2;

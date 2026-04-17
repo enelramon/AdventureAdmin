@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using Aplicada1.Core;
+using AdventureAdmin.Data.Models;
+using AdventureAdmin.Ui.Business_Entity;
 
 namespace AdventureAdmin;
 
@@ -57,9 +59,12 @@ static class Program
         services.AddTransient<ProductDescriptionForm>();
         services.AddTransient<PersonList>();
         services.AddTransient<PersonForm>();
+        services.AddTransient<BusinessEntityForm>();
+        services.AddTransient<BusinessEntityList>();
 
         //Services 
         services.AddTransient<CreditCardService>();
-    }
+        services.AddTransient<BusinessEntityService>();
+    }   
 }
 

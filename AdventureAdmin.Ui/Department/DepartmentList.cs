@@ -23,7 +23,7 @@ namespace AdventureAdmin.Ui.Department
 
         private void button1_Click(object sender, EventArgs e)
         {
-                   
+
             // Llamamos a su formulario de creación
             var form = Program.ServiceProvider.GetRequiredService<DepartmentForm>();
 
@@ -51,6 +51,11 @@ namespace AdventureAdmin.Ui.Department
             {
                 MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
