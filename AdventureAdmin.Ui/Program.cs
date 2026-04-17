@@ -70,8 +70,23 @@ static class Program
         services.AddTransient<ProductDescriptionForm>();
         services.AddTransient<PersonList>();
         services.AddTransient<PersonForm>();
+        services.AddTransient<ProductCategoryList>();
+        services.AddTransient<ProductCategoryForm>();
+        services.AddTransient<CultureForm>();
+        services.AddTransient<CultureList>();
+        services.AddTransient<BusinessEntityForm>();
+        services.AddTransient<BusinessEntityList>();
+
+
 
         //Services 
         services.AddTransient<CreditCardService>();
+        services.AddTransient<ShipMethodService>();
+        services.AddTransient<PersonService>();
+        services.AddTransient<DepartmentService>();
+        services.AddTransient<CultureService>();
+        services.AddTransient<LocationService>();
+        services.AddTransient<BusinessEntityService>();
+
     }
 }
