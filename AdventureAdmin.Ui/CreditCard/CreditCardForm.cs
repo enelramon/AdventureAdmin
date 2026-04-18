@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using AdventureAdmin.Data.Context;
 using AdventureAdmin.Data.Models;
@@ -9,17 +9,27 @@ namespace AdventureAdmin.Ui.CreditCard
     public partial class CreditCardForm : Form
     {
         private readonly CreditCardService _creditCardService;
+        private Data.Models.CreditCard? _tarjetaExistente;
 
         public CreditCardForm(CreditCardService creditCardService)
         {
             InitializeComponent();
             _creditCardService = creditCardService;
 
-
             numMonth.Minimum = 1;
             numMonth.Maximum = 12;
             numYear.Minimum = 2024;
             numYear.Maximum = 2099;
+        }
+
+        public void SetTarjeta(Data.Models.CreditCard tarjeta)
+        {
+            _tarjetaExistente = tarjeta;
+            this.Text = "Editar Tarjeta";
+            txtCardType.Text = tarjeta.CardType;
+            txtCardNumber.Text = tarjeta.CardNumber;
+            numMonth.Value = tarjeta.ExpMonth;
+            numYear.Value = tarjeta.ExpYear;
         }
 
         private async void btnGuardar_Click(object sender, EventArgs e)
@@ -41,16 +51,19 @@ namespace AdventureAdmin.Ui.CreditCard
 
             try
             {
-                var nuevaTarjeta = new AdventureAdmin.Data.Models.CreditCard
-                {
-                    CardType = txtCardType.Text,
-                    CardNumber = txtCardNumber.Text,
-                    ExpMonth = (byte)numMonth.Value,
-                    ExpYear = (short)numYear.Value,
-                    ModifiedDate = DateTime.Now
-                };
+                var tarjeta = _tarjetaExistente ?? new AdventureAdmin.Data.Models.CreditCard();
 
-                var paso = await _creditCardService.Guardar(nuevaTarjeta);
+                tarjeta.CardType = txtCardType.Text;
+                tarjeta.CardNumber = txtCardNumber.Text;
+                tarjeta.ExpMonth = (byte)numMonth.Value;
+                tarjeta.ExpYear = (short)numYear.Value;
+
+                if (_tarjetaExistente == null)
+                {
+                    tarjeta.ModifiedDate = DateTime.Now;
+                }
+
+                var paso = await _creditCardService.Guardar(tarjeta);
 
                 if (!paso)
                 {
