@@ -1,6 +1,6 @@
-﻿namespace AdventureAdmin.Ui.Business_Entity
+﻿namespace AdventureAdmin.Ui.PhoneNumberType
 {
-    partial class Business_Entity_list
+    partial class PhoneNumberTypeList
     {
         /// <summary>
         /// Required designer variable.
@@ -28,46 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
+            dgvPhoneNumberTypes = new DataGridView();
             button1 = new Button();
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPhoneNumberTypes).BeginInit();
             SuspendLayout();
+            // 
+            // dgvPhoneNumberTypes
+            // 
+            dgvPhoneNumberTypes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPhoneNumberTypes.Location = new Point(25, 57);
+            dgvPhoneNumberTypes.Name = "dgvPhoneNumberTypes";
+            dgvPhoneNumberTypes.Size = new Size(558, 263);
+            dgvPhoneNumberTypes.TabIndex = 0;
             // 
             // button1
             // 
-            button1.Location = new Point(15, 7);
-            button1.Margin = new Padding(2, 2, 2, 2);
+            button1.Location = new Point(25, 17);
             button1.Name = "button1";
-            button1.Size = new Size(78, 20);
-            button1.TabIndex = 0;
-            button1.Text = "Inicio";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 1;
+            button1.Text = "Nuevo";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(1, 41);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(559, 226);
-            dataGridView1.TabIndex = 1;
-            // 
-            // Business_Entity_list
+            // PhoneNumberTypeList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(561, 270);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(639, 332);
             Controls.Add(button1);
-            Margin = new Padding(2, 2, 2, 2);
-            Name = "Business_Entity_list";
-            Text = "Business_Entity_list";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Controls.Add(dgvPhoneNumberTypes);
+            Name = "PhoneNumberTypeList";
+            Text = "PhoneNumberTypeList";
+            ((System.ComponentModel.ISupportInitialize)dgvPhoneNumberTypes).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
+        private DataGridView dgvPhoneNumberTypes;
+        private Button btnNuevo;
         private Button button1;
-        private DataGridView dataGridView1;
     }
 }

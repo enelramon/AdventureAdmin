@@ -1,4 +1,4 @@
-﻿namespace AdventureAdmin.Ui.CreditCard
+namespace AdventureAdmin.Ui.CreditCard
 {
     partial class CreditCardList
     {
@@ -31,6 +31,8 @@
             dgvCards = new DataGridView();
             refrescarButton = new Button();
             nuevoButton = new Button();
+            modificarButton = new Button();
+            eliminarButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCards).BeginInit();
             SuspendLayout();
             // 
@@ -47,7 +49,7 @@
             // 
             // refrescarButton
             // 
-            refrescarButton.Location = new Point(113, 12);
+            refrescarButton.Location = new Point(307, 12);
             refrescarButton.Name = "refrescarButton";
             refrescarButton.Size = new Size(94, 29);
             refrescarButton.TabIndex = 4;
@@ -65,11 +67,33 @@
             nuevoButton.UseVisualStyleBackColor = true;
             nuevoButton.Click += nuevoButton_Click;
             // 
+            // modificarButton
+            // 
+            modificarButton.Location = new Point(113, 12);
+            modificarButton.Name = "modificarButton";
+            modificarButton.Size = new Size(94, 29);
+            modificarButton.TabIndex = 5;
+            modificarButton.Text = "✏️ Modificar";
+            modificarButton.UseVisualStyleBackColor = true;
+            modificarButton.Click += modificarButton_Click;
+            // 
+            // eliminarButton
+            // 
+            eliminarButton.Location = new Point(213, 12);
+            eliminarButton.Name = "eliminarButton";
+            eliminarButton.Size = new Size(94, 29);
+            eliminarButton.TabIndex = 6;
+            eliminarButton.Text = "🗑️ Eliminar";
+            eliminarButton.UseVisualStyleBackColor = true;
+            eliminarButton.Click += eliminarButton_Click;
+            // 
             // CreditCardList
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(633, 426);
+            Controls.Add(eliminarButton);
+            Controls.Add(modificarButton);
             Controls.Add(refrescarButton);
             Controls.Add(nuevoButton);
             Controls.Add(dgvCards);
@@ -86,5 +110,7 @@
         private DataGridView dgvCards;
         private Button refrescarButton;
         private Button nuevoButton;
+        private Button modificarButton;
+        private Button eliminarButton;
     }
 }

@@ -30,6 +30,7 @@
         {
             dataGridViewLocation = new DataGridView();
             btnNuevo = new Button();
+            btnModificar = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewLocation).BeginInit();
             SuspendLayout();
             // 
@@ -52,11 +53,22 @@
             btnNuevo.UseVisualStyleBackColor = true;
             btnNuevo.Click += nuevoButton_Click;
             // 
+            // btnModificar
+            // 
+            btnModificar.Location = new Point(134, 12);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(94, 29);
+            btnModificar.TabIndex = 2;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
+            // 
             // LocationList
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1064, 683);
+            Controls.Add(btnModificar);
             Controls.Add(btnNuevo);
             Controls.Add(dataGridViewLocation);
             Name = "LocationList";
@@ -70,5 +82,6 @@
 
         private DataGridView dataGridViewLocation;
         private Button btnNuevo;
+        private Button btnModificar;
     }
 }

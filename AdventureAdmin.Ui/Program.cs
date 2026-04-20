@@ -6,6 +6,7 @@ using AdventureAdmin.Ui.Location;
 using AdventureAdmin.Ui.ContactType;
 using AdventureAdmin.Ui.Person;
 using AdventureAdmin.Ui.Product;
+using AdventureAdmin.Ui.ShipMethod;
 using AdventureAdmin.Ui.ProductCategory;
 using AdventureAdmin.Ui.Services;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using Aplicada1.Core;
 using AdventureAdmin.Ui.Culture;
+using AdventureAdmin.Data.Models;
+using AdventureAdmin.Ui.Business_Entity;
 
 
 namespace AdventureAdmin;
@@ -53,6 +56,8 @@ static class Program
         services.AddTransient<MainForm>();
         services.AddTransient<ProductList>();
         services.AddTransient<ProductForm>();
+        services.AddTransient<ShipMethodList>();
+        services.AddTransient<ShipMethodForm>();
         services.AddTransient<CreditCardList>();
         services.AddTransient<CreditCardForm>();
         services.AddTransient<LocationList>();
@@ -69,11 +74,20 @@ static class Program
         services.AddTransient<ProductCategoryForm>();
         services.AddTransient<CultureForm>();
         services.AddTransient<CultureList>();
-      
+        services.AddTransient<BusinessEntityForm>();
+        services.AddTransient<BusinessEntityList>();
+
+
+
         //Services 
         services.AddTransient<CreditCardService>();
+        services.AddTransient<ShipMethodService>();
         services.AddTransient<PersonService>();
         services.AddTransient<DepartmentService>();
+        services.AddTransient<CultureService>();
+        services.AddTransient<LocationService>();
+        services.AddTransient<BusinessEntityService>();
+
         services.AddTransient<ContactTypeService>();
         //services.AddTransient<CreditCardService>();
         //services.AddTransient<ProductCategoryService>();
@@ -93,4 +107,3 @@ static class Program
         //>>>>>>>>> Temporary merge branch 2
     }
 }
-

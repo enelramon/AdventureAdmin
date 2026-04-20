@@ -1,30 +1,119 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using AdventureAdmin.Ui.Services;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using CultureModel = AdventureAdmin.Data.Models.Culture;
 
 namespace AdventureAdmin.Ui.Culture
 {
     public partial class CultureList : Form
     {
-        public CultureList()
+        private readonly CultureService _service;
+
+        public CultureList(CultureService service)
         {
             InitializeComponent();
+            _service = service;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CultureList_Load(object sender, EventArgs e)
         {
-            var Culture = Program.ServiceProvider.GetRequiredService<CultureForm>();
-            Culture.ShowDialog();
+            // Cargar datos al abrir el formulario
+            _ = LoadDataAsync();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async Task LoadDataAsync()
         {
+            try
+            {
+                // Obtenemos la lista desde el servicio
+                var culturas = await _service.GetList(c => true);
 
+                // Actualizamos el DataSource en el hilo de la UI
+                dataGridView1.DataSource = null; // Limpiar para refrescar
+                dataGridView1.DataSource = culturas;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e) // Botón Nuevo
+        {
+            var form = Program.ServiceProvider.GetRequiredService<CultureForm>();
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _ = LoadDataAsync();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e) // Botón Modificar
+        {
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un registro para modificar.", "Advertencia",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var entidad = (CultureModel)dataGridView1.CurrentRow.DataBoundItem;
+
+            // Creamos la instancia pasando la entidad seleccionada al constructor
+            var form = ActivatorUtilities.CreateInstance<CultureForm>(
+                Program.ServiceProvider, entidad);
+
+            if (form.ShowDialog(this) == DialogResult.OK)
+            {
+                _ = LoadDataAsync();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e) // Botón Eliminar
+        {
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un registro para eliminar.", "Advertencia",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var entidad = (CultureModel)dataGridView1.CurrentRow.DataBoundItem;
+
+            var result = MessageBox.Show(
+                $"¿Desea eliminar la cultura '{entidad.Name}' (ID: {entidad.CultureId})?",
+                "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                _ = EliminarAsync(entidad.CultureId);
+            }
+        }
+
+        private async Task EliminarAsync(string id)
+        {
+            try
+            {
+                var success = await _service.Eliminar(id);
+
+                if (success)
+                {
+                    MessageBox.Show("Cultura eliminada correctamente.", "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    await LoadDataAsync();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar la cultura.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

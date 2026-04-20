@@ -1,15 +1,6 @@
 ﻿using AdventureAdmin.Data.Context;
-using System.Threading.Tasks;
-using AdventureAdmin.Data.Models;
-using AdventureAdmin.Ui.Product;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 
 
 
@@ -24,9 +15,9 @@ namespace AdventureAdmin.Ui.Location
             InitializeComponent();
             _context = context;
         }
-        private async  void LocationList_Load(object sender, EventArgs e)
+        private async void LocationList_Load(object sender, EventArgs e)
         {
-             await LoadDataAsync();
+            await LoadDataAsync();
         }
         private async Task LoadDataAsync()
         {
@@ -41,12 +32,23 @@ namespace AdventureAdmin.Ui.Location
             }
         }
 
-        private  async void nuevoButton_Click(object sender, EventArgs e)
+        private async void nuevoButton_Click(object sender, EventArgs e)
         {
             var locationForm = Program.ServiceProvider.GetRequiredService<LocationForm>();
             locationForm.ShowDialog();
             await LoadDataAsync();
         }
-        
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            var entidad = (AdventureAdmin.Data.Models.Location)dataGridViewLocation.CurrentRow?.DataBoundItem;
+
+            var form = ActivatorUtilities.CreateInstance<LocationForm>(Program.ServiceProvider, entidad);
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                LoadDataAsync();
+            }
         }
     }
+}
