@@ -13,7 +13,6 @@ public class PersonService(
     public async Task<Data.Models.Person?> Buscar(int id)
     {
         return await context.People
-            
             .FirstOrDefaultAsync(p => p.BusinessEntityId == id);
 
     }
@@ -57,6 +56,7 @@ public class PersonService(
 
 
 public async Task<int> CrearBusinessEntity()
+
     {
         var entity = new BusinessEntity
         {
@@ -70,4 +70,3 @@ public async Task<int> CrearBusinessEntity()
         return entity.BusinessEntityId;
     }
 }
-

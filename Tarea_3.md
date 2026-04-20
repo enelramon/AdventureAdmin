@@ -14,7 +14,6 @@ siguiendo el patron de la funcionalidad `Product`.
 
 ## Patron de referencia — directorio `Product`
 
-```
 AdventureAdmin.Ui/
 +-- Product/
     +-- ProductList.cs       <- Form con DataGridView + boton "Nuevo"

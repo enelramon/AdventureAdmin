@@ -8,27 +8,63 @@ public class DepartmentService(
     AdventureWorksContext context
     ) : Aplicada1.Core.IService<Data.Models.Department, int>
 {
-    public Task<Data.Models.Department?> Buscar(int id)
+    public async Task<Data.Models.Department?> Buscar(int id)
     {
-        throw new NotImplementedException();
+        return await context.Departments
+           .FirstOrDefaultAsync(d => d.DepartmentId == ((short)id));
     }
 
-    public Task<bool> Eliminar(int id)
+    public async Task<bool> Eliminar(int id)
     {
-        throw new NotImplementedException();
+        var department = await context.Departments.FindAsync((short)id);
+
+        if (department == null)
+            return false;
+
+        context.Departments.Remove(department);
+        var cantidad = await context.SaveChangesAsync();
+
+        return cantidad > 0;
     }
 
     public async Task<bool> Guardar(Data.Models.Department entidad)
     {
-        await context.Departments.AddAsync(entidad);
-        var cantidad = await context.SaveChangesAsync();
-        return cantidad > 0;
+        if (entidad.DepartmentId == 0)
+            return await Insertar(entidad);
+        else
+            return await Actualizar(entidad);
     }
 
-    public async Task<List<Data.Models.Department>> GetList(Expression<Func<Data.Models.Department, bool>> criterio)
+        public async Task<List<Data.Models.Department>> GetList(Expression<Func<Data.Models.Department, bool>> criterio)
     {
         return await context.Departments
-        .Where(criterio)
-        .ToListAsync();
+            .AsNoTracking()
+            .Where(criterio)
+            .ToListAsync();
+    }
+
+    public async Task<bool> Actualizar(Data.Models.Department entidad)
+    {
+        entidad.ModifiedDate = DateTime.Now;
+        var local = context.Departments.Local.FirstOrDefault(entry => entry.DepartmentId == entidad.DepartmentId);
+
+        if (local != null)
+        {
+            context.Entry(local).State = EntityState.Detached;
+        }
+        context.Entry(entidad).State = EntityState.Modified;
+        return await context.SaveChangesAsync() > 0;
+    }
+
+    public async Task<bool> Existe(int id)
+    {
+        return await context.Departments.AnyAsync(a => a.DepartmentId == ((short)id));
+    }
+
+    public async Task<bool> Insertar(Data.Models.Department entidad)
+    {
+        entidad.ModifiedDate = DateTime.Now;
+       await context.Departments.AddAsync(entidad);
+        return await context.SaveChangesAsync() > 0;
     }
 }

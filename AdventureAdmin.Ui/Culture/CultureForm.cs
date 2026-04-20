@@ -1,4 +1,5 @@
 ﻿using AdventureAdmin.Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace AdventureAdmin.Ui.Culture
 {
@@ -15,7 +16,7 @@ namespace AdventureAdmin.Ui.Culture
         private void CultureForm_Load(object sender, EventArgs e)
         {
             button1.Text = "Guardar";
-            button1.Click += button1_Click;
+
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -26,11 +27,23 @@ namespace AdventureAdmin.Ui.Culture
             {
                 button1.Enabled = false;
 
+               // _context.ChangeTracker.Clear();
+
+                string idIngresado = textId.Text.Trim();
+
+                bool idExiste = await _context.Cultures.AnyAsync(c => c.CultureId == idIngresado);
+
+                if (idExiste)
+                {
+                    MessageBox.Show($"El ID '{idIngresado}' ya existe en el sistema.", "Validación",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 var culture = new AdventureAdmin.Data.Models.Culture
                 {
-                    CultureId = textId.Text.Trim(),
+                    CultureId = idIngresado,
                     Name = textName.Text.Trim(),
-                    ModifiedDate = DateTime.Now
                 };
 
                 _context.Cultures.Add(culture);
@@ -44,7 +57,8 @@ namespace AdventureAdmin.Ui.Culture
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al guardar: {ex.Message}", "Error",
+                // El mensaje de error ahora será mucho más limpio
+                MessageBox.Show($"Error al guardar: {ex.InnerException?.Message ?? ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
@@ -79,6 +93,12 @@ namespace AdventureAdmin.Ui.Culture
             }
 
             return true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

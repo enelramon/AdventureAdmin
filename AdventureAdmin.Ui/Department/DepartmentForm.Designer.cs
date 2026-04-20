@@ -33,9 +33,10 @@
             label2 = new Label();
             txtName = new TextBox();
             txtGroupName = new TextBox();
-            btnGuardar = new Button();
-            btnCancelar = new Button();
             errorProvider1 = new ErrorProvider(components);
+            btnCancelar = new Button();
+            label3 = new Label();
+            btnGuardar = new Button();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
@@ -43,7 +44,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(5, 13);
+            label1.Location = new Point(5, 63);
             label1.Name = "label1";
             label1.Size = new Size(158, 15);
             label1.TabIndex = 0;
@@ -54,7 +55,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(5, 42);
+            label2.Location = new Point(5, 130);
             label2.Name = "label2";
             label2.Size = new Size(111, 15);
             label2.TabIndex = 1;
@@ -63,59 +64,63 @@
             // 
             // txtName
             // 
-            txtName.Location = new Point(167, 10);
+            txtName.Location = new Point(5, 81);
             txtName.Name = "txtName";
-            txtName.Size = new Size(227, 23);
+            txtName.Size = new Size(231, 23);
             txtName.TabIndex = 2;
             // 
             // txtGroupName
             // 
-            txtGroupName.Location = new Point(120, 39);
+            txtGroupName.Location = new Point(5, 148);
             txtGroupName.Name = "txtGroupName";
-            txtGroupName.Size = new Size(274, 23);
+            txtGroupName.Size = new Size(231, 23);
             txtGroupName.TabIndex = 3;
             txtGroupName.TextChanged += txtGroupName_TextChanged;
-            // 
-            // btnGuardar
-            // 
-            btnGuardar.BackColor = Color.FromArgb(0, 192, 0);
-            btnGuardar.FlatStyle = FlatStyle.Popup;
-            btnGuardar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGuardar.ForeColor = Color.White;
-            btnGuardar.Location = new Point(2, 97);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(114, 37);
-            btnGuardar.TabIndex = 4;
-            btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = false;
-            btnGuardar.Click += btnGuardar_Click;
-            // 
-            // btnCancelar
-            // 
-            btnCancelar.BackColor = Color.Red;
-            btnCancelar.FlatStyle = FlatStyle.Popup;
-            btnCancelar.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCancelar.ForeColor = Color.White;
-            btnCancelar.Location = new Point(132, 97);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(114, 37);
-            btnCancelar.TabIndex = 5;
-            btnCancelar.TabStop = false;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = false;
-            btnCancelar.Click += btnCancelar_Click;
             // 
             // errorProvider1
             // 
             errorProvider1.ContainerControl = this;
             // 
+            // btnCancelar
+            // 
+            btnCancelar.BackColor = SystemColors.Control;
+            btnCancelar.Location = new Point(125, 186);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(111, 37);
+            btnCancelar.TabIndex = 5;
+            btnCancelar.Text = "❌ Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(5, 9);
+            label3.Name = "label3";
+            label3.Size = new Size(172, 25);
+            label3.TabIndex = 6;
+            label3.Text = "Department Form";
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.BackColor = SystemColors.Control;
+            btnGuardar.Location = new Point(5, 186);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(111, 37);
+            btnGuardar.TabIndex = 7;
+            btnGuardar.Text = "💾 Guardar";
+            btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
+            // 
             // DepartmentForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(442, 189);
-            Controls.Add(btnCancelar);
+            ClientSize = new Size(248, 255);
             Controls.Add(btnGuardar);
+            Controls.Add(label3);
+            Controls.Add(btnCancelar);
             Controls.Add(txtGroupName);
             Controls.Add(txtName);
             Controls.Add(label2);
@@ -134,8 +139,9 @@
         private Label label2;
         private TextBox txtName;
         private TextBox txtGroupName;
-        private Button btnGuardar;
-        private Button btnCancelar;
         private ErrorProvider errorProvider1;
+        private Button btnCancelar;
+        private Label label3;
+        private Button btnGuardar;
     }
 }

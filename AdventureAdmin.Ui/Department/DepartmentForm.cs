@@ -1,65 +1,94 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using AdventureAdmin.Data.Context;
-using AdventureAdmin.Data.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using AdventureAdmin.Ui.Services;
 
 namespace AdventureAdmin.Ui
 {
     public partial class DepartmentForm : Form
     {
-        private readonly AdventureWorksContext _context;
+        private readonly DepartmentService _service;
+        private Data.Models.Department? _entidad;
 
-        public DepartmentForm(AdventureWorksContext context)
+        public DepartmentForm(DepartmentService service) : this(service, null)
+        {
+        }
+
+        public DepartmentForm(DepartmentService service, Data.Models.Department? entidad)
         {
             InitializeComponent();
-            _context = context;
+            _service = service;
+            _entidad = entidad;
+
+            if (_entidad != null)
+                CargarDatos(_entidad);
         }
 
         private void DepartmentForm_Load(object sender, EventArgs e)
         {
+            btnGuardar.Text = _entidad == null ? "💾 Guardar" : "Actualizar";
+        }
 
+        private void CargarDatos(Data.Models.Department entidad)
+        {
+            txtName.Text = entidad.Name;
+            txtGroupName.Text = entidad.GroupName;
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void txtGroupName_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-
         }
 
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
+            bool esNuevo = (_entidad == null || _entidad.DepartmentId == 0);
+
+            if (_entidad == null)
+            {
+                _entidad = new Data.Models.Department();
+            }
+            else
+            {
+                bool huboCambios = _entidad.Name != txtName.Text || _entidad.GroupName != txtGroupName.Text;
+                if (!huboCambios)
+                {
+                    this.Close();
+                    return;
+                }
+            }
+
+            _entidad.Name = txtName.Text;
+            _entidad.GroupName = txtGroupName.Text;
+
             if (!ValidateForm()) return;
 
             try
             {
                 btnGuardar.Enabled = false;
 
-                var department = new AdventureAdmin.Data.Models.Department
+                bool seGuardo = await _service.Guardar(_entidad);
+
+                if (seGuardo)
                 {
-                    Name = txtName.Text.Trim(),
-                    GroupName = txtGroupName.Text.Trim(),
-                    ModifiedDate = DateTime.Now
-                };
+                    string mensaje = esNuevo
+                        ? "Departamento creado correctamente."
+                        : "Departamento actualizado correctamente.";
 
-                _context.Departments.Add(department);
-                await _context.SaveChangesAsync();
+                    MessageBox.Show(mensaje, "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                MessageBox.Show("Departamento creado correctamente.", "Éxito",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -70,8 +99,8 @@ namespace AdventureAdmin.Ui
             {
                 btnGuardar.Enabled = true;
             }
-
         }
+
         private bool ValidateForm()
         {
             errorProvider1.Clear();
@@ -94,8 +123,12 @@ namespace AdventureAdmin.Ui
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel; // alerta de que se canceló la operación
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
         }
     }
 }

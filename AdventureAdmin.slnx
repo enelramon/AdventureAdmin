@@ -4,5 +4,6 @@
   </Folder>
   <Project Path="AdventureAdmin.Data/AdventureAdmin.Data.csproj" />
   <Project Path="AdventureAdmin.Ui/AdventureAdmin.Ui.csproj" />
+  <Project Path="AdventureAdmin.Ui.Tests/AdventureAdmin.Ui.Tests.csproj" />
   <Project Path="AdventureAdmin.WebApi/AdventureAdmin.WebApi.csproj" />
 </Solution>
