@@ -16,8 +16,8 @@ public class ContactTypeService (AdventureWorksContext context) : Aplicada1.Core
         if (entidad.ContactTypeId == 0)
             context.ContactTypes.Add(entidad);
         else
-            context.ContactTypes.Update(entidad);
-
+                context.ContactTypes.Update(entidad);
+     
         return await context.SaveChangesAsync() > 0;
     }
     public async Task<Data.Models.ContactType?> Buscar(int id)
@@ -42,6 +42,13 @@ public class ContactTypeService (AdventureWorksContext context) : Aplicada1.Core
     {
         return await context.ContactTypes
             .Where(criterio)
+            .AsNoTracking()
             .ToListAsync();
+    }
+
+    public async Task<bool> Actualizar(Data.Models.ContactType entidad)
+    {
+        context.Entry(entidad).State = EntityState.Modified;
+        return await context.SaveChangesAsync() > 0;
     }
 }

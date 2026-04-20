@@ -74,6 +74,7 @@ static class Program
         services.AddTransient<CreditCardService>();
         services.AddTransient<PersonService>();
         services.AddTransient<DepartmentService>();
+        services.AddTransient<ContactTypeService>();
         //services.AddTransient<CreditCardService>();
         //services.AddTransient<ProductCategoryService>();
         //services.AddTransient<CurrencyService>();
@@ -88,9 +89,8 @@ static class Program
         //services.AddTransient<SpecialOfferService>();
         //services.AddTransient<CultureService>();
         //services.AddTransient<PersonService>();
-        //services.AddTransient<ContactTypeService>();
         //services.AddTransient<ScrapReasonService>();
->>>>>>>>> Temporary merge branch 2
+        //>>>>>>>>> Temporary merge branch 2
     }
 }
 

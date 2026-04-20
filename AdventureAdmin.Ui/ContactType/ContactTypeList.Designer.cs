@@ -28,21 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            checkBox1 = new CheckBox();
             dataGridView1 = new DataGridView();
+            button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(12, 5);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(61, 19);
-            checkBox1.TabIndex = 0;
-            checkBox1.Text = "Nuevo";
-            checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // dataGridView1
             // 
@@ -53,24 +43,44 @@
             dataGridView1.TabIndex = 1;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
+            // button1
+            // 
+            button1.Location = new Point(101, 5);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 2;
+            button1.Text = "Modificar";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(20, 5);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 3;
+            button2.Text = "Nuevo";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // ContactTypeList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(799, 417);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(dataGridView1);
-            Controls.Add(checkBox1);
             Name = "ContactTypeList";
             Text = "ContactTypeList";
-            Load += ContactTypeList_Load;
+            Load += ContactTypeList_LoadAsync;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private CheckBox checkBox1;
         private DataGridView dataGridView1;
+        private Button button1;
+        private Button button2;
     }
 }
