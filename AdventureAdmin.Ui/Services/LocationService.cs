@@ -45,6 +45,7 @@ public class LocationService(
     }
     public async Task<bool> Modificar(Data.Models.Location entidad)
     {
+        entidad.ModifiedDate = DateTime.Now;
         context.Entry(entidad).State = EntityState.Modified;
         return await context.SaveChangesAsync() > 0;
     }
