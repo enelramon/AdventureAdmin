@@ -39,17 +39,20 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(2, 95);
+            dataGridView1.Location = new Point(1, 63);
+            dataGridView1.Margin = new Padding(2, 2, 2, 2);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(797, 357);
+            dataGridView1.Size = new Size(666, 292);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // button1
             // 
             button1.AutoEllipsis = true;
             button1.BackColor = SystemColors.Control;
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(12, 48);
+            button1.Location = new Point(8, 29);
+            button1.Margin = new Padding(2, 2, 2, 2);
             button1.Name = "button1";
             button1.Size = new Size(106, 30);
             button1.TabIndex = 1;
@@ -60,9 +63,10 @@
             // btnModificar
             // 
             btnModificar.BackColor = SystemColors.Control;
-            btnModificar.Location = new Point(124, 48);
+            btnModificar.Location = new Point(118, 29);
+            btnModificar.Margin = new Padding(2, 2, 2, 2);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(105, 30);
+            btnModificar.Size = new Size(106, 30);
             btnModificar.TabIndex = 2;
             btnModificar.Text = "✏️ Modificar";
             btnModificar.UseVisualStyleBackColor = false;
@@ -72,7 +76,8 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(8, 5);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(155, 25);
             label1.TabIndex = 3;
@@ -81,9 +86,10 @@
             // btnEliminar
             // 
             btnEliminar.BackColor = SystemColors.Control;
-            btnEliminar.Location = new Point(235, 48);
+            btnEliminar.Location = new Point(228, 29);
+            btnEliminar.Margin = new Padding(2, 2, 2, 2);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(105, 30);
+            btnEliminar.Size = new Size(106, 30);
             btnEliminar.TabIndex = 4;
             btnEliminar.Text = "🗑️ Eliminar";
             btnEliminar.UseVisualStyleBackColor = false;
@@ -93,7 +99,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(667, 354);
             Controls.Add(btnEliminar);
             Controls.Add(label1);
             Controls.Add(btnModificar);

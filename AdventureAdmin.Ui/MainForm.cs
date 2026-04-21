@@ -8,7 +8,7 @@ using AdventureAdmin.Ui.ShipMethod;
 using AdventureAdmin.Ui.ProductCategory;
 using Microsoft.Extensions.DependencyInjection;
 using AdventureAdmin.Ui.Culture;
-using AdventureAdmin.Ui.ScrapReason;
+using AdventureAdmin.Ui.Business_Entity;
 
 namespace AdventureAdmin;
 
@@ -70,7 +70,8 @@ public partial class MainForm : Form
 
     private void businessEntityToolStripMenuItem_Click(object sender, EventArgs e)
     {
-
+        var businessEntityList = Program.ServiceProvider.GetRequiredService<BusinessEntityList>();
+        businessEntityList.Show();
     }
 
     private void locationToolStripMenuItem_Click(object sender, EventArgs e)

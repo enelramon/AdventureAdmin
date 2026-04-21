@@ -23,7 +23,7 @@ namespace AdventureAdmin.Ui
 
         private void DepartmentForm_Load(object sender, EventArgs e)
         {
-            btnGuardar.Text = _entidad == null ? "Crear" : "Actualizar";
+            btnGuardar.Text = _entidad == null ? "💾 Guardar" : "Actualizar";
         }
 
         private void CargarDatos(Data.Models.Department entidad)
@@ -46,6 +46,8 @@ namespace AdventureAdmin.Ui
 
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
+            bool esNuevo = (_entidad == null || _entidad.DepartmentId == 0);
+
             if (_entidad == null)
             {
                 _entidad = new Data.Models.Department();
@@ -53,7 +55,6 @@ namespace AdventureAdmin.Ui
             else
             {
                 bool huboCambios = _entidad.Name != txtName.Text || _entidad.GroupName != txtGroupName.Text;
-
                 if (!huboCambios)
                 {
                     this.Close();
@@ -74,7 +75,7 @@ namespace AdventureAdmin.Ui
 
                 if (seGuardo)
                 {
-                    string mensaje = (_entidad.DepartmentId == 0)
+                    string mensaje = esNuevo
                         ? "Departamento creado correctamente."
                         : "Departamento actualizado correctamente.";
 

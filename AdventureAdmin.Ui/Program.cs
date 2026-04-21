@@ -14,7 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using Aplicada1.Core;
 using AdventureAdmin.Ui.Culture;
-using AdventureAdmin.Ui.ScrapReason;
+using AdventureAdmin.Data.Models;
+using AdventureAdmin.Ui.Business_Entity;
 
 
 namespace AdventureAdmin;
@@ -73,29 +74,19 @@ static class Program
         services.AddTransient<ProductCategoryForm>();
         services.AddTransient<CultureForm>();
         services.AddTransient<CultureList>();
-        services.AddTransient<ScrapReasonList>();
-        services.AddTransient<ScrapReasonForm>();
-      
+        services.AddTransient<BusinessEntityForm>();
+        services.AddTransient<BusinessEntityList>();
+
+
+
         //Services 
         services.AddTransient<CreditCardService>();
         services.AddTransient<ShipMethodService>();
         services.AddTransient<PersonService>();
         services.AddTransient<DepartmentService>();
+        services.AddTransient<CultureService>();
         services.AddTransient<LocationService>();
-        //services.AddTransient<CreditCardService>();
-        //services.AddTransient<ProductCategoryService>();
-        //services.AddTransient<CurrencyService>();
-        //services.AddTransient<ShiftService>();
-        //services.AddTransient<CountryRegionService>();
-        //services.AddTransient<ShipMethodService>();
-        //services.AddTransient<PhoneNumberTypeService>();
-        //services.AddTransient<ProductDescriptionService>();
-        //services.AddTransient<AddressTypeService>();
-        //services.AddTransient<BusinessEntityService>();
-        //services.AddTransient<SpecialOfferService>();
-        //services.AddTransient<CultureService>();
-        //services.AddTransient<PersonService>();
-        //services.AddTransient<ContactTypeService>();
-        services.AddTransient<ScrapReasonService>();
+        services.AddTransient<BusinessEntityService>();
+
     }
 }

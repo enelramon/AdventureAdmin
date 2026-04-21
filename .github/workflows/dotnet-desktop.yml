@@ -53,7 +53,8 @@ jobs:
             "/o:enelramon",
             "/d:sonar.token=${{ secrets.SONAR_TOKEN }}",
             "/d:sonar.host.url=https://sonarcloud.io",
-            "/d:sonar.exclusions=**/AdventureAdmin.Data/**/*"
+            "/d:sonar.exclusions=**/AdventureAdmin.Data/**/*",
+            "/d:sonar.cs.opencover.reportsPaths=**/coverage.opencover.xml"
           )
           
           # Configuración adicional para PRs
@@ -66,4 +67,5 @@ jobs:
           
           .\.sonar\scanner\dotnet-sonarscanner @sonarBeginArgs
           dotnet build AdventureAdmin.slnx
+          dotnet test AdventureAdmin.slnx --no-build --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Exclude="[*]*Form,[*]*Form`1,[*]*Designer,[*]*Program"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"

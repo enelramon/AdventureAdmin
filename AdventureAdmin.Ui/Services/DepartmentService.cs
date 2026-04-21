@@ -11,7 +11,8 @@ public class DepartmentService(
     public async Task<Data.Models.Department?> Buscar(int id)
     {
         return await context.Departments
-           .FirstOrDefaultAsync(d => d.DepartmentId == id);
+           .AsNoTracking()
+           .FirstOrDefaultAsync(d => d.DepartmentId == ((short)id));
     }
 
     public async Task<bool> Eliminar(int id)
@@ -30,6 +31,9 @@ public class DepartmentService(
     public async Task<bool> Guardar(Data.Models.Department entidad)
     {
         if (entidad.DepartmentId == 0)
+            return await Insertar(entidad);
+
+        if (!await Existe(entidad.DepartmentId))
             return await Insertar(entidad);
         else
             return await Actualizar(entidad);
@@ -54,6 +58,11 @@ public class DepartmentService(
         }
         context.Entry(entidad).State = EntityState.Modified;
         return await context.SaveChangesAsync() > 0;
+    }
+
+    public async Task<bool> Existe(int id)
+    {
+        return await context.Departments.AnyAsync(a => a.DepartmentId == ((short)id));
     }
 
     public async Task<bool> Insertar(Data.Models.Department entidad)
