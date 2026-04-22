@@ -18,7 +18,15 @@ public async Task<bool> Guardar(Data.Models.CreditCard tarjeta)
         }
         else
         {
-            context.CreditCards.Update(tarjeta);
+            var exists = await context.CreditCards.FindAsync(tarjeta.CreditCardId);
+            if (exists == null)
+            {
+                await context.CreditCards.AddAsync(tarjeta);
+            }
+            else
+            {
+                context.CreditCards.Update(tarjeta);
+            }
         }
         var cantidad = await context.SaveChangesAsync();
         return cantidad > 0;
