@@ -75,6 +75,7 @@
             // 
             textBox1.Location = new Point(140, 102);
             textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
             textBox1.Size = new Size(178, 23);
             textBox1.TabIndex = 3;
             textBox1.TextChanged += textBox1_TextChanged;
@@ -108,6 +109,7 @@
             // 
             // dateTimePicker1
             // 
+            dateTimePicker1.Enabled = false;
             dateTimePicker1.Location = new Point(212, 178);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(200, 23);
