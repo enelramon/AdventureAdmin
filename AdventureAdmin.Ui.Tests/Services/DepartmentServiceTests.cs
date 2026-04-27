@@ -206,14 +206,17 @@ public class DepartmentServiceTests
     }
 
     [Fact]
-    public async Task Eliminar_CuandoNoEstaImplementado_LanzaNotImplementedException()
+    public async Task Eliminar_CuandoNoExisteDepartamento_RetornaFalse()
     {
         // Arrange
         await using var context = TestDbContextFactory.CreateContext(TestDbContextFactory.NewDatabaseName());
         var service = new DepartmentService(context);
 
-        // Act + Assert
-        await Assert.ThrowsAsync<NotImplementedException>(() => service.Eliminar(1));
+        // Act
+        var result = await service.Eliminar(1);
+
+        // Assert
+        Assert.False(result);
     }
 
     private static Data.Models.Department CreateDepartment(

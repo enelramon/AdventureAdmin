@@ -11,6 +11,7 @@ public class DepartmentService(
     public async Task<Data.Models.Department?> Buscar(int id)
     {
         return await context.Departments
+           .AsNoTracking()
            .FirstOrDefaultAsync(d => d.DepartmentId == ((short)id));
     }
 
@@ -30,6 +31,9 @@ public class DepartmentService(
     public async Task<bool> Guardar(Data.Models.Department entidad)
     {
         if (entidad.DepartmentId == 0)
+            return await Insertar(entidad);
+
+        if (!await Existe(entidad.DepartmentId))
             return await Insertar(entidad);
         else
             return await Actualizar(entidad);
