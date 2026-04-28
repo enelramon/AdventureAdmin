@@ -25,6 +25,15 @@ jobs:
 
       - name: Compilar solución
         run: dotnet build --configuration Release --no-restore
-
+  
       - name: Ejecutar tests
-        run: dotnet test --configuration Release --no-build --verbosity normal
+        run: dotnet test --configuration Release --no-build --verbosity normal --logger "trx;LogFileName=test_results.trx"
+    
+      - name: Publicar reporte de tests
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: "Resultados de tests"
+          path: "**/TestResults/*.trx"
+          reporter: "dotnet-trx"
+          fail-on-error: "false"
