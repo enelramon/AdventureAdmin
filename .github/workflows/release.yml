@@ -1,0 +1,38 @@
+name: .NET CD - Publish Release
+
+on:
+  push:
+    tags:
+      - 'v*' # El pipeline solo arranca si el tag empieza con 'v' (ej. v1.0.0, v2.1.3)
+
+permissions:
+  contents: write # Necesario para crear el Release en GitHub
+
+jobs:
+  publish-and-release:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+          include-prerelease: true
+
+      - name: Publicar proyecto Windows Forms
+        # Al igual que antes, ajusta la ruta a tu .csproj
+        run: dotnet publish "AdventureAdmin.Ui/AdventureAdmin.Ui.csproj" -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o ./publish_output
+
+      - name: Comprimir artefactos de publicación
+        run: Compress-Archive -Path ./publish_output/* -DestinationPath ./WinFormsApp-${{ github.ref_name }}.zip
+
+      - name: Crear GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          # github.ref_name tomará automáticamente el nombre del tag (ej. v1.0.0)
+          name: "Release ${{ github.ref_name }}" 
+          files: ./WinFormsApp-${{ github.ref_name }}.zip
+          generate_release_notes: true

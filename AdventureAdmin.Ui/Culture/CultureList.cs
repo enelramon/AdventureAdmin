@@ -13,11 +13,7 @@ namespace AdventureAdmin.Ui.Culture
         {
             InitializeComponent();
             _service = service;
-        }
-
-        private void CultureList_Load(object sender, EventArgs e)
-        {
-            // Cargar datos al abrir el formulario
+            // Cargar datos al inicializar el formulario para que la lista esté disponible al entrar
             _ = LoadDataAsync();
         }
 
@@ -114,6 +110,12 @@ namespace AdventureAdmin.Ui.Culture
                 MessageBox.Show($"Error al eliminar: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void CultureList_Load_1(object sender, EventArgs e)
+        {
+            // Cargar datos al abrir el formulario
+            _ = LoadDataAsync();
         }
     }
 }
