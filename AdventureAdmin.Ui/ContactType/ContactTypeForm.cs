@@ -1,4 +1,6 @@
 ﻿using AdventureAdmin.Data.Context;
+using AdventureAdmin.Ui.Services;
+using Aplicada1.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System.Windows.Forms;
@@ -8,11 +10,19 @@ namespace AdventureAdmin.Ui.ContactType
 {
     public partial class ContactTypeForm : Form
     {
-        private readonly AdventureWorksContext _context;
-        public ContactTypeForm(AdventureWorksContext context)
+        private readonly Data.Models.ContactType? _contactType;
+        private readonly ContactTypeService _service;
+
+        public ContactTypeForm(ContactTypeService service) : this(service, null) { }
+
+        public ContactTypeForm(ContactTypeService service, Data.Models.ContactType? entidad)
         {
             InitializeComponent();
-            _context = context;
+            _service = service;
+            _contactType = entidad;
+
+            if (_contactType != null)
+                CargarDatos(_contactType);
         }
 
         private async void button1_ClickAsync(object sender, EventArgs e)
@@ -22,26 +32,23 @@ namespace AdventureAdmin.Ui.ContactType
             try
             {
                 button1.Enabled = false;
-                var contactType = new Data.Models.ContactType
-                {
-                    Name = textBox2.Text,
-                    ModifiedDate = DateTime.Now
-                };
 
-                _context.ContactTypes.Add(contactType);
-                await _context.SaveChangesAsync();
+                if (_contactType == null)
+                    await Insertar();
+                else
+                    await Actualizar();
 
-                MessageBox.Show("Tipo de contacto guardado correctamente");
-                this.Close();
+                MessageBox.Show("Guardado correctamente");
+                DialogResult = DialogResult.OK;
+                Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Error al guardar: {ex.Message}", "Error",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}");
             }
             finally
             {
-                button1.Enabled = true;
+                button1.Enabled = true; 
             }
         }
 
@@ -77,6 +84,38 @@ namespace AdventureAdmin.Ui.ContactType
             }
 
             return valido;
+        }
+
+        private void CargarDatos(Data.Models.ContactType e)
+        {
+            textBox2.Text = e.Name;
+        }
+
+        private async Task Insertar()
+        {
+            var contactType = new Data.Models.ContactType
+            {
+                Name = textBox2.Text,
+                ModifiedDate = DateTime.Now
+            };
+
+            await _service.Guardar(contactType);
+        }
+
+        private async Task Actualizar()
+        {
+            var entidad = await _service.Buscar(_contactType.ContactTypeId);
+
+            if (entidad == null) return;
+
+            entidad.Name = textBox2.Text;
+            entidad.ModifiedDate = DateTime.Now;
+
+            await _service.Actualizar(entidad);
+        }
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

@@ -92,5 +92,22 @@ static class Program
         services.AddTransient<LocationService>();
         services.AddTransient<BusinessEntityService>();
 
+        services.AddTransient<ContactTypeService>();
+        //services.AddTransient<CreditCardService>();
+        //services.AddTransient<ProductCategoryService>();
+        //services.AddTransient<CurrencyService>();
+        //services.AddTransient<ShiftService>();
+        //services.AddTransient<CountryRegionService>();
+        //services.AddTransient<ShipMethodService>();
+        //services.AddTransient<PhoneNumberTypeService>();
+        //services.AddTransient<ProductDescriptionService>();
+        //services.AddTransient<AddressTypeService>();
+        //services.AddTransient<BusinessEntityService>();
+        //services.AddTransient<LocationService>();
+        //services.AddTransient<SpecialOfferService>();
+        //services.AddTransient<CultureService>();
+        //services.AddTransient<PersonService>();
+        //services.AddTransient<ScrapReasonService>();
+        //>>>>>>>>> Temporary merge branch 2
     }
 }
