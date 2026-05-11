@@ -10,6 +10,7 @@ using AdventureAdmin.Ui.Product;
 using AdventureAdmin.Ui.ShipMethod;
 using AdventureAdmin.Ui.ProductCategory;
 using AdventureAdmin.Ui.Services;
+using AdventureAdmin.Ui.PhoneNumberType;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
@@ -83,6 +84,9 @@ static class Program
         services.AddTransient<ProductCategoryForm>();
         services.AddTransient<CultureForm>();
         services.AddTransient<CultureList>();
+        services.AddTransient<PhoneNumberTypeList>();
+        services.AddTransient<PhoneNumberTypeForm>();
+
         services.AddTransient<BusinessEntityForm>();
         services.AddTransient<BusinessEntityList>();
 

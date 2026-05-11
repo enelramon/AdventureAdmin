@@ -95,10 +95,10 @@ public class CreditCardServiceTests
 
         var wasUpdated = await service.Modificar(updated);
 
-        Assert.True(wasUpdated);
-        Assert.True(updated.ModifiedDate >= beforeUpdate);
-
         var saved = await context.CreditCards.FirstOrDefaultAsync(c => c.CreditCardId == 20);
+
+        Assert.True(wasUpdated);
+        Assert.True(saved.ModifiedDate >= beforeUpdate);
         Assert.NotNull(saved);
         Assert.Equal("MasterCard", saved!.CardType);
     }
