@@ -305,7 +305,11 @@ partial class ProductForm
         // 
         txtProductNumber.Location = new Point(153, 3);
         txtProductNumber.Name = "txtProductNumber";
+
+        txtProductNumber.Size = new Size(200, 31);
+
         txtProductNumber.Size = new Size(200, 27);
+
         txtProductNumber.TabIndex = 3;
         // 
         // txtName

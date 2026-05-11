@@ -1,8 +1,12 @@
+
+using AdventureAdmin.Ui.Person;
+
 using AdventureAdmin.Ui.Department;
 using AdventureAdmin.Ui.CreditCard;
 using AdventureAdmin.Ui.Location;
 using AdventureAdmin.Data.Models;
 using AdventureAdmin.Ui.ContactType;
+
 using AdventureAdmin.Ui.Product;
 using AdventureAdmin.Ui.ShipMethod;
 using AdventureAdmin.Ui.ProductCategory;
@@ -100,8 +104,8 @@ public partial class MainForm : Form
 
     private void personToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var personList = Program.ServiceProvider.GetRequiredService<AdventureAdmin.Ui.Person.PersonList>();
-        personList.Show();
+        var form = Program.ServiceProvider.GetRequiredService<PersonList>();
+        form.Show();
     }
 
     private void creditCardToolStripMenuItem_Click(object sender, EventArgs e)
