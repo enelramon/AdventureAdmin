@@ -78,8 +78,8 @@ static class Program
         services.AddTransient<DepartmentForm>();
         services.AddTransient<ProductDescriptionList>();
         services.AddTransient<ProductDescriptionForm>();
-        services.AddTransient<PersonList>();
-        services.AddTransient<PersonForm>();
+       //services.AddTransient<PersonList>();
+       //services.AddTransient<PersonForm>();
         services.AddTransient<ProductCategoryList>();
         services.AddTransient<ProductCategoryForm>();
         services.AddTransient<CultureForm>();
@@ -112,7 +112,7 @@ static class Program
         //services.AddTransient<LocationService>();
         //services.AddTransient<SpecialOfferService>();
         //services.AddTransient<CultureService>();
-        services.AddTransient<PersonService>();
+        //services.AddTransient<PersonService>();
         //services.AddTransient<ContactTypeService>();
         //services.AddTransient<ScrapReasonService>();
 

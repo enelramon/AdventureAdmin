@@ -6,15 +6,14 @@ using System.Linq.Expressions;
 
 namespace AdventureAdmin.Ui.Services;
 
-public class PersonService(
-    AdventureWorksContext context)
-  : IService<Data.Models.Person, int>
+public class PersonService(AdventureWorksContext context)
+    : IService<Data.Models.Person, int>
 {
     public async Task<Data.Models.Person?> Buscar(int id)
     {
         return await context.People
+            .AsNoTracking()
             .FirstOrDefaultAsync(p => p.BusinessEntityId == id);
-
     }
 
     public async Task<bool> Eliminar(int id)
@@ -26,37 +25,59 @@ public class PersonService(
             return false;
 
         context.People.Remove(person);
-        var cantidad = await context.SaveChangesAsync();
 
-        return cantidad > 0;
+        return await context.SaveChangesAsync() > 0;
     }
 
-    public async Task<List<Data.Models.Person>> GetList(Expression<Func<Data.Models.Person, bool>> criterio)
+    public async Task<List<Data.Models.Person>> GetList(
+        Expression<Func<Data.Models.Person, bool>> criterio)
     {
         return await context.People
             .AsNoTracking()
             .Where(criterio)
+            .OrderBy(p => p.BusinessEntityId)
             .ToListAsync();
+    }
+
+    public async Task<bool> Existe(int id)
+    {
+        return await context.People
+            .AnyAsync(p => p.BusinessEntityId == id);
+    }
+
+    public async Task<bool> Guardar(Data.Models.Person person)
+    {
+        if (!await Existe(person.BusinessEntityId))
+            return await Insertar(person);
+        else
+            return await Modificar(person);
+    }
+
+    public async Task<bool> Insertar(Data.Models.Person person)
+    {
+        person.Rowguid = Guid.NewGuid();
+        person.ModifiedDate = DateTime.Now;
+
+        context.People.Add(person);
+
+        return await context.SaveChangesAsync() > 0;
+    }
+
+    public async Task<bool> Modificar(Data.Models.Person person)
+    {
+        person.ModifiedDate = DateTime.Now;
+
+        context.People.Update(person);
+
+        return await context.SaveChangesAsync() > 0;
     }
 
     public async Task<bool> Actualizar(Data.Models.Person entidad)
     {
-        context.Entry(entidad).State = EntityState.Modified;
-        return await context.SaveChangesAsync() > 0;
+        return await Modificar(entidad);
     }
 
-    public async Task<bool> Guardar(Data.Models.Person entidad)
-    {
-
-        await context.People.AddAsync(entidad);
-        var cantidad = await context.SaveChangesAsync();
-        return cantidad > 0;
-
-    }
-
-
-public async Task<int> CrearBusinessEntity()
-
+    public async Task<int> CrearBusinessEntity()
     {
         var entity = new BusinessEntity
         {
@@ -65,6 +86,7 @@ public async Task<int> CrearBusinessEntity()
         };
 
         context.BusinessEntities.Add(entity);
+
         await context.SaveChangesAsync();
 
         return entity.BusinessEntityId;
